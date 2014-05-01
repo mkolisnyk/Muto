@@ -1,11 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.github.mkolisnyk</groupId>
-  <artifactId>muto</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>muto</name>
-  
- 	<url>https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.mkolisnyk</groupId>
+	<artifactId>muto</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>muto</name>
+
+	<url>https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32</url>
 	<description>Automated Mutation Testing Framework</description>
 	<packaging>jar</packaging>
 	<licenses>
@@ -61,9 +62,10 @@
 				<artifactId>site-maven-plugin</artifactId>
 				<version>0.8</version>
 				<configuration>
-					<message>Creating site for ${project.groupId}:${project.artifactId}:${project.version}</message>
+					<message>Creating site for
+						${project.groupId}:${project.artifactId}:${project.version}</message>
 					<oauth2Token>6cbcb8e3d8031bdd0637256be9da89c57ea26949</oauth2Token>
-					<repositoryName>Sirius</repositoryName>
+					<repositoryName>Muto</repositoryName>
 					<repositoryOwner>mkolisnyk</repositoryOwner>
 					<merge>true</merge>
 					<path>${project.artifactId}</path>
@@ -146,19 +148,10 @@
 				<artifactId>maven-install-plugin</artifactId>
 				<version>2.4</version>
 			</plugin>
-
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>2.7</version>
-				<executions>
-					<execution>
-						<id>unpack-dependencies</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>unpack-dependencies</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -175,12 +168,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.4.1</version>
-				<!-- <configuration>
-					<tagNameFormat>v@{project.version}</tagNameFormat>
-					<configuration>
-						<tagBase>https://sirius-platform.googlecode.com/svn/tags/releases</tagBase>
-					</configuration>
-				</configuration>-->
+				<!-- <configuration> <tagNameFormat>v@{project.version}</tagNameFormat> 
+					<configuration> <tagBase>https://sirius-platform.googlecode.com/svn/tags/releases</tagBase> 
+					</configuration> </configuration> -->
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -200,7 +190,7 @@
 						<phase>deploy</phase>
 						<goals>
 							<goal>deploy</goal>
-							<!--<goal>release</goal>-->
+							<!--<goal>release</goal> -->
 						</goals>
 					</execution>
 				</executions>
@@ -210,11 +200,8 @@
 					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 				</configuration>
 			</plugin>
-			<!--<plugin>
-				<groupId>org.sonatype.nexus.plugins</groupId>
-				<artifactId>nexus-archetype-plugin</artifactId>
-				<version>2.3.1</version>
-			</plugin>-->
+			<!--<plugin> <groupId>org.sonatype.nexus.plugins</groupId> <artifactId>nexus-archetype-plugin</artifactId> 
+				<version>2.3.1</version> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
@@ -236,7 +223,7 @@
 					<excludes>**/test/java/**/*.java,**/win32/core/**/*.java,**/win32/utils/**/*.java,**/win32/types/**/*.java</excludes>
 					<configLocation>./sun_checks.xml</configLocation>
 					<suppressionsLocation>./checkstyle-suppressions.xml</suppressionsLocation>
-					<!--<suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>-->
+					<!--<suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression> -->
 				</configuration>
 				<executions>
 					<execution>
@@ -248,44 +235,6 @@
 			</plugin>
 
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-dependency-plugin
-										</artifactId>
-										<versionRange>
-											[2.1,)
-										</versionRange>
-										<goals>
-											<goal>
-												unpack-dependencies
-											</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 	<dependencies>
 		<dependency>
@@ -314,7 +263,7 @@
 				<configuration>
 					<configLocation>./sun_checks.xml</configLocation>
 					<suppressionsLocation>./checkstyle-suppressions.xml</suppressionsLocation>
-					<!--<suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>-->
+					<!--<suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression> -->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -349,12 +298,11 @@
 					<encoding>Cp1251</encoding>
 				</configuration>
 			</plugin>
-			<!-- <plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>2.5.2</version>
 				<configuration>
-					<onlyAnalyze>org.sirius.server.system.*</onlyAnalyze>
 					<encoding>Cp1251</encoding>
 				</configuration>
 			</plugin>
@@ -366,29 +314,6 @@
 					<encoding>Cp1251</encoding>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>com.github.mkolisnyk</groupId>
-				<artifactId>sirius-maven-plugin</artifactId>
-				<version>1.1</version>
-				<configuration>
-					<repository>Sirius</repository>
-					<groups>Win32</groups>
-					<outputType>mvn-trace</outputType>
-					<outputLocation>target/site</outputLocation>
-					<jsonFile>target/cucumber.json</jsonFile>
-					<jsonUsageFile>target/cucumber-usage.json</jsonUsageFile>
-				</configuration>
-				<reportSets>
-					<reportSet>
-						<configuration />
-						<reports>
-							<report>trace</report>
-							<report>cucumber</report>
-							<report>cucumber-usage</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>-->
 		</plugins>
 	</reporting>
 </project>
