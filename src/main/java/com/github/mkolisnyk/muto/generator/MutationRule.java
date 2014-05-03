@@ -1,11 +1,39 @@
 package com.github.mkolisnyk.muto.generator;
 
+import com.github.mkolisnyk.muto.data.MutationLocation;
+
 /**
  * .
  * @author Myk Kolisnyk
  *
  */
-public interface MutationRule {
+public abstract class MutationRule {
+    /**
+     * .
+     */
+    private MutationLocation location;
+
+    /**
+     * .
+     */
+    public MutationRule() {
+        this.location = new MutationLocation();
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final MutationLocation getLocation() {
+        return location;
+    }
+
+    /**
+     * .
+     * @param newLocation .
+     */
+    public final void setLocation(final MutationLocation newLocation) {
+        this.location = newLocation;
+    }
 
     /**
      * .
@@ -13,5 +41,12 @@ public interface MutationRule {
      * @param position .
      * @return .
      */
-    String apply(String input, int position);
+    public abstract String apply(String input, int position);
+
+    /**
+     * .
+     * @param input .
+     * @return .
+     */
+    public abstract int total(String input);
 }
