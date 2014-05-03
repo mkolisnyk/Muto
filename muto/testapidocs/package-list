@@ -1,5 +1,5 @@
-com.github.mkolisnyk.muto
 com.github.mkolisnyk.muto.data
 com.github.mkolisnyk.muto.generator
+com.github.mkolisnyk.muto.generator.rules
 com.github.mkolisnyk.muto.processor
 com.github.mkolisnyk.muto.reporter
