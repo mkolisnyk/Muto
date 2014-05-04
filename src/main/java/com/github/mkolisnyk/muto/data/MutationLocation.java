@@ -16,6 +16,10 @@ public class MutationLocation {
      * .
      */
     private String fileName;
+    /**
+     * .
+     */
+    private String matchedText;
 
     /**
      * .
@@ -65,6 +69,22 @@ public class MutationLocation {
         this.fileName = fileNameValue;
     }
 
+    /**
+     * .
+     * @return .
+     */
+    public final String getMatchedText() {
+        return matchedText;
+    }
+
+    /**
+     * .
+     * @param newMatchedText .
+     */
+    public final void setMatchedText(final String newMatchedText) {
+        this.matchedText = newMatchedText;
+    }
+
     @Override
     public final boolean equals(final Object obj) {
         if (obj == null) {
@@ -81,6 +101,16 @@ public class MutationLocation {
 
     @Override
     public final int hashCode() {
-        return super.hashCode() + this.startPosition + this.endPosition;
+        return super.hashCode()
+                + this.startPosition
+                + this.endPosition;
+    }
+
+    @Override
+    public final String toString() {
+        return String.format("{%d, %d, \"%s\"}",
+                this.getStartPosition(),
+                this.getEndPosition(),
+                this.getFileName());
     }
 }

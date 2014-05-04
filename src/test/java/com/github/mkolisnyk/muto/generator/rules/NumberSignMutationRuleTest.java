@@ -26,7 +26,8 @@ public class NumberSignMutationRuleTest {
                  { "int i=-1,j=2;", 0, "int i=1,j=2;", new MutationLocation(6,8) ,2 , "Multiple entries. First value replaced" },
                  { "int i=-1,j=2;", 1, "int i=-1,j=-2;", new MutationLocation(11,12) ,2 , "Multiple entries. Second value replaced" },
                  { "No number string", 2, "No number string", new MutationLocation(), 0 , "No replacement should be done on no numbers" },
-                 { "int i=1", 2, "int i=1", new MutationLocation(), 1 , "Out of range position should return string unchanged" }
+                 { "int i=1", 2, "int i=1", new MutationLocation(), 1 , "Out of range position should return string unchanged" }/*,
+                 { "int i=test-1", 0, "int i=test-1", new MutationLocation() ,0 , "When - sign is a part of expression it's not changed" }*/
            });
     }
     
