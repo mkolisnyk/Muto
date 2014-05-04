@@ -126,12 +126,12 @@ function toggleDisplay(elementId) {
 <th>Success Rate</th>
 <th>Time</th></tr>
 <tr class="b">
-<td>34</td>
+<td>46</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>100%</td>
-<td>0.058</td></tr></table><br />
+<td>0.089</td></tr></table><br />
 <p>Note: failures are anticipated and checked for with assertions while errors are unanticipated.</p><br /></div>
 <div class="section">
 <h2>Package List<a name="Package_List"></a></h2><a name="Package_List"></a>
@@ -146,13 +146,45 @@ function toggleDisplay(elementId) {
 <th>Success Rate</th>
 <th>Time</th></tr>
 <tr class="b">
+<td><a href="#com.github.mkolisnyk.muto.reporter">com.github.mkolisnyk.muto.reporter</a></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.001</td></tr>
+<tr class="a">
 <td><a href="#com.github.mkolisnyk.muto.generator.rules">com.github.mkolisnyk.muto.generator.rules</a></td>
 <td>28</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>100%</td>
-<td>0.057</td></tr>
+<td>0.041</td></tr>
+<tr class="b">
+<td><a href="#com.github.mkolisnyk.muto.processor">com.github.mkolisnyk.muto.processor</a></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.001</td></tr>
+<tr class="a">
+<td><a href="#com.github.mkolisnyk.muto.generator">com.github.mkolisnyk.muto.generator</a></td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.033</td></tr>
+<tr class="b">
+<td><a href="#com.github.mkolisnyk.muto.generator.strategies">com.github.mkolisnyk.muto.generator.strategies</a></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.012</td></tr>
 <tr class="a">
 <td><a href="#com.github.mkolisnyk.muto.data">com.github.mkolisnyk.muto.data</a></td>
 <td>6</td>
@@ -162,6 +194,27 @@ function toggleDisplay(elementId) {
 <td>100%</td>
 <td>0.001</td></tr></table><br />
 <p>Note: package statistics are not computed recursively, they only sum up all of its testsuites numbers.</p>
+<div class="section">
+<h3>com.github.mkolisnyk.muto.reporter<a name="com.github.mkolisnyk.muto.reporter"></a></h3><a name="com.github.mkolisnyk.muto.reporter"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<th></th>
+<th>Class</th>
+<th>Tests</th>
+<th>Errors </th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Success Rate</th>
+<th>Time</th></tr>
+<tr class="b">
+<td><a href="#com.github.mkolisnyk.muto.reporterMutoResultTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#com.github.mkolisnyk.muto.reporterMutoResultTest">MutoResultTest</a></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.001</td></tr></table></div>
 <div class="section">
 <h3>com.github.mkolisnyk.muto.generator.rules<a name="com.github.mkolisnyk.muto.generator.rules"></a></h3><a name="com.github.mkolisnyk.muto.generator.rules"></a>
 <table border="1" class="bodyTable">
@@ -175,15 +228,6 @@ function toggleDisplay(elementId) {
 <th>Success Rate</th>
 <th>Time</th></tr>
 <tr class="b">
-<td><a href="#com.github.mkolisnyk.muto.generator.rulesBlockCleanMutationRuleTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
-<td><a href="#com.github.mkolisnyk.muto.generator.rulesBlockCleanMutationRuleTest">BlockCleanMutationRuleTest</a></td>
-<td>16</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>100%</td>
-<td>0.034</td></tr>
-<tr class="a">
 <td><a href="#com.github.mkolisnyk.muto.generator.rulesNumberSignMutationRuleTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
 <td><a href="#com.github.mkolisnyk.muto.generator.rulesNumberSignMutationRuleTest">NumberSignMutationRuleTest</a></td>
 <td>12</td>
@@ -191,7 +235,97 @@ function toggleDisplay(elementId) {
 <td>0</td>
 <td>0</td>
 <td>100%</td>
-<td>0.023</td></tr></table></div>
+<td>0.012</td></tr>
+<tr class="a">
+<td><a href="#com.github.mkolisnyk.muto.generator.rulesBlockCleanMutationRuleTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#com.github.mkolisnyk.muto.generator.rulesBlockCleanMutationRuleTest">BlockCleanMutationRuleTest</a></td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.029</td></tr></table></div>
+<div class="section">
+<h3>com.github.mkolisnyk.muto.processor<a name="com.github.mkolisnyk.muto.processor"></a></h3><a name="com.github.mkolisnyk.muto.processor"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<th></th>
+<th>Class</th>
+<th>Tests</th>
+<th>Errors </th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Success Rate</th>
+<th>Time</th></tr>
+<tr class="b">
+<td><a href="#com.github.mkolisnyk.muto.processorMutoProcessorTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#com.github.mkolisnyk.muto.processorMutoProcessorTest">MutoProcessorTest</a></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.001</td></tr></table></div>
+<div class="section">
+<h3>com.github.mkolisnyk.muto.generator<a name="com.github.mkolisnyk.muto.generator"></a></h3><a name="com.github.mkolisnyk.muto.generator"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<th></th>
+<th>Class</th>
+<th>Tests</th>
+<th>Errors </th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Success Rate</th>
+<th>Time</th></tr>
+<tr class="b">
+<td><a href="#com.github.mkolisnyk.muto.generatorMutationRuleTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#com.github.mkolisnyk.muto.generatorMutationRuleTest">MutationRuleTest</a></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.001</td></tr>
+<tr class="a">
+<td><a href="#com.github.mkolisnyk.muto.generatorMutoGenTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#com.github.mkolisnyk.muto.generatorMutoGenTest">MutoGenTest</a></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.002</td></tr>
+<tr class="b">
+<td><a href="#com.github.mkolisnyk.muto.generatorMutationStrategyTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#com.github.mkolisnyk.muto.generatorMutationStrategyTest">MutationStrategyTest</a></td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.03</td></tr></table></div>
+<div class="section">
+<h3>com.github.mkolisnyk.muto.generator.strategies<a name="com.github.mkolisnyk.muto.generator.strategies"></a></h3><a name="com.github.mkolisnyk.muto.generator.strategies"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<th></th>
+<th>Class</th>
+<th>Tests</th>
+<th>Errors </th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Success Rate</th>
+<th>Time</th></tr>
+<tr class="b">
+<td><a href="#com.github.mkolisnyk.muto.generator.strategiesOneByOneMutationStrategyTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#com.github.mkolisnyk.muto.generator.strategiesOneByOneMutationStrategyTest">OneByOneMutationStrategyTest</a></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.012</td></tr></table></div>
 <div class="section">
 <h3>com.github.mkolisnyk.muto.data<a name="com.github.mkolisnyk.muto.data"></a></h3><a name="com.github.mkolisnyk.muto.data"></a>
 <table border="1" class="bodyTable">
@@ -217,6 +351,46 @@ function toggleDisplay(elementId) {
 <h2>Test Cases<a name="Test_Cases"></a></h2><a name="Test_Cases"></a>
 <p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p>
 <div class="section">
+<h3>OneByOneMutationStrategyTest<a name="OneByOneMutationStrategyTest"></a></h3><a name="com.github.mkolisnyk.muto.generator.strategiesOneByOneMutationStrategyTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testNext</td>
+<td>0.007</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testNextOnCompletedRuleset</td>
+<td>0.005</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testNextOnEmptyRuleset</td>
+<td>0</td></tr></table></div>
+<div class="section">
+<h3>MutationRuleTest<a name="MutationRuleTest"></a></h3><a name="com.github.mkolisnyk.muto.generatorMutationRuleTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testResetRule</td>
+<td>0.001</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testNextHasNext</td>
+<td>0</td></tr></table></div>
+<div class="section">
+<h3>MutoProcessorTest<a name="MutoProcessorTest"></a></h3><a name="com.github.mkolisnyk.muto.processorMutoProcessorTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testProcessorInitialization</td>
+<td>0.001</td></tr></table></div>
+<div class="section">
+<h3>MutoGenTest<a name="MutoGenTest"></a></h3><a name="com.github.mkolisnyk.muto.generatorMutoGenTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testGenerate</td>
+<td>0.002</td></tr></table></div>
+<div class="section">
 <h3>MutationLocationTest<a name="MutationLocationTest"></a></h3><a name="com.github.mkolisnyk.muto.dataMutationLocationTest"></a>
 <table border="1" class="bodyTable">
 <tr class="a">
@@ -226,11 +400,11 @@ function toggleDisplay(elementId) {
 <tr class="b">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testEqualsDifferentObjectOfTheSameTypeShouldReturnFalse</td>
-<td>0.001</td></tr>
+<td>0</td></tr>
 <tr class="a">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testEqualsDifferentObjectTypeShouldReturnFalse</td>
-<td>0</td></tr>
+<td>0.001</td></tr>
 <tr class="b">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testHashCode</td>
@@ -243,6 +417,83 @@ function toggleDisplay(elementId) {
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testEqualsSimilarObjectShouldReturnTrue</td>
 <td>0</td></tr></table></div>
+<div class="section">
+<h3>NumberSignMutationRuleTest<a name="NumberSignMutationRuleTest"></a></h3><a name="com.github.mkolisnyk.muto.generator.rulesNumberSignMutationRuleTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testApply[Test: Simple replacement verification]</td>
+<td>0.003</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testTotal[Test: Simple replacement verification]</td>
+<td>0.001</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testApply[Test: Positive number replacement verification]</td>
+<td>0.001</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testTotal[Test: Positive number replacement verification]</td>
+<td>0.001</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testApply[Test: Multiple entries. First value replaced]</td>
+<td>0.001</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testTotal[Test: Multiple entries. First value replaced]</td>
+<td>0.001</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testApply[Test: Multiple entries. Second value replaced]</td>
+<td>0.001</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testTotal[Test: Multiple entries. Second value replaced]</td>
+<td>0.001</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testApply[Test: No replacement should be done on no numbers]</td>
+<td>0.001</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testTotal[Test: No replacement should be done on no numbers]</td>
+<td>0.001</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testApply[Test: Out of range position should return string unchanged]</td>
+<td>0</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testTotal[Test: Out of range position should return string unchanged]</td>
+<td>0</td></tr></table></div>
+<div class="section">
+<h3>MutationStrategyTest<a name="MutationStrategyTest"></a></h3><a name="com.github.mkolisnyk.muto.generatorMutationStrategyTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testAddRule</td>
+<td>0.028</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testReset</td>
+<td>0.001</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testNext</td>
+<td>0</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testEmptyStrategy</td>
+<td>0.001</td></tr></table></div>
+<div class="section">
+<h3>MutoResultTest<a name="MutoResultTest"></a></h3><a name="com.github.mkolisnyk.muto.reporterMutoResultTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>testResultInitialization</td>
+<td>0.001</td></tr></table></div>
 <div class="section">
 <h3>BlockCleanMutationRuleTest<a name="BlockCleanMutationRuleTest"></a></h3><a name="com.github.mkolisnyk.muto.generator.rulesBlockCleanMutationRuleTest"></a>
 <table border="1" class="bodyTable">
@@ -257,7 +508,7 @@ function toggleDisplay(elementId) {
 <tr class="a">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testApply[Test: Double blocks on one level verification]</td>
-<td>0.003</td></tr>
+<td>0.002</td></tr>
 <tr class="b">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testTotal[Test: Double blocks on one level verification]</td>
@@ -265,15 +516,15 @@ function toggleDisplay(elementId) {
 <tr class="a">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testApply[Test: Nested blocks. Replace top-level item]</td>
-<td>0.003</td></tr>
+<td>0.002</td></tr>
 <tr class="b">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testTotal[Test: Nested blocks. Replace top-level item]</td>
-<td>0.001</td></tr>
+<td>0.002</td></tr>
 <tr class="a">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testApply[Test: Nested blocks. Replace nested item]</td>
-<td>0.003</td></tr>
+<td>0.002</td></tr>
 <tr class="b">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testTotal[Test: Nested blocks. Replace nested item]</td>
@@ -281,7 +532,7 @@ function toggleDisplay(elementId) {
 <tr class="a">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testApply[Test: Nested blocks. Replace nested item - changing levels up]</td>
-<td>0.003</td></tr>
+<td>0.002</td></tr>
 <tr class="b">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testTotal[Test: Nested blocks. Replace nested item - changing levels up]</td>
@@ -305,62 +556,11 @@ function toggleDisplay(elementId) {
 <tr class="a">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testApply[Test: Multi level block out of boundaries]</td>
-<td>0.003</td></tr>
+<td>0.001</td></tr>
 <tr class="b">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td>testTotal[Test: Multi level block out of boundaries]</td>
-<td>0.003</td></tr></table></div>
-<div class="section">
-<h3>NumberSignMutationRuleTest<a name="NumberSignMutationRuleTest"></a></h3><a name="com.github.mkolisnyk.muto.generator.rulesNumberSignMutationRuleTest"></a>
-<table border="1" class="bodyTable">
-<tr class="a">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td>testApply[Test: Simple replacement verification]</td>
-<td>0.006</td></tr>
-<tr class="b">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td>testTotal[Test: Simple replacement verification]</td>
-<td>0.001</td></tr>
-<tr class="a">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td>testApply[Test: Positive number replacement verification]</td>
-<td>0.002</td></tr>
-<tr class="b">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td>testTotal[Test: Positive number replacement verification]</td>
-<td>0.001</td></tr>
-<tr class="a">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td>testApply[Test: Multiple entries. First value replaced]</td>
-<td>0.002</td></tr>
-<tr class="b">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td>testTotal[Test: Multiple entries. First value replaced]</td>
-<td>0.001</td></tr>
-<tr class="a">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td>testApply[Test: Multiple entries. Second value replaced]</td>
-<td>0.002</td></tr>
-<tr class="b">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td>testTotal[Test: Multiple entries. Second value replaced]</td>
-<td>0.001</td></tr>
-<tr class="a">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td>testApply[Test: No replacement should be done on no numbers]</td>
-<td>0.002</td></tr>
-<tr class="b">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td>testTotal[Test: No replacement should be done on no numbers]</td>
-<td>0.001</td></tr>
-<tr class="a">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td>testApply[Test: Out of range position should return string unchanged]</td>
-<td>0.002</td></tr>
-<tr class="b">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td>testTotal[Test: Out of range position should return string unchanged]</td>
-<td>0.002</td></tr></table></div><br /></div>
+<td>0.003</td></tr></table></div><br /></div>
       </div>
     </div>
     <div class="clear">

@@ -94,10 +94,10 @@
 <a class="jxr_linenumber" name="84" href="#84">84</a>  
 <a class="jxr_linenumber" name="85" href="#85">85</a>          <a href="../../../../../../com/github/mkolisnyk/muto/data/MutationLocation.html">MutationLocation</a> location = <strong class="jxr_keyword">new</strong> <a href="../../../../../../com/github/mkolisnyk/muto/data/MutationLocation.html">MutationLocation</a>(-1, -1);
 <a class="jxr_linenumber" name="86" href="#86">86</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt;= position; i++) {
-<a class="jxr_linenumber" name="87" href="#87">87</a>              <strong class="jxr_keyword">if</strong> (location == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="88" href="#88">88</a>                  location = <strong class="jxr_keyword">new</strong> <a href="../../../../../../com/github/mkolisnyk/muto/data/MutationLocation.html">MutationLocation</a>(-1, -1);
-<a class="jxr_linenumber" name="89" href="#89">89</a>                  depth++;
-<a class="jxr_linenumber" name="90" href="#90">90</a>              }
+<a class="jxr_linenumber" name="87" href="#87">87</a>              <em class="jxr_comment">/*<em class="jxr_comment">if (location == null) {</em></em>
+<a class="jxr_linenumber" name="88" href="#88">88</a>  <em class="jxr_comment">                location = new MutationLocation(-1, -1);</em>
+<a class="jxr_linenumber" name="89" href="#89">89</a>  <em class="jxr_comment">                depth++;</em>
+<a class="jxr_linenumber" name="90" href="#90">90</a>  <em class="jxr_comment">            }*/</em>
 <a class="jxr_linenumber" name="91" href="#91">91</a>              <strong class="jxr_keyword">while</strong> (depth &lt;= maxDepth) {
 <a class="jxr_linenumber" name="92" href="#92">92</a>                  location = <strong class="jxr_keyword">this</strong>.nextBlockOnLevel(input,
 <a class="jxr_linenumber" name="93" href="#93">93</a>                          location.getEndPosition() + 1, depth);
@@ -110,12 +110,12 @@
 <a class="jxr_linenumber" name="100" href="#100">100</a>             }
 <a class="jxr_linenumber" name="101" href="#101">101</a>         }
 <a class="jxr_linenumber" name="102" href="#102">102</a> 
-<a class="jxr_linenumber" name="103" href="#103">103</a>         <strong class="jxr_keyword">if</strong> (location != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="103" href="#103">103</a>         <em class="jxr_comment">//if (location != null) {</em>
 <a class="jxr_linenumber" name="104" href="#104">104</a>             result = result.substring(0,
 <a class="jxr_linenumber" name="105" href="#105">105</a>                     location.getStartPosition() + 1)
 <a class="jxr_linenumber" name="106" href="#106">106</a>                     + result.substring(location.getEndPosition() + 1);
 <a class="jxr_linenumber" name="107" href="#107">107</a>             <strong class="jxr_keyword">this</strong>.setLocation(location);
-<a class="jxr_linenumber" name="108" href="#108">108</a>         }
+<a class="jxr_linenumber" name="108" href="#108">108</a>         <em class="jxr_comment">//}</em>
 <a class="jxr_linenumber" name="109" href="#109">109</a>         <strong class="jxr_keyword">return</strong> result;
 <a class="jxr_linenumber" name="110" href="#110">110</a>     }
 <a class="jxr_linenumber" name="111" href="#111">111</a> 
