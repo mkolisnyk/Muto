@@ -1,5 +1,8 @@
 package com.github.mkolisnyk.muto.generator;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 
 /**
  * .
@@ -7,14 +10,9 @@ package com.github.mkolisnyk.muto.generator;
  */
 public class MutoGenTest {
 
-    /**
-     * .
-     * @param input .
-     * @param rule .
-     * @return .
-     */
-    public final String generate(final String input,
-            final MutationRule rule) {
-        return "";
+    @Test
+    public void testGenerate(){
+        MutoGen gen = new MutoGen();
+        Assert.assertEquals("", gen.generate("", null));
     }
 }
