@@ -38,7 +38,16 @@
 		<developerConnection>scm:git:https://github.com/mkolisnyk/Muto.git</developerConnection>
 		<url>https://github.com/mkolisnyk/Muto.git</url>
 	</scm>
-
+	<ciManagement>
+		<url>https://travis-ci.org/mkolisnyk/Muto/builds</url>
+		<system>Travis</system>
+		<notifiers>
+			<notifier>
+				<address>kolesnik.nickolay@gmail.com</address>
+				<type>mail</type>
+			</notifier>
+		</notifiers>
+	</ciManagement>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
