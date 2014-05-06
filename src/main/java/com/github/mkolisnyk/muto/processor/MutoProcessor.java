@@ -2,9 +2,10 @@ package com.github.mkolisnyk.muto.processor;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
-import org.codehaus.plexus.util.FileUtils;
+import org.apache.commons.io.FileUtils;
 
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
@@ -16,6 +17,10 @@ import com.github.mkolisnyk.muto.reporter.MutoResult;
  *
  */
 public class MutoProcessor {
+    /**
+     * .
+     */
+    private static final int DEFAULTTIMEOUT = 600000;
     /**
      * .
      */
@@ -40,6 +45,9 @@ public class MutoProcessor {
      * .
      */
     private List<FileProcessingStrategy> fileStrategies;
+    /**
+     * .
+     */
     private List<MutoListener> listeners;
     /**
      * .
@@ -132,37 +140,37 @@ public class MutoProcessor {
      * .
      * @return .
      */
-    public List<MutoListener> getListeners() {
+    public final List<MutoListener> getListeners() {
         return listeners;
     }
     /**
      * .
-     * @param listeners .
+     * @param listenersArray .
      */
-    public void setListeners(List<MutoListener> listeners) {
-        this.listeners = listeners;
+    public final void setListeners(final List<MutoListener> listenersArray) {
+        this.listeners = listenersArray;
     }
     /**
      * .
      */
-    private final void beforeSuite() {
-        for(MutoListener listener:listeners) {
+    private void beforeSuite() {
+        for (MutoListener listener:listeners) {
             listener.beforeSuiteRun();
         }
     }
     /**
      * .
      */
-    private final void afterSuite() {
-        for(MutoListener listener:listeners) {
+    private void afterSuite() {
+        for (MutoListener listener:listeners) {
             listener.afterSuiteRun();
         }
     }
     /**
      * .
      */
-    private final void beforeTest() {
-        for(MutoListener listener:listeners) {
+    private void beforeTest() {
+        for (MutoListener listener:listeners) {
             listener.beforeTestRun();
         }
     }
@@ -170,50 +178,64 @@ public class MutoProcessor {
      * .
      * @param result .
      */
-    private final void afterTest(MutoResult result) {
-        for(MutoListener listener:listeners) {
+    private void afterTest(final MutoResult result) {
+        for (MutoListener listener:listeners) {
             listener.afterTestRun(result);
         }
     }
     /**
      * Copies project files into working directory.
-     * @throws IOException 
+     * @throws IOException .
      */
     public final void copyWorkspace() throws IOException {
         File source = new File(this.sourceDirectory);
         File workspace = new File(this.targetDirectory);
         if (workspace.exists() && workspace.isDirectory()) {
-           FileUtils.deleteDirectory(workspace); 
+            FileUtils.deleteDirectory(workspace);
         }
-        FileUtils.mkdir(targetDirectory);
-        for(String item:source.list()) {
-            File copyItem = new File(item);
-            if(!copyItem.getAbsolutePath().equals(workspace.getAbsolutePath())) {
-                if (copyItem.isDirectory()) {
-                   FileUtils.copyDirectory(copyItem, workspace); 
-                } else {
-                    FileUtils.copyFile(copyItem, workspace);
+        // FileUtils.mkdir(targetDirectory);
+        workspace.mkdirs();
+        for (File copyItem : source.listFiles()) {
+            File targetItem = new File(workspace + File.separator
+                    + copyItem.getName());
+            try {
+                if (!copyItem.getAbsolutePath().equals(
+                        workspace.getAbsolutePath())) {
+                    if (copyItem.isDirectory()) {
+                        FileUtils.copyDirectory(copyItem, targetItem);
+                    } else {
+                        // FileUtils.copyFile(copyItem, workspace);
+                        Files.copy(copyItem.toPath(),
+                                targetItem.toPath());
+                    }
                 }
+            } catch (Exception e) {
+                Exception ext = new Exception("Failed to copy: "
+                        + copyItem.getAbsolutePath(), e);
+                ext.printStackTrace();
             }
         }
     }
     /**
      * Performs code mutations and further processing.
-     * @throws IOException 
+     * @throws IOException .
      */
     public final void process() throws IOException {
         this.copyWorkspace();
         this.beforeSuite();
         for (FileProcessingStrategy fileStrategy:this.fileStrategies) {
             fileStrategy.setFiles(this.filesToProcess);
-            int exitCode = -1;
             while (fileStrategy.hasNext()) {
                 this.beforeTest();
                 fileStrategy.next();
                 try {
+                    int exitCode = -1;
+                    MutoResult result = new MutoResult();
                     exitCode = this.runCommand();
-                } catch (Exception e) {
-                    ;
+                    result.setExitCode(exitCode);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
                 this.afterTest(null);
             }
@@ -224,23 +246,35 @@ public class MutoProcessor {
     /**
      * Runs specific command and tracks the status code.
      * @return .
-     * @throws IOException 
-     * @throws InterruptedException 
+     * @throws IOException .
+     * @throws InterruptedException .
      */
-    public final int runCommand() throws IOException, InterruptedException {
+    public final int runCommand() throws IOException,
+            InterruptedException {
         Runtime runtime = Runtime.getRuntime();
-        Process process = runtime.exec(runCommand, null, new File(this.targetDirectory));
-        process.wait(600000);
+        Process process = runtime.exec(runCommand, null, new File(
+                this.targetDirectory));
+        process.wait(DEFAULTTIMEOUT);
         return process.exitValue();
     }
     /**
-     * Removes working directory and all related resources.
-     * @throws IOException 
+     * .
      */
-    public final void cleanupWorkspace() throws IOException {
+    private static final int MAXTRIES = 3;
+    /**
+     * Removes working directory and all related resources.
+     */
+    public final void cleanupWorkspace() {
         File workspace = new File(this.targetDirectory);
         if (workspace.exists() && workspace.isDirectory()) {
-           FileUtils.deleteDirectory(workspace);
+            for (int i = 0; i < MAXTRIES; i++) {
+                try {
+                    FileUtils.deleteDirectory(workspace);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }

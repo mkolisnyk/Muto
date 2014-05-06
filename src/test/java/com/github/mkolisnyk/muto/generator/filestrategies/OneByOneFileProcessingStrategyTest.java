@@ -1,13 +1,12 @@
 package com.github.mkolisnyk.muto.generator.filestrategies;
 
-import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;

@@ -1,7 +1,6 @@
 package com.github.mkolisnyk.muto.generator.strategies;
 
 import org.junit.Assert;
-
 import org.junit.Test;
 
 import com.github.mkolisnyk.muto.generator.MutationRule;

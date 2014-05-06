@@ -1,7 +1,5 @@
 package com.github.mkolisnyk.muto.generator;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
