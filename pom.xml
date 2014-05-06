@@ -4,7 +4,7 @@
 	<groupId>com.github.mkolisnyk</groupId>
 	<artifactId>muto</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>muto</name>
+	<name>Muto</name>
 
 	<url>https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32</url>
 	<description>Automated Mutation Testing Framework</description>
@@ -177,9 +177,11 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.4.1</version>
-				<!-- <configuration> <tagNameFormat>v@{project.version}</tagNameFormat> 
-					<configuration> <tagBase>https://sirius-platform.googlecode.com/svn/tags/releases</tagBase> 
-					</configuration> </configuration> -->
+				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<preparationGoals>package install:install-file</preparationGoals>
+					<scmCommentPrefix>#42'[ci skip]'</scmCommentPrefix>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -199,7 +201,6 @@
 						<phase>deploy</phase>
 						<goals>
 							<goal>deploy</goal>
-							<!--<goal>release</goal> -->
 						</goals>
 					</execution>
 				</executions>
@@ -209,8 +210,6 @@
 					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 				</configuration>
 			</plugin>
-			<!--<plugin> <groupId>org.sonatype.nexus.plugins</groupId> <artifactId>nexus-archetype-plugin</artifactId> 
-				<version>2.3.1</version> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
@@ -232,7 +231,6 @@
 					<excludes>**/test/java/**/*.java,**/win32/core/**/*.java,**/win32/utils/**/*.java,**/win32/types/**/*.java</excludes>
 					<configLocation>./sun_checks.xml</configLocation>
 					<suppressionsLocation>./checkstyle-suppressions.xml</suppressionsLocation>
-					<!--<suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression> -->
 				</configuration>
 				<executions>
 					<execution>
@@ -249,10 +247,10 @@
 				<configuration>
 					<check>
 						<haltOnFailure>true</haltOnFailure>
-			            <totalBranchRate>85</totalBranchRate>
-			            <totalLineRate>85</totalLineRate>
-			            <packageLineRate>85</packageLineRate>
-            			<packageBranchRate>85</packageBranchRate>
+						<totalBranchRate>85</totalBranchRate>
+						<totalLineRate>85</totalLineRate>
+						<packageLineRate>85</packageLineRate>
+						<packageBranchRate>85</packageBranchRate>
 					</check>
 				</configuration>
 				<executions>
@@ -300,7 +298,6 @@
 				<configuration>
 					<configLocation>./sun_checks.xml</configLocation>
 					<suppressionsLocation>./checkstyle-suppressions.xml</suppressionsLocation>
-					<!--<suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression> -->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -330,9 +327,16 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9.1</version>
+				<version>2.9</version>
 				<configuration>
-					<encoding>Cp1251</encoding>
+					<doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+					<docletArtifact>
+						<groupId>org.umlgraph</groupId>
+						<artifactId>umlgraph</artifactId>
+						<version>5.6</version>
+					</docletArtifact>
+					<additionalparam>-views -all</additionalparam>
+					<useStandardDocletOptions>true</useStandardDocletOptions>
 				</configuration>
 			</plugin>
 			<plugin>

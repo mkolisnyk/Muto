@@ -22,6 +22,7 @@ public interface MutoListener {
 
     /**
      * .
+     * @param result .
      */
-    void afterTestRun();
+    void afterTestRun(MutoResult result);
 }
