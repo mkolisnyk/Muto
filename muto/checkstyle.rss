@@ -2,13 +2,13 @@
 
 <rss version="0.91">
   <channel>
-    <title>muto - Checkstyle report</title>
+    <title>Muto - Checkstyle report</title>
     <link>https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32</link>
-    <description>muto - Checkstyle report</description>
+    <description>Muto - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2014</copyright>
     <item>
-      <title>File: 40,
+      <title>File: 52,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -30,20 +30,6 @@
                           <tr>
                 <td>
                   <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.generator.MutoGen.java">main/java/com/github/mkolisnyk/muto/generator/MutoGen.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.processor.package-info.java">main/java/com/github/mkolisnyk/muto/processor/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -113,34 +99,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.generator.FileProcessingStrategy.java">main/java/com/github/mkolisnyk/muto/generator/FileProcessingStrategy.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.generator.filestrategies.OneByOneFileProcessingStrategy.java">com/github/mkolisnyk/muto/generator/filestrategies/OneByOneFileProcessingStrategy.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.data.package-info.java">com/github/mkolisnyk/muto/data/package-info.java</a>
                 </td>
                 <td>
@@ -183,35 +141,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.reporter.MutoListener.java">main/java/com/github/mkolisnyk/muto/reporter/MutoListener.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule.java">main/java/com/github/mkolisnyk/muto/generator/rules/BlockCleanMutationRule.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule.java">com/github/mkolisnyk/muto/generator/rules/BlockCleanMutationRule.java</a>
                 </td>
                 <td>
                   0
@@ -239,63 +169,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.generator.strategies.OneByOneMutationStrategy.java">main/java/com/github/mkolisnyk/muto/generator/strategies/OneByOneMutationStrategy.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.processor.MutoProcessor.java">com/github/mkolisnyk/muto/processor/MutoProcessor.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.generator.rules.package-info.java">com/github/mkolisnyk/muto/generator/rules/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.data.MutationLocation.java">main/java/com/github/mkolisnyk/muto/data/MutationLocation.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.processor.package-info.java">com/github/mkolisnyk/muto/processor/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -337,7 +211,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.generator.package-info.java">com/github/mkolisnyk/muto/generator/package-info.java</a>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.reporter.result.JUnitTestSuite.java">main/java/com/github/mkolisnyk/muto/reporter/result/JUnitTestSuite.java</a>
                 </td>
                 <td>
                   0
@@ -351,7 +225,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.reporter.package-info.java">com/github/mkolisnyk/muto/reporter/package-info.java</a>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.generator.package-info.java">com/github/mkolisnyk/muto/generator/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -393,6 +267,20 @@
               </tr>
                           <tr>
                 <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.reporter.listeners.package-info.java">com/github/mkolisnyk/muto/reporter/listeners/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.generator.filestrategies.package-info.java">com/github/mkolisnyk/muto/generator/filestrategies/package-info.java</a>
                 </td>
                 <td>
@@ -407,35 +295,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.reporter.package-info.java">main/java/com/github/mkolisnyk/muto/reporter/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.generator.MutationStrategy.java">com/github/mkolisnyk/muto/generator/MutationStrategy.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.reporter.MutoResult.java">com/github/mkolisnyk/muto/reporter/MutoResult.java</a>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.reporter.result.JUnitFailure.java">main/java/com/github/mkolisnyk/muto/reporter/result/JUnitFailure.java</a>
                 </td>
                 <td>
                   0
@@ -450,34 +310,6 @@
                           <tr>
                 <td>
                   <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.generator.MutoGen.java">com/github/mkolisnyk/muto/generator/MutoGen.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.generator.MutationStrategy.java">main/java/com/github/mkolisnyk/muto/generator/MutationStrategy.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.generator.filestrategies.package-info.java">main/java/com/github/mkolisnyk/muto/generator/filestrategies/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -519,20 +351,6 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.generator.filestrategies.OneByOneFileProcessingStrategy.java">main/java/com/github/mkolisnyk/muto/generator/filestrategies/OneByOneFileProcessingStrategy.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.data.package-info.java">main/java/com/github/mkolisnyk/muto/data/package-info.java</a>
                 </td>
                 <td>
@@ -547,7 +365,7 @@
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.reporter.MutoListener.java">com/github/mkolisnyk/muto/reporter/MutoListener.java</a>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.generator.filestrategies.OneByOneFileProcessingStrategy.java">main/java/com/github/mkolisnyk/muto/generator/filestrategies/OneByOneFileProcessingStrategy.java</a>
                 </td>
                 <td>
                   0
@@ -576,6 +394,356 @@
                           <tr>
                 <td>
                   <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.generator.strategies.OneByOneMutationStrategy.java">com/github/mkolisnyk/muto/generator/strategies/OneByOneMutationStrategy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.processor.package-info.java">main/java/com/github/mkolisnyk/muto/processor/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.reporter.result.package-info.java">com/github/mkolisnyk/muto/reporter/result/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.generator.FileProcessingStrategy.java">main/java/com/github/mkolisnyk/muto/generator/FileProcessingStrategy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.generator.filestrategies.OneByOneFileProcessingStrategy.java">com/github/mkolisnyk/muto/generator/filestrategies/OneByOneFileProcessingStrategy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.reporter.result.JUnitError.java">main/java/com/github/mkolisnyk/muto/reporter/result/JUnitError.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.reporter.result.JUnitTestCase.java">com/github/mkolisnyk/muto/reporter/result/JUnitTestCase.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.reporter.MutoListener.java">main/java/com/github/mkolisnyk/muto/reporter/MutoListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule.java">com/github/mkolisnyk/muto/generator/rules/BlockCleanMutationRule.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.generator.strategies.OneByOneMutationStrategy.java">main/java/com/github/mkolisnyk/muto/generator/strategies/OneByOneMutationStrategy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.processor.MutoProcessor.java">com/github/mkolisnyk/muto/processor/MutoProcessor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.data.MutationLocation.java">main/java/com/github/mkolisnyk/muto/data/MutationLocation.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.processor.package-info.java">com/github/mkolisnyk/muto/processor/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.reporter.result.package-info.java">main/java/com/github/mkolisnyk/muto/reporter/result/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.reporter.package-info.java">com/github/mkolisnyk/muto/reporter/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.generator.MutationStrategy.java">com/github/mkolisnyk/muto/generator/MutationStrategy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.reporter.package-info.java">main/java/com/github/mkolisnyk/muto/reporter/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.reporter.MutoResult.java">com/github/mkolisnyk/muto/reporter/MutoResult.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.reporter.result.JUnitFailure.java">com/github/mkolisnyk/muto/reporter/result/JUnitFailure.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.reporter.listeners.package-info.java">main/java/com/github/mkolisnyk/muto/reporter/listeners/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.generator.MutationStrategy.java">main/java/com/github/mkolisnyk/muto/generator/MutationStrategy.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.reporter.result.JUnitError.java">com/github/mkolisnyk/muto/reporter/result/JUnitError.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.generator.filestrategies.package-info.java">main/java/com/github/mkolisnyk/muto/generator/filestrategies/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.reporter.result.JUnitTestSuite.java">com/github/mkolisnyk/muto/reporter/result/JUnitTestSuite.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#main.java.com.github.mkolisnyk.muto.reporter.result.JUnitTestCase.java">main/java/com/github/mkolisnyk/muto/reporter/result/JUnitTestCase.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/mkolisnyk/Sirius/tree/master/SiriusJavaClient-Win32/checkstyle.html#com.github.mkolisnyk.muto.reporter.MutoListener.java">com/github/mkolisnyk/muto/reporter/MutoListener.java</a>
                 </td>
                 <td>
                   0

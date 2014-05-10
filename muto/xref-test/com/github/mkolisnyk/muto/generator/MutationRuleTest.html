@@ -15,7 +15,7 @@
 <a class="jxr_linenumber" name="5" href="#5">5</a>   
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../com/github/mkolisnyk/muto/generator/MutationRuleTest.html">MutationRuleTest</a> {
 <a class="jxr_linenumber" name="7" href="#7">7</a>       
-<a class="jxr_linenumber" name="8" href="#8">8</a>       <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../com/github/mkolisnyk/muto/generator/MutationRuleTest.html">FakeMutationRule</a> <strong class="jxr_keyword">extends</strong> MutationRule {
+<a class="jxr_linenumber" name="8" href="#8">8</a>       <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../com/github/mkolisnyk/muto/generator/MutationStrategyTest.html">FakeMutationRule</a> <strong class="jxr_keyword">extends</strong> MutationRule {
 <a class="jxr_linenumber" name="9" href="#9">9</a>   
 <a class="jxr_linenumber" name="10" href="#10">10</a>          @Override
 <a class="jxr_linenumber" name="11" href="#11">11</a>          <strong class="jxr_keyword">public</strong> String apply(String input, <strong class="jxr_keyword">int</strong> position) {
@@ -30,7 +30,7 @@
 <a class="jxr_linenumber" name="20" href="#20">20</a>      
 <a class="jxr_linenumber" name="21" href="#21">21</a>      @Test
 <a class="jxr_linenumber" name="22" href="#22">22</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testNextHasNext(){
-<a class="jxr_linenumber" name="23" href="#23">23</a>          MutationRule rule = <strong class="jxr_keyword">new</strong> <a href="../../../../../com/github/mkolisnyk/muto/generator/MutationRuleTest.html">FakeMutationRule</a>();
+<a class="jxr_linenumber" name="23" href="#23">23</a>          MutationRule rule = <strong class="jxr_keyword">new</strong> <a href="../../../../../com/github/mkolisnyk/muto/generator/MutationStrategyTest.html">FakeMutationRule</a>();
 <a class="jxr_linenumber" name="24" href="#24">24</a>          Assert.assertEquals(0,rule.getTick());
 <a class="jxr_linenumber" name="25" href="#25">25</a>          Assert.assertTrue(rule.hasNext(<span class="jxr_string">""</span>));
 <a class="jxr_linenumber" name="26" href="#26">26</a>          Assert.assertNull(rule.next(<span class="jxr_string">""</span>));
@@ -42,7 +42,7 @@
 <a class="jxr_linenumber" name="32" href="#32">32</a>      
 <a class="jxr_linenumber" name="33" href="#33">33</a>      @Test
 <a class="jxr_linenumber" name="34" href="#34">34</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testResetRule(){
-<a class="jxr_linenumber" name="35" href="#35">35</a>          MutationRule rule = <strong class="jxr_keyword">new</strong> <a href="../../../../../com/github/mkolisnyk/muto/generator/MutationRuleTest.html">FakeMutationRule</a>();
+<a class="jxr_linenumber" name="35" href="#35">35</a>          MutationRule rule = <strong class="jxr_keyword">new</strong> <a href="../../../../../com/github/mkolisnyk/muto/generator/MutationStrategyTest.html">FakeMutationRule</a>();
 <a class="jxr_linenumber" name="36" href="#36">36</a>          rule.hasNext(<span class="jxr_string">""</span>);
 <a class="jxr_linenumber" name="37" href="#37">37</a>          rule.hasNext(<span class="jxr_string">""</span>);
 <a class="jxr_linenumber" name="38" href="#38">38</a>          rule.reset();

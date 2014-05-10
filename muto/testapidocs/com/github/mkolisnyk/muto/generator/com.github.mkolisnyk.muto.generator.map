@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./MutoGenTest.html" title="com.github.mkolisnyk.muto.generator.MutoGenTest" alt="" coords="16,63,133,156"/>
+<area shape="rect" id="node1" href="./MutoGenTest.html" title="&lt;TABLE&gt;" alt="" coords="5,57,144,161"/>
+<area shape="rect" id="node2_1" href="./MutationStrategyTest.html" title="com.github.mkolisnyk.muto.generator.MutationStrategyTest" alt="" coords="179,28,343,191"/>
+<area shape="rect" id="node2" href="./MutationStrategyTest.html" title="&lt;TABLE&gt;" alt="" coords="169,23,354,196"/>
+<area shape="rect" id="node3_2" href="./MutationRuleTest.html" title="com.github.mkolisnyk.muto.generator.MutationRuleTest" alt="" coords="389,54,529,165"/>
+<area shape="rect" id="node3" href="./MutationRuleTest.html" title="&lt;TABLE&gt;" alt="" coords="378,49,539,170"/>
+<area shape="rect" id="node4_3" href="./FileProcessingStrategyTest.html" title="com.github.mkolisnyk.muto.generator.FileProcessingStrategyTest" alt="" coords="574,11,786,208"/>
+<area shape="rect" id="node4" href="./FileProcessingStrategyTest.html" title="&lt;TABLE&gt;" alt="" coords="563,5,797,213"/>
+</map>

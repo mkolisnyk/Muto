@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./JUnitTestSuite.html" title="com.github.mkolisnyk.muto.reporter.result.JUnitTestSuite" alt="" coords="16,28,324,243"/>
+<area shape="rect" id="node1" href="./JUnitTestSuite.html" title="&lt;TABLE&gt;" alt="" coords="5,23,335,248"/>
+<area shape="rect" id="node2_1" href="./JUnitTestCase.html" title="com.github.mkolisnyk.muto.reporter.result.JUnitTestCase" alt="" coords="370,11,634,260"/>
+<area shape="rect" id="node2" href="./JUnitTestCase.html" title="&lt;TABLE&gt;" alt="" coords="359,5,645,265"/>
+<area shape="rect" id="node3_2" href="./JUnitFailure.html" title="com.github.mkolisnyk.muto.reporter.result.JUnitFailure" alt="" coords="680,80,812,191"/>
+<area shape="rect" id="node3" href="./JUnitFailure.html" title="&lt;TABLE&gt;" alt="" coords="669,75,823,196"/>
+<area shape="rect" id="node4_3" href="./JUnitError.html" title="com.github.mkolisnyk.muto.reporter.result.JUnitError" alt="" coords="857,71,1013,199"/>
+<area shape="rect" id="node4" href="./JUnitError.html" title="&lt;TABLE&gt;" alt="" coords="847,66,1024,205"/>
+</map>

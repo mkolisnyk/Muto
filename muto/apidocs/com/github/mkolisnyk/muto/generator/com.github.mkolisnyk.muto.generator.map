@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./MutoGen.html" title="com.github.mkolisnyk.muto.generator.MutoGen" alt="" coords="16,97,343,191"/>
+<area shape="rect" id="node1" href="./MutoGen.html" title="&lt;TABLE&gt;" alt="" coords="5,92,353,196"/>
+<area shape="rect" id="node2_1" href="./MutationStrategy.html" title="com.github.mkolisnyk.muto.generator.MutationStrategy" alt="" coords="388,63,616,225"/>
+<area shape="rect" id="node2" href="./MutationStrategy.html" title="&lt;TABLE&gt;" alt="" coords="377,57,627,231"/>
+<area shape="rect" id="node3_2" href="./MutationRule.html" title="com.github.mkolisnyk.muto.generator.MutationRule" alt="" coords="661,37,951,251"/>
+<area shape="rect" id="node3" href="./MutationRule.html" title="&lt;TABLE&gt;" alt="" coords="651,31,961,257"/>
+<area shape="rect" id="node4_3" href="./FileProcessingStrategy.html" title="com.github.mkolisnyk.muto.generator.FileProcessingStrategy" alt="" coords="996,11,1440,277"/>
+<area shape="rect" id="node4" href="./FileProcessingStrategy.html" title="&lt;TABLE&gt;" alt="" coords="985,5,1451,283"/>
+</map>
