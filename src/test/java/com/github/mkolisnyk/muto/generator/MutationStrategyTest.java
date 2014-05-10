@@ -57,7 +57,7 @@ public class MutationStrategyTest {
     }
 
     @Test
-    public void testReset() {
+    public void testReset() throws Exception {
         strategy.addRule(rule);
         Assert.assertNull(strategy.next(""));
         Assert.assertEquals(1,strategy.getRuleSet().get(0).getTick());

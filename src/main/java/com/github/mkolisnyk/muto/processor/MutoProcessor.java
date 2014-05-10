@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 import org.apache.commons.io.FileUtils;
 
@@ -190,37 +191,28 @@ public class MutoProcessor {
     public final void copyWorkspace() throws IOException {
         File source = new File(this.sourceDirectory);
         File workspace = new File(this.targetDirectory);
-        if (workspace.exists() && workspace.isDirectory()) {
-            FileUtils.deleteDirectory(workspace);
-        }
-        // FileUtils.mkdir(targetDirectory);
+        this.cleanupWorkspace();
+
         workspace.mkdirs();
         for (File copyItem : source.listFiles()) {
             File targetItem = new File(workspace + File.separator
                     + copyItem.getName());
-            try {
-                if (!copyItem.getAbsolutePath().equals(
-                        workspace.getAbsolutePath())) {
-                    if (copyItem.isDirectory()) {
-                        FileUtils.copyDirectory(copyItem, targetItem);
-                    } else {
-                        // FileUtils.copyFile(copyItem, workspace);
-                        Files.copy(copyItem.toPath(),
-                                targetItem.toPath());
-                    }
+            if (!copyItem.getAbsolutePath().equals(
+                    workspace.getAbsolutePath())) {
+                if (copyItem.isDirectory()) {
+                    FileUtils.copyDirectory(copyItem, targetItem);
+                } else {
+                    Files.copy(copyItem.toPath(),
+                            targetItem.toPath());
                 }
-            } catch (Exception e) {
-                Exception ext = new Exception("Failed to copy: "
-                        + copyItem.getAbsolutePath(), e);
-                ext.printStackTrace();
             }
         }
     }
     /**
      * Performs code mutations and further processing.
-     * @throws IOException .
+     * @throws Exception .
      */
-    public final void process() throws IOException {
+    public final void process() throws Exception {
         this.copyWorkspace();
         this.beforeSuite();
         for (FileProcessingStrategy fileStrategy:this.fileStrategies) {
@@ -228,39 +220,82 @@ public class MutoProcessor {
             while (fileStrategy.hasNext()) {
                 this.beforeTest();
                 fileStrategy.next();
+                MutoResult result = new MutoResult(this.testReportsLocation);
                 try {
                     int exitCode = -1;
-                    MutoResult result = new MutoResult();
                     exitCode = this.runCommand();
                     result.setExitCode(exitCode);
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                this.afterTest(null);
+                this.afterTest(result);
             }
         }
         this.afterSuite();
         this.cleanupWorkspace();
     }
     /**
+     * .
+     * @author Myk Kolisnyk
+     */
+    private static final class Worker extends Thread {
+        /**
+         * .
+         */
+        private final Process process;
+        /**
+         * .
+         */
+        private Integer exit;
+        /**
+         * .
+         * @param processValue .
+         */
+        private Worker(final Process processValue) {
+          this.process = processValue;
+        }
+        /**
+         * .
+         */
+        public void run() {
+          try {
+            exit = process.waitFor();
+          } catch (InterruptedException ignore) {
+            return;
+          }
+        }
+      }
+    /**
      * Runs specific command and tracks the status code.
      * @return .
-     * @throws IOException .
-     * @throws InterruptedException .
+     * @throws Exception .
      */
-    public final int runCommand() throws IOException,
-            InterruptedException {
+    public final int runCommand() throws Exception {
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec(runCommand, null, new File(
                 this.targetDirectory));
-        process.wait(DEFAULTTIMEOUT);
-        return process.exitValue();
+        Worker worker = new Worker(process);
+        worker.start();
+        try {
+            worker.join(DEFAULTTIMEOUT);
+            if (worker.exit != null) {
+                return worker.exit;
+            } else {
+                throw new TimeoutException();
+            }
+        } catch (InterruptedException ex) {
+            worker.interrupt();
+            Thread.currentThread().interrupt();
+            throw ex;
+        } finally {
+            process.destroy();
+        }
     }
+
     /**
      * .
      */
-    private static final int MAXTRIES = 3;
+    private static final int MAXTRIES = 10;
     /**
      * Removes working directory and all related resources.
      */
@@ -270,8 +305,7 @@ public class MutoProcessor {
             for (int i = 0; i < MAXTRIES; i++) {
                 try {
                     FileUtils.deleteDirectory(workspace);
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
