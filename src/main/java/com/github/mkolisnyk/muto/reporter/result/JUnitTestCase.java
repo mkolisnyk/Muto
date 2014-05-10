@@ -2,12 +2,11 @@ package com.github.mkolisnyk.muto.reporter.result;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 /**
  * @author Myk Kolisnyk
  */
-@XmlRootElement(name = "testcase")
+//@XmlRootElement(name = "testcase")
 public class JUnitTestCase {
     /**
      * .
