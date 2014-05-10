@@ -1,5 +1,6 @@
 package com.github.mkolisnyk.muto.reporter;
 
+import java.io.File;
 import java.util.List;
 
 import org.junit.Assert;
@@ -12,7 +13,8 @@ public class MutoResultTest {
 
     @Test
     public void testResultReadReports(){
-        MutoResult result = new MutoResult("src/test/resources");
+        File path = new File("src/test/resources");
+        MutoResult result = new MutoResult(path.getAbsolutePath());
         result.retrieveResults();
         List<JUnitTestSuite> results = result.getResults();
         String expectedSuites[] = {
