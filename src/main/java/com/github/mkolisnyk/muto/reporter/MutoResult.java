@@ -88,7 +88,6 @@ public class MutoResult {
      */
     public final void retrieveResults() {
         results = new ArrayList<JUnitTestSuite>();
-        @SuppressWarnings("unchecked")
         Iterator<File> iter = FileUtils.iterateFiles(new File(
                 this.testReportsLocation), new String[] {"xml"},
                 true);
@@ -106,8 +105,6 @@ public class MutoResult {
      * @return .
      */
     public final JUnitTestSuite retrieveResult(final String file) {
-        JUnitTestSuite suite = new JUnitTestSuite();
-        suite = JAXB.unmarshal(file, JUnitTestSuite.class);
-        return suite;
+        return JAXB.unmarshal(file, JUnitTestSuite.class);
     }
 }
