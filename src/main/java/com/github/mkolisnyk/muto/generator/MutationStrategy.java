@@ -3,11 +3,17 @@ package com.github.mkolisnyk.muto.generator;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.mkolisnyk.muto.data.MutationLocation;
+
 /**
  * @author Myk Kolisnyk
  */
 public abstract class MutationStrategy {
 
+    /**
+     * .
+     */
+    private MutationLocation location;
     /**
      * .
      */
@@ -32,6 +38,20 @@ public abstract class MutationStrategy {
             ruleSet = new ArrayList<MutationRule>();
         }
         ruleSet.add(rule);
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final MutationLocation getLocation() {
+        return location;
+    }
+    /**
+     * .
+     * @param location .
+     */
+    public final void setLocation(final MutationLocation location) {
+        this.location = location;
     }
     /**
      * .

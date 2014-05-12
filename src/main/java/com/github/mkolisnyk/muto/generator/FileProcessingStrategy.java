@@ -7,10 +7,16 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
+import com.github.mkolisnyk.muto.data.MutationLocation;
+
 /**
  * @author Myk Kolisnyk
  */
 public abstract class FileProcessingStrategy {
+    /**
+     * .
+     */
+    private MutationLocation location;
     /**
      * .
      */
@@ -32,6 +38,20 @@ public abstract class FileProcessingStrategy {
      * @return .
      */
     public abstract boolean hasNext();
+    /**
+     * .
+     * @return .
+     */
+    public MutationLocation getLocation() {
+        return location;
+    }
+    /**
+     * .
+     * @param location .
+     */
+    public void setLocation(MutationLocation location) {
+        this.location = location;
+    }
     /**
      * .
      * @param fileName .

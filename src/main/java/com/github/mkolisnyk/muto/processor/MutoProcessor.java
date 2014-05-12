@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Logger;
+import org.apache.log4j.SimpleLayout;
 
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
@@ -18,6 +21,11 @@ import com.github.mkolisnyk.muto.reporter.MutoResult;
  *
  */
 public class MutoProcessor {
+    /*private static Logger logger = Logger.getLogger(MutoProcessor.class);
+
+    static {
+        logger.addAppender(new ConsoleAppender(new SimpleLayout()));
+    }*/
     /**
      * .
      */
