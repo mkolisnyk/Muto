@@ -17,8 +17,8 @@ import com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule;
 import com.github.mkolisnyk.muto.generator.strategies.OneByOneMutationStrategy;
 
 public class OneByOneFileProcessingStrategyTest {
-    private String file1 = ClassLoader.getSystemResource("sample_file.txt").getFile();
-    private String file2 = ClassLoader.getSystemResource("sample_file2.txt").getFile();
+    private File file1 = new File(ClassLoader.getSystemResource("sample_file.txt").getFile());
+    private File file2 = new File(ClassLoader.getSystemResource("sample_file2.txt").getFile());
 
     private String[] fileContent1 = {
             "sample {}",
@@ -35,11 +35,11 @@ public class OneByOneFileProcessingStrategyTest {
             "another sample {{multiple block} content -1 {}}",
     };
     private MutationLocation locations[] = {
-            new MutationLocation(7,43,file1),
-            new MutationLocation(25,42,file1),
-            new MutationLocation(15,62,file2),
-            new MutationLocation(16,30,file2),
-            new MutationLocation(44,61,file2),
+            new MutationLocation(7,43,file1.getAbsolutePath()),
+            new MutationLocation(25,42,file1.getAbsolutePath()),
+            new MutationLocation(15,62,file2.getAbsolutePath()),
+            new MutationLocation(16,30,file2.getAbsolutePath()),
+            new MutationLocation(44,61,file2.getAbsolutePath()),
     };
 
     @Test
@@ -47,7 +47,7 @@ public class OneByOneFileProcessingStrategyTest {
         FileProcessingStrategy fileStrategy = new OneByOneFileProcessingStrategy();
         MutationStrategy strategy = new OneByOneMutationStrategy();
         MutationRule rule = new BlockCleanMutationRule();
-        List<String> files = new ArrayList<String>();
+        List<File> files = new ArrayList<File>();
         
         files.add(file1);
         files.add(file2);
@@ -60,15 +60,15 @@ public class OneByOneFileProcessingStrategyTest {
         String actual;
         while(fileStrategy.hasNext()) {
             fileStrategy.next();
-            actual = FileUtils.readFileToString(new File(file1));
+            actual = FileUtils.readFileToString(file1);
             Assert.assertEquals("Iteration " + counter, fileContent1[counter], actual);
-            actual = FileUtils.readFileToString(new File(file2));
+            actual = FileUtils.readFileToString(file2);
             Assert.assertEquals("Iteration " + counter, fileContent2[counter], actual);
             Assert.assertEquals("Iteration " + counter, locations[counter], 
                     fileStrategy.getLocation());
             counter++;
-            fileStrategy.restore(file1);
-            fileStrategy.restore(file2);
+            fileStrategy.restore(file1.getAbsolutePath());
+            fileStrategy.restore(file2.getAbsolutePath());
         }
         Assert.assertEquals(5, counter);
     }

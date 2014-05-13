@@ -28,7 +28,7 @@ public abstract class FileProcessingStrategy {
     /**
      * .
      */
-    private List<String> files;
+    private List<File> files;
     /**
      * .
      */
@@ -42,15 +42,15 @@ public abstract class FileProcessingStrategy {
      * .
      * @return .
      */
-    public MutationLocation getLocation() {
+    public final MutationLocation getLocation() {
         return location;
     }
     /**
      * .
-     * @param location .
+     * @param locationValue .
      */
-    public void setLocation(MutationLocation location) {
-        this.location = location;
+    public final void setLocation(final MutationLocation locationValue) {
+        this.location = locationValue;
     }
     /**
      * .
@@ -129,14 +129,14 @@ public abstract class FileProcessingStrategy {
      * .
      * @return .
      */
-    public final List<String> getFiles() {
+    public final List<File> getFiles() {
         return files;
     }
     /**
      * .
      * @param fileList .
      */
-    public final void setFiles(final List<String> fileList) {
+    public final void setFiles(final List<File> fileList) {
         this.files = fileList;
     }
     /**

@@ -31,15 +31,16 @@ public class XmlListener implements MutoListener {
     /**
      * .
      */
-    public void beforeTestRun() {
+    public final void beforeTestRun() {
         testCount++;
     }
     /**
      * .
+     * @param result .
      */
-    public void afterTestRun(MutoResult result) {
-        String outputFile = result.getOutputLocation() +
-                File.separator + "muto_result_" + testCount + ".xml";
+    public final void afterTestRun(final MutoResult result) {
+        String outputFile = result.getOutputLocation()
+                + File.separator + "muto_result_" + testCount + ".xml";
         FileWriter writer = null;
         try {
             writer = new FileWriter(new File(outputFile));

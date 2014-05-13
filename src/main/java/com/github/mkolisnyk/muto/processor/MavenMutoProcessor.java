@@ -130,6 +130,19 @@ public class MavenMutoProcessor extends AbstractMojo {
             MojoFailureException {
         MutoProcessor processor = new MutoProcessor();
         try {
+            processor.setTargetDirectory(targetDirectory);
+            processor.setSourceDirectory(sourceDirectory);
+            processor.setFilesToProcess(files);
+            if (this.fileStrategies == null) {
+                processor.setFileStrategies(null);
+            }
+            if (this.mutationStrategies == null) {
+                processor.setFileStrategies(null);
+            }
+            processor.setTestReportsLocation(testReportsLocation);
+            if (this.listeners == null) {
+                processor.setListeners(null);
+            }
             processor.process();
         } catch (Exception e) {
             // TODO Auto-generated catch block

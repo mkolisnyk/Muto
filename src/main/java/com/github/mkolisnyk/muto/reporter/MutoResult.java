@@ -49,15 +49,15 @@ public class MutoResult {
      * .
      * @return .
      */
-    public String getOutputLocation() {
+    public final String getOutputLocation() {
         return outputLocation;
     }
     /**
      * .
-     * @param outputLocation .
+     * @param outputLocationValue .
      */
-    public void setOutputLocation(String outputLocation) {
-        this.outputLocation = outputLocation;
+    public final void setOutputLocation(final String outputLocationValue) {
+        this.outputLocation = outputLocationValue;
     }
     /**
      * .

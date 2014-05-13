@@ -70,9 +70,9 @@ public class MutoProcessorTest {
     public void testGetSetParameters() {
         processor.setTargetDirectory(target.getAbsolutePath());
         processor.setSourceDirectory(".");
-        List<String> newFilesToProcess = new ArrayList<String>();
-        newFilesToProcess.add("file1");
-        newFilesToProcess.add("file2");
+        List<File> newFilesToProcess = new ArrayList<File>();
+        newFilesToProcess.add(new File("file1"));
+        newFilesToProcess.add(new File("file2"));
         processor.setFilesToProcess(newFilesToProcess);
         List<FileProcessingStrategy> newFileStrategies = new ArrayList<FileProcessingStrategy>();
         newFileStrategies.add(new FileProcessingStrategy() {

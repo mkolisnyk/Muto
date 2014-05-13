@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Logger;
-import org.apache.log4j.SimpleLayout;
 
 import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
@@ -54,7 +51,7 @@ public class MutoProcessor {
     /**
      * .
      */
-    private List<String> filesToProcess;
+    private List<File> filesToProcess;
     /**
      * .
      */
@@ -109,15 +106,15 @@ public class MutoProcessor {
      * .
      * @return .
      */
-    public String getOutputLocation() {
+    public final String getOutputLocation() {
         return outputLocation;
     }
     /**
      * .
-     * @param outputLocation .
+     * @param outputLocationValue .
      */
-    public void setOutputLocation(String outputLocation) {
-        this.outputLocation = outputLocation;
+    public final void setOutputLocation(final String outputLocationValue) {
+        this.outputLocation = outputLocationValue;
     }
     /**
      * .
@@ -139,14 +136,14 @@ public class MutoProcessor {
      * .
      * @return .
      */
-    public final List<String> getFilesToProcess() {
+    public final List<File> getFilesToProcess() {
         return filesToProcess;
     }
     /**
      * .
      * @param newFilesToProcess .
      */
-    public final void setFilesToProcess(final List<String> newFilesToProcess) {
+    public final void setFilesToProcess(final List<File> newFilesToProcess) {
         this.filesToProcess = newFilesToProcess;
     }
     /**

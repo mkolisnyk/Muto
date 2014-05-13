@@ -23,28 +23,29 @@ public class ConsoleListener implements MutoListener {
     /**
      * .
      */
-    public void beforeSuiteRun() {
+    public final void beforeSuiteRun() {
         log.info("Starting suite");
     }
 
     /**
      * .
      */
-    public void afterSuiteRun() {
+    public final void afterSuiteRun() {
         log.info("Suite completed");
     }
 
     /**
      * .
      */
-    public void beforeTestRun() {
+    public final void beforeTestRun() {
         log.info("Start test");
     }
 
     /**
      * .
+     * @param result .
      */
-    public void afterTestRun(MutoResult result) {
+    public final void afterTestRun(final MutoResult result) {
         log.info(String
                 .format("Test is done. Exit code: %d. Test Suites changed: %d",
                         result.getExitCode(), result.getResults()

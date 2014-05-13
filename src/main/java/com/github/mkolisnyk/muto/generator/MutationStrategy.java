@@ -48,10 +48,10 @@ public abstract class MutationStrategy {
     }
     /**
      * .
-     * @param location .
+     * @param locationValue .
      */
-    public final void setLocation(final MutationLocation location) {
-        this.location = location;
+    public final void setLocation(final MutationLocation locationValue) {
+        this.location = locationValue;
     }
     /**
      * .

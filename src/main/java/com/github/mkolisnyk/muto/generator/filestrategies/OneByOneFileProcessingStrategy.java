@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.muto.generator.filestrategies;
 
+import java.io.File;
+
 import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
 import com.github.mkolisnyk.muto.generator.MutationStrategy;
@@ -21,16 +23,16 @@ public class OneByOneFileProcessingStrategy extends
 
     @Override
     public final void next() {
-        String file = this.getFiles().get(currentFileIndex);
+        File file = this.getFiles().get(currentFileIndex);
         MutationStrategy strategy = this.getMutationStrategies().get(
                 currentStrategyIndex);
         String content = "";
-        content = read(file);
+        content = read(file.getAbsolutePath());
         String newContent = strategy.next(content);
         MutationLocation location = strategy.getLocation();
-        location.setFileName(file);
+        location.setFileName(file.getAbsolutePath());
         this.setLocation(location);
-        write(file, newContent);
+        write(file.getAbsolutePath(), newContent);
         if (!strategy.hasNext(content)) {
             currentStrategyIndex++;
         }
