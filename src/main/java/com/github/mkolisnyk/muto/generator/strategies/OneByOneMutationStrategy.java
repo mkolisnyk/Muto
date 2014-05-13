@@ -28,7 +28,9 @@ public class OneByOneMutationStrategy extends MutationStrategy {
             return input;
         }
         rule = this.getRuleSet().get(currentRuleIndex);
-        return rule.next(input);
+        String result = rule.next(input);
+        this.setLocation(rule.getLocation());
+        return result;
     }
 
 }

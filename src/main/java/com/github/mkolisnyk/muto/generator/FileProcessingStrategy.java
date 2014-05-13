@@ -16,7 +16,7 @@ public abstract class FileProcessingStrategy {
     /**
      * .
      */
-    private MutationLocation location;
+    private MutationLocation location = new MutationLocation();
     /**
      * .
      */
@@ -61,6 +61,7 @@ public abstract class FileProcessingStrategy {
         try {
             File src = new File(fileName);
             restore(fileName);
+            this.location.setFileName(fileName);
             return FileUtils.readFileToString(src);
         } catch (IOException e) {
             e.printStackTrace();

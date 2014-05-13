@@ -1,5 +1,6 @@
 package com.github.mkolisnyk.muto.generator.filestrategies;
 
+import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
 import com.github.mkolisnyk.muto.generator.MutationStrategy;
 
@@ -26,6 +27,9 @@ public class OneByOneFileProcessingStrategy extends
         String content = "";
         content = read(file);
         String newContent = strategy.next(content);
+        MutationLocation location = strategy.getLocation();
+        location.setFileName(file);
+        this.setLocation(location);
         write(file, newContent);
         if (!strategy.hasNext(content)) {
             currentStrategyIndex++;

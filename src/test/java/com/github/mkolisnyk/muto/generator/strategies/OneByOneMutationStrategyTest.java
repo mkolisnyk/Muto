@@ -3,6 +3,7 @@ package com.github.mkolisnyk.muto.generator.strategies;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.generator.MutationRule;
 import com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule;
 import com.github.mkolisnyk.muto.generator.rules.NumberSignMutationRule;
@@ -19,6 +20,12 @@ public class OneByOneMutationStrategyTest {
                 "class Test {}",
                 "class Test { private int var=-1; public void main(){}}"
         };
+        MutationLocation locations[] = {
+                new MutationLocation(29,31),
+                new MutationLocation(58,59),
+                new MutationLocation(11,60),
+                new MutationLocation(51,59),
+        };
         int currentTurn = 0;
         MutationRule blockClean = new BlockCleanMutationRule();
         MutationRule numberSign = new NumberSignMutationRule();
@@ -28,7 +35,9 @@ public class OneByOneMutationStrategyTest {
         
         while(strategy.hasNext(input)){
             String actual = strategy.next(input);
+            MutationLocation location = strategy.getLocation();
             Assert.assertEquals(expecteds[currentTurn], actual);
+            Assert.assertEquals(locations[currentTurn], location);
             currentTurn++;
         }
         Assert.assertEquals(expecteds.length, currentTurn);

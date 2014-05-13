@@ -42,6 +42,18 @@ public class MutationLocation {
     }
     /**
      * .
+     * @param start .
+     * @param end .
+     * @param fileNameValue .
+     */
+    public MutationLocation(final int start, final int end,String fileNameValue) {
+        this();
+        this.startPosition = start;
+        this.endPosition = end;
+        this.fileName = fileNameValue;
+    }
+    /**
+     * .
      * @return .
      */
     public final int getStartPosition() {
