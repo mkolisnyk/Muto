@@ -11,6 +11,7 @@ import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
 
+import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
 import com.github.mkolisnyk.muto.reporter.MutoResult;
@@ -46,6 +47,10 @@ public class MutoProcessor {
      * .
      */
     private String testReportsLocation;
+    /**
+     * .
+     */
+    private String outputLocation;
     /**
      * .
      */
@@ -99,6 +104,20 @@ public class MutoProcessor {
      */
     public final void setRunCommand(final String newRunCommand) {
         this.runCommand = newRunCommand;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public String getOutputLocation() {
+        return outputLocation;
+    }
+    /**
+     * .
+     * @param outputLocation .
+     */
+    public void setOutputLocation(String outputLocation) {
+        this.outputLocation = outputLocation;
     }
     /**
      * .
@@ -229,6 +248,9 @@ public class MutoProcessor {
                 this.beforeTest();
                 fileStrategy.next();
                 MutoResult result = new MutoResult(this.testReportsLocation);
+                MutationLocation locationValue = fileStrategy.getLocation();
+                result.setLocation(locationValue);
+                result.setOutputLocation(this.outputLocation);
                 try {
                     int exitCode = -1;
                     exitCode = this.runCommand();

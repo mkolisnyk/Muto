@@ -21,6 +21,10 @@ public class MutoResult {
     /**
      * .
      */
+    private String outputLocation;
+    /**
+     * .
+     */
     private String testReportsLocation;
     /**
      * .
@@ -40,6 +44,20 @@ public class MutoResult {
      */
     public MutoResult(final String reportsLocation) {
         this.testReportsLocation = reportsLocation;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public String getOutputLocation() {
+        return outputLocation;
+    }
+    /**
+     * .
+     * @param outputLocation .
+     */
+    public void setOutputLocation(String outputLocation) {
+        this.outputLocation = outputLocation;
     }
     /**
      * .
