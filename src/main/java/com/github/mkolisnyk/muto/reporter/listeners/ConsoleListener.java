@@ -47,8 +47,8 @@ public class ConsoleListener implements MutoListener {
      */
     public final void afterTestRun(final MutoResult result) {
         log.info(String
-                .format("Test is done. Exit code: %d. Test Suites changed: %d",
-                        result.getExitCode(), result.getResults()
-                                .size()));
+                .format("Test is done. Exit code: %0$d. "
+                        + "Test Suites changed: TBD",
+                        result.getExitCode()));
     }
 }

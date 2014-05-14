@@ -41,7 +41,7 @@ public class MutoProcessorTest {
         processor.copyWorkspace();
         Assert.assertTrue(target.exists());
         processor.cleanupWorkspace();
-        Assert.assertFalse(target.exists());        
+        Assert.assertFalse(target.exists());
     }
     
     @Test

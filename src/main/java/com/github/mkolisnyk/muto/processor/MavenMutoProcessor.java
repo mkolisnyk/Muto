@@ -66,6 +66,55 @@ public class MavenMutoProcessor extends AbstractMojo {
 
     /**
      * .
+     * @return .
+     */
+    public final String getTargetDirectory() {
+        return targetDirectory;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final String getSourceDirectory() {
+        return sourceDirectory;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final List<File> getFiles() {
+        return files;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final List<String> getFileStrategies() {
+        return fileStrategies;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final List<String> getMutationStrategies() {
+        return mutationStrategies;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final List<String> getListeners() {
+        return listeners;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final String getTestReportsLocation() {
+        return testReportsLocation;
+    }
+    /**
+     * .
      * @param targetDirectoryValue .
      */
     public final void setTargetDirectory(final String targetDirectoryValue) {
@@ -145,7 +194,6 @@ public class MavenMutoProcessor extends AbstractMojo {
             }
             processor.process();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
