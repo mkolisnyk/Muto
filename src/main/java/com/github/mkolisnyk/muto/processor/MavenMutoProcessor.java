@@ -13,6 +13,8 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
+import com.github.mkolisnyk.muto.helpers.FilesContainer;
+
 
 /**
  * @author Myk Kolisnyk
@@ -31,7 +33,7 @@ public class MavenMutoProcessor extends AbstractMojo {
      * .
      */
     @Parameter(property = "muto.source.directory", defaultValue = ".")
-    private String       sourceDirectory;
+    private FilesContainer sourceDirectory;
 
     /**
      * .
@@ -75,7 +77,7 @@ public class MavenMutoProcessor extends AbstractMojo {
      * .
      * @return .
      */
-    public final String getSourceDirectory() {
+    public final FilesContainer getSourceDirectory() {
         return sourceDirectory;
     }
     /**
@@ -124,7 +126,7 @@ public class MavenMutoProcessor extends AbstractMojo {
      * .
      * @param sourceDirectoryValue .
      */
-    public final void setSourceDirectory(final String sourceDirectoryValue) {
+    public final void setSourceDirectory(final FilesContainer sourceDirectoryValue) {
         this.sourceDirectory = sourceDirectoryValue;
     }
     /**
@@ -180,7 +182,7 @@ public class MavenMutoProcessor extends AbstractMojo {
         MutoProcessor processor = new MutoProcessor();
         try {
             processor.setTargetDirectory(targetDirectory);
-            processor.setSourceDirectory(sourceDirectory);
+            //processor.setSourceDirectory(sourceDirectory);
             processor.setFilesToProcess(files);
             if (this.fileStrategies == null) {
                 processor.setFileStrategies(null);

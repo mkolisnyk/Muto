@@ -10,6 +10,7 @@ import org.apache.commons.io.FileUtils;
 
 import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
+import com.github.mkolisnyk.muto.helpers.FilesContainer;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
 import com.github.mkolisnyk.muto.reporter.MutoResult;
 
@@ -66,13 +67,6 @@ public class MutoProcessor {
      */
     public final String getSourceDirectory() {
         return sourceDirectory;
-    }
-    /**
-     * .
-     * @param newSourceDirectory .
-     */
-    public final void setSourceDirectory(final String newSourceDirectory) {
-        this.sourceDirectory = newSourceDirectory;
     }
     /**
      * .

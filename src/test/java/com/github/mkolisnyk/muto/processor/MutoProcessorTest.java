@@ -25,7 +25,7 @@ public class MutoProcessorTest {
         processor = new MutoProcessor();
         source = new File("");
         target = new File("target/muto/workspace");
-        processor.setSourceDirectory(source.getAbsolutePath());
+        //processor.setSourceDirectory(source.getAbsolutePath());
         processor.setTargetDirectory(target.getAbsolutePath());
     }
     
@@ -57,7 +57,7 @@ public class MutoProcessorTest {
     }
     
     @Test
-    public void testRunCommandInvalidCommandTestTest() throws Exception {
+    public void testRunCommandInvalidCommandTest() throws Exception {
         processor.setRunCommand("java file");
         target = new File("target/muto/workspace");
         if (!target.exists()) {
@@ -69,7 +69,7 @@ public class MutoProcessorTest {
     @Test
     public void testGetSetParameters() {
         processor.setTargetDirectory(target.getAbsolutePath());
-        processor.setSourceDirectory(".");
+        //processor.setSourceDirectory(".");
         List<File> newFilesToProcess = new ArrayList<File>();
         newFilesToProcess.add(new File("file1"));
         newFilesToProcess.add(new File("file2"));

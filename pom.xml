@@ -246,7 +246,7 @@
 				<version>2.6</version>
 				<configuration>
 					<check>
-						<haltOnFailure>true</haltOnFailure>
+						<haltOnFailure>false</haltOnFailure>
 						<totalBranchRate>85</totalBranchRate>
 						<totalLineRate>85</totalLineRate>
 						<packageLineRate>85</packageLineRate>
