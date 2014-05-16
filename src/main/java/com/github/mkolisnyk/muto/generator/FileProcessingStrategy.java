@@ -93,7 +93,7 @@ public abstract class FileProcessingStrategy {
         if (dest.exists()) {
             try {
                 FileUtils.copyFile(dest, src);
-                dest.delete();
+                assert dest.delete();
             } catch (IOException e) {
                 e.printStackTrace();
             }

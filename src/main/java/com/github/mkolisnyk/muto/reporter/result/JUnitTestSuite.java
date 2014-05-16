@@ -92,13 +92,13 @@ public class JUnitTestSuite {
      */
     @XmlTransient
     public final JUnitTestCase[] getTestCases() {
-        return testCases;
+        return testCases.clone();
     }
     /**
      * .
      * @param newTestCases .
      */
     public final void setTestCases(final JUnitTestCase[] newTestCases) {
-        this.testCases = newTestCases;
+        this.testCases = newTestCases.clone();
     }
 }

@@ -13,7 +13,6 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
-import com.github.mkolisnyk.muto.helpers.FilesContainer;
 
 
 /**
@@ -33,8 +32,17 @@ public class MavenMutoProcessor extends AbstractMojo {
      * .
      */
     @Parameter(property = "muto.source.directory", defaultValue = ".")
-    private FilesContainer sourceDirectory;
-
+    private String sourceDirectory;
+    /**
+     * .
+     */
+    @Parameter
+    private List<String> excludes;
+    /**
+     * .
+     */
+    @Parameter
+    private List<String> includes;
     /**
      * .
      */
@@ -77,7 +85,7 @@ public class MavenMutoProcessor extends AbstractMojo {
      * .
      * @return .
      */
-    public final FilesContainer getSourceDirectory() {
+    public final String getSourceDirectory() {
         return sourceDirectory;
     }
     /**
@@ -126,7 +134,7 @@ public class MavenMutoProcessor extends AbstractMojo {
      * .
      * @param sourceDirectoryValue .
      */
-    public final void setSourceDirectory(final FilesContainer sourceDirectoryValue) {
+    public final void setSourceDirectory(final String sourceDirectoryValue) {
         this.sourceDirectory = sourceDirectoryValue;
     }
     /**
@@ -173,6 +181,34 @@ public class MavenMutoProcessor extends AbstractMojo {
 
     /**
      * .
+     * @return .
+     */
+    public final List<String> getExcludes() {
+        return excludes;
+    }
+    /**
+     * .
+     * @param excludesValue .
+     */
+    public final void setExcludes(final List<String> excludesValue) {
+        this.excludes = excludesValue;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final List<String> getIncludes() {
+        return includes;
+    }
+    /**
+     * .
+     * @param includesValue .
+     */
+    public final void setIncludes(final List<String> includesValue) {
+        this.includes = includesValue;
+    }
+    /**
+     * .
      * @throws MojoExecutionException .
      * @throws MojoFailureException .
      * @see org.apache.maven.plugin.Mojo#execute()
@@ -182,7 +218,7 @@ public class MavenMutoProcessor extends AbstractMojo {
         MutoProcessor processor = new MutoProcessor();
         try {
             processor.setTargetDirectory(targetDirectory);
-            //processor.setSourceDirectory(sourceDirectory);
+            processor.setSourceDirectory(sourceDirectory);
             processor.setFilesToProcess(files);
             if (this.fileStrategies == null) {
                 processor.setFileStrategies(null);

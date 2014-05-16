@@ -28,7 +28,7 @@ public class MavenMutoProcessorTest {
         processor.setFileStrategies(fileStrategiesValue);
         processor.setListeners(listenersValue);
         processor.setMutationStrategies(mutationStrategiesValue);
-        //processor.setSourceDirectory(sourceDirectoryValue);
+        processor.setSourceDirectory(sourceDirectoryValue);
         processor.setTargetDirectory(targetDirectoryValue);
         processor.setTestReportsLocation(testReportsLocationValue );
         processor.execute();
@@ -51,7 +51,7 @@ public class MavenMutoProcessorTest {
         processor.setFileStrategies(null);
         processor.setListeners(null);
         processor.setMutationStrategies(null);
-        //processor.setSourceDirectory(sourceDirectoryValue);
+        processor.setSourceDirectory(sourceDirectoryValue);
         processor.setTargetDirectory(targetDirectoryValue);
         processor.setTestReportsLocation(null);
         processor.execute();

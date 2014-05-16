@@ -10,7 +10,6 @@ import org.apache.commons.io.FileUtils;
 
 import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
-import com.github.mkolisnyk.muto.helpers.FilesContainer;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
 import com.github.mkolisnyk.muto.reporter.MutoResult;
 
@@ -68,6 +67,14 @@ public class MutoProcessor {
     public final String getSourceDirectory() {
         return sourceDirectory;
     }
+    /**
+     * .
+     * @param sourceDirectoryValue .
+     */
+    public final void setSourceDirectory(final String sourceDirectoryValue) {
+        this.sourceDirectory = sourceDirectoryValue;
+    }
+
     /**
      * .
      * @return .
@@ -211,7 +218,7 @@ public class MutoProcessor {
         File workspace = new File(this.targetDirectory);
         this.cleanupWorkspace();
 
-        workspace.mkdirs();
+        assert workspace.mkdirs();
         for (File copyItem : source.listFiles()) {
             File targetItem = new File(workspace + File.separator
                     + copyItem.getName());
