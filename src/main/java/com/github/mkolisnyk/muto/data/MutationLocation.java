@@ -1,5 +1,9 @@
 package com.github.mkolisnyk.muto.data;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 /**
  * @author Myk Kolisnyk
  */
@@ -7,18 +11,22 @@ public class MutationLocation {
     /**
      * .
      */
+    @XmlAttribute(name = "start")
     private int startPosition;
     /**
      * .
      */
+    @XmlAttribute(name = "end")
     private int endPosition;
     /**
      * .
      */
+    @XmlAttribute(name = "file")
     private String fileName;
     /**
      * .
      */
+    @XmlElement(name = "matchedText")
     private String matchedText;
 
     /**
@@ -73,6 +81,7 @@ public class MutationLocation {
      * .
      * @return .
      */
+    @XmlTransient
     public final String getFileName() {
         return fileName;
     }
@@ -88,6 +97,7 @@ public class MutationLocation {
      * .
      * @return .
      */
+    @XmlTransient
     public final String getMatchedText() {
         return matchedText;
     }

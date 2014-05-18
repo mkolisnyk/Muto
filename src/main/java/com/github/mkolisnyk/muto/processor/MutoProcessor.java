@@ -68,7 +68,7 @@ public class MutoProcessor {
     /**
      * .
      */
-    private List<String> excludes;
+    private List<String> excludes = new ArrayList<String>();
     /**
      * .
      */
@@ -237,11 +237,6 @@ public class MutoProcessor {
                 throw new IOException(
                         "Failed to create workspace at: "
                                 + workspace.getAbsolutePath());
-            /*if (!workspace.mkdir()) {
-                throw new IOException(
-                        "Failed to create workspace directory at: "
-                                + workspace.getAbsolutePath());
-            }*/
         }
         List<String> filesToCopy = this.getFilesToCopy();
         for (String sourceFile : filesToCopy) {

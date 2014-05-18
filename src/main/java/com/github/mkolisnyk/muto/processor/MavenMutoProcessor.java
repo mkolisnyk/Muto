@@ -3,7 +3,7 @@
  */
 package com.github.mkolisnyk.muto.processor;
 
-import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.maven.plugin.AbstractMojo;
@@ -12,6 +12,11 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+
+import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
+import com.github.mkolisnyk.muto.generator.MutationRule;
+import com.github.mkolisnyk.muto.generator.MutationStrategy;
+import com.github.mkolisnyk.muto.reporter.MutoListener;
 
 
 
@@ -42,17 +47,6 @@ public class MavenMutoProcessor extends AbstractMojo {
      * .
      */
     @Parameter
-    private List<String> includes;
-    /**
-     * .
-     */
-    @Parameter
-    private List<File>   files;
-
-    /**
-     * .
-     */
-    @Parameter
     private List<String> fileStrategies;
 
     /**
@@ -60,6 +54,12 @@ public class MavenMutoProcessor extends AbstractMojo {
      */
     @Parameter
     private List<String> mutationStrategies;
+
+    /**
+     * .
+     */
+    @Parameter
+    private List<String> mutationRules;
 
     /**
      * .
@@ -87,13 +87,6 @@ public class MavenMutoProcessor extends AbstractMojo {
      */
     public final String getSourceDirectory() {
         return sourceDirectory;
-    }
-    /**
-     * .
-     * @return .
-     */
-    public final List<File> getFiles() {
-        return files;
     }
     /**
      * .
@@ -136,13 +129,6 @@ public class MavenMutoProcessor extends AbstractMojo {
      */
     public final void setSourceDirectory(final String sourceDirectoryValue) {
         this.sourceDirectory = sourceDirectoryValue;
-    }
-    /**
-     * .
-     * @param filesValue .
-     */
-    public final void setFiles(final List<File> filesValue) {
-        this.files = filesValue;
     }
     /**
      * .
@@ -196,16 +182,117 @@ public class MavenMutoProcessor extends AbstractMojo {
     /**
      * .
      * @return .
+     * @throws Exception .
      */
-    public final List<String> getIncludes() {
-        return includes;
+    private List<MutoListener> initListeners() throws Exception {
+        List<MutoListener> listenerObjects = new ArrayList<MutoListener>();
+        if (this.listeners == null) {
+            this.listeners = new ArrayList<String>();
+            this.listeners
+                    .add("com.github.mkolisnyk.muto.reporter.listeners."
+                            + "DummyListener");
+        }
+        for (String item : this.listeners) {
+            Class<?> clazz = Class.forName(item, true,
+                    ClassLoader.getSystemClassLoader());
+            MutoListener listener = (MutoListener) clazz
+                    .newInstance();
+            listenerObjects.add(listener);
+        }
+        return listenerObjects;
     }
     /**
      * .
-     * @param includesValue .
+     * @return .
+     * @throws Exception .
      */
-    public final void setIncludes(final List<String> includesValue) {
-        this.includes = includesValue;
+    private List<FileProcessingStrategy> initFileProcessingStrategies()
+            throws Exception {
+        List<FileProcessingStrategy> strategies
+            = new ArrayList<FileProcessingStrategy>();
+        if (this.fileStrategies == null) {
+            this.fileStrategies = new ArrayList<String>();
+            this.fileStrategies
+                    .add("com.github.mkolisnyk.muto.generator."
+                            + "filestrategies.OneByOneFileProcessingStrategy");
+        }
+        for (String item : this.fileStrategies) {
+            Class<?> clazz = Class.forName(item, true,
+                    ClassLoader.getSystemClassLoader());
+            FileProcessingStrategy strategy = (FileProcessingStrategy) clazz
+                    .newInstance();
+            List<MutationStrategy> mutoStrategies = this
+                    .initMutationStrategies();
+            for (MutationStrategy mutationStrategy : mutoStrategies) {
+                strategy.addMutationStrategy(mutationStrategy);
+            }
+        }
+        return strategies;
+    }
+    /**
+     * .
+     * @return .
+     * @throws Exception .
+     */
+    private List<MutationStrategy> initMutationStrategies()
+            throws Exception {
+        List<MutationStrategy> strategies = new ArrayList<MutationStrategy>();
+        if (this.mutationStrategies == null) {
+            this.mutationStrategies = new ArrayList<String>();
+            this.mutationStrategies
+                    .add("com.github.mkolisnyk.muto.generator.strategies."
+                            + "OneByOneMutationStrategy");
+        }
+        for (String item : this.mutationStrategies) {
+            Class<?> clazz = Class.forName(item, true,
+                    ClassLoader.getSystemClassLoader());
+            MutationStrategy strategy = (MutationStrategy) clazz
+                    .newInstance();
+            List<MutationRule> rules = this.initMutationRules();
+            for (MutationRule rule : rules) {
+                strategy.addRule(rule);
+            }
+            strategies.add(strategy);
+        }
+        return strategies;
+    }
+    /**
+     * .
+     * @return .
+     * @throws Exception .
+     */
+    private List<MutationRule> initMutationRules()
+            throws Exception {
+        List<MutationRule> rules = new ArrayList<MutationRule>();
+        if (this.mutationRules == null) {
+            this.mutationRules = new ArrayList<String>();
+            this.mutationRules
+                    .add("com.github.mkolisnyk.muto.generator.rules."
+                            + "BlockCleanMutationRule");
+            this.mutationRules
+                    .add("com.github.mkolisnyk.muto.generator.rules."
+                            + "NumberSignMutationRule");
+        }
+        for (String ruleItem : this.mutationRules) {
+            Class<?> clazz = Class.forName(ruleItem, true,
+                    ClassLoader.getSystemClassLoader());
+            rules.add((MutationRule) clazz.newInstance());
+        }
+        return rules;
+    }
+    /**
+     * .
+     * @return .
+     * @throws Exception .
+     */
+    public final MutoProcessor init() throws Exception {
+        MutoProcessor processor = new MutoProcessor();
+        processor.setTargetDirectory(targetDirectory);
+        processor.setSourceDirectory(sourceDirectory);
+        processor.setFileStrategies(initFileProcessingStrategies());
+        processor.setTestReportsLocation(testReportsLocation);
+        processor.setListeners(initListeners());
+        return processor;
     }
     /**
      * .
@@ -215,24 +302,13 @@ public class MavenMutoProcessor extends AbstractMojo {
      */
     public final void execute() throws MojoExecutionException,
             MojoFailureException {
-        MutoProcessor processor = new MutoProcessor();
         try {
-            processor.setTargetDirectory(targetDirectory);
-            processor.setSourceDirectory(sourceDirectory);
-            //processor.setFilesToProcess(files);
-            if (this.fileStrategies == null) {
-                processor.setFileStrategies(null);
-            }
-            if (this.mutationStrategies == null) {
-                processor.setFileStrategies(null);
-            }
-            processor.setTestReportsLocation(testReportsLocation);
-            if (this.listeners == null) {
-                processor.setListeners(null);
-            }
+            MutoProcessor processor = init();
             processor.process();
         } catch (Exception e) {
             e.printStackTrace();
+            throw new MojoFailureException(e, "Execution failure",
+                    "Maven Muto Processor failed to execute");
         }
     }
 }

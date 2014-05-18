@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.xml.bind.JAXB;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.apache.commons.io.FileUtils;
 
@@ -29,6 +31,7 @@ public class MutoResult {
     /**
      * .
      */
+    @XmlElement(name = "results")
     private List<JUnitTestSuite> results;
     /**
      * .
@@ -70,6 +73,7 @@ public class MutoResult {
      * .
      * @return .
      */
+    @XmlTransient
     public final List<JUnitTestSuite> getResults() {
         return results;
     }
