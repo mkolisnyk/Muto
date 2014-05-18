@@ -74,10 +74,6 @@ public class MutoProcessorTest {
     public void testGetSetParameters() {
         processor.setTargetDirectory(target.getAbsolutePath());
         processor.setSourceDirectory(".");
-        List<File> newFilesToProcess = new ArrayList<File>();
-        newFilesToProcess.add(new File("file1"));
-        newFilesToProcess.add(new File("file2"));
-        processor.setFilesToProcess(newFilesToProcess);
         List<FileProcessingStrategy> newFileStrategies = new ArrayList<FileProcessingStrategy>();
         newFileStrategies.add(new FileProcessingStrategy() {
             
@@ -110,7 +106,6 @@ public class MutoProcessorTest {
         processor.setListeners(listenersArray );
         Assert.assertEquals(target.getAbsolutePath(), processor.getTargetDirectory());
         Assert.assertEquals(".", processor.getSourceDirectory());
-        Assert.assertEquals(newFilesToProcess, processor.getFilesToProcess());
         Assert.assertEquals(newFileStrategies, processor.getFileStrategies());
         Assert.assertEquals(newTestReportsLocation, processor.getTestReportsLocation());
         Assert.assertEquals(listenersArray, processor.getListeners());
@@ -174,13 +169,92 @@ public class MutoProcessorTest {
     
     @Test
     public void testGetFilesToCopy() {
-        List<String> result = processor.getFilesToCopy(".");
+        List<String> result = processor.getFilesToCopy();
         Assert.assertTrue(result.size() > 0);
         Assert.assertFalse(result.contains(target.getAbsolutePath()));
         
         for(String item:result) {
             File file = new File(item);
             Assert.assertTrue(file.exists());
+        }
+    }
+    
+    @Test
+    public void testGetFilesToCopyWithRegexpExclusion() {
+        String pattern = "(.*)\\.java";
+        List<String> exclusions = processor.getExcludes();
+        exclusions.add(pattern);
+        processor.setExcludes(exclusions);
+
+        List<String> result = processor.getFilesToCopy();
+        Assert.assertTrue(result.size() > 0);
+        Assert.assertFalse(result.contains(target.getAbsolutePath()));
+        
+        for(String item:result) {
+            File file = new File(item);
+            Assert.assertTrue(file.exists());
+            Assert.assertFalse(
+                    file.getAbsolutePath() + " wasn't excluded",
+                    file.getAbsolutePath().matches(pattern));
+        }
+    }
+    
+    @Test
+    public void testGetFilesToCopyWithPreciseExclusion() {
+        String pattern = ".classpath";
+        List<String> exclusions = processor.getExcludes();
+        exclusions.add(pattern);
+        processor.setExcludes(exclusions);
+        
+        Assert.assertTrue(new File(source.getAbsolutePath() + File.separator + pattern).exists());
+        List<String> result = processor.getFilesToCopy();
+        Assert.assertTrue(result.size() > 0);
+        Assert.assertFalse(result.contains(target.getAbsolutePath()));
+        
+        for(String item:result) {
+            File file = new File(item);
+            Assert.assertTrue(file.exists());
+            Assert.assertFalse(
+                    file.getAbsolutePath() + " wasn't excluded",
+                    file.getAbsolutePath().contains(pattern));
+        }
+    }
+    @Test
+    public void testGetFilesToProcess() throws IOException {
+        processor.copyWorkspace();
+        List<String> result = processor.getFilesToProcess();
+        Assert.assertTrue(result.size() > 0);
+        Assert.assertFalse(result.contains(target.getAbsolutePath()));
+        
+        for(String item:result) {
+            File file = new File(item);
+            Assert.assertTrue(file.getAbsolutePath().startsWith(target.getAbsolutePath()));
+        }
+    }
+    
+    @Test
+    public void testGetFilesToProcessWithRegexpExclusion() throws IOException {
+        processor.copyWorkspace();
+        String pattern = "(.*)\\.java";
+        List<String> exclusions = processor.getProcessFilesExclusions();
+        exclusions.add(pattern);
+        processor.setProcessFilesExclusions(exclusions);
+        
+        List<String> result = processor.getFilesToProcess();
+        Assert.assertTrue(result.size() > 0);
+        Assert.assertFalse(result.contains(target.getAbsolutePath()));
+        
+        for(String item:result) {
+            File file = new File(item);
+            Assert.assertTrue(file.getAbsolutePath().startsWith(target.getAbsolutePath()));
+        }
+        
+        for(String item:result) {
+            File file = new File(item);
+            Assert.assertTrue(file.exists());
+            Assert.assertFalse(
+                    file.getAbsolutePath() + " wasn't excluded",
+                    file.getAbsolutePath().equals(pattern));
         }
     }
 }

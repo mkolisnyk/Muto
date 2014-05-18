@@ -51,10 +51,10 @@ public class FileProcessingStrategyTest {
 
     @Test
     public void testGetSetFiles() {
-        List<File> files = new ArrayList<File>();
+        List<String> files = new ArrayList<String>();
         FileProcessingStrategy fileStrategy = new FakeFileProcessingStrategy();
-        files.add(new File("file1"));
-        files.add(new File("file2"));
+        files.add("file1");
+        files.add("file2");
         fileStrategy.setFiles(files);
         Assert.assertTrue(fileStrategy.getFiles().containsAll(files));
         Assert.assertTrue(files.containsAll(fileStrategy.getFiles()));

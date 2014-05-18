@@ -28,7 +28,7 @@ public abstract class FileProcessingStrategy {
     /**
      * .
      */
-    private List<File> files;
+    private List<String> files;
     /**
      * .
      */
@@ -129,14 +129,14 @@ public abstract class FileProcessingStrategy {
      * .
      * @return .
      */
-    public final List<File> getFiles() {
+    public final List<String> getFiles() {
         return files;
     }
     /**
      * .
      * @param fileList .
      */
-    public final void setFiles(final List<File> fileList) {
+    public final void setFiles(final List<String> fileList) {
         this.files = fileList;
     }
     /**

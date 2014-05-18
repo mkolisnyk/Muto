@@ -23,7 +23,7 @@ public class OneByOneFileProcessingStrategy extends
 
     @Override
     public final void next() {
-        File file = this.getFiles().get(currentFileIndex);
+        File file = new File(this.getFiles().get(currentFileIndex));
         MutationStrategy strategy = this.getMutationStrategies().get(
                 currentStrategyIndex);
         String content = "";

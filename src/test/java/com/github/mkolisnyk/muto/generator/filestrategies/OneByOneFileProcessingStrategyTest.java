@@ -47,10 +47,10 @@ public class OneByOneFileProcessingStrategyTest {
         FileProcessingStrategy fileStrategy = new OneByOneFileProcessingStrategy();
         MutationStrategy strategy = new OneByOneMutationStrategy();
         MutationRule rule = new BlockCleanMutationRule();
-        List<File> files = new ArrayList<File>();
+        List<String> files = new ArrayList<String>();
         
-        files.add(file1);
-        files.add(file2);
+        files.add(file1.getAbsolutePath());
+        files.add(file2.getAbsolutePath());
         
         fileStrategy.setFiles(files);
         strategy.addRule(rule);

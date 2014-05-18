@@ -72,10 +72,6 @@ public class MutoProcessor {
     /**
      * .
      */
-    private List<String> includes;
-    /**
-     * .
-     */
     private String targetDirectory;
     /**
      * .
@@ -92,7 +88,7 @@ public class MutoProcessor {
     /**
      * .
      */
-    private List<File> processFiles;
+    private List<String> processFilesExclusions = new ArrayList<String>();
     /**
      * .
      */
@@ -142,15 +138,17 @@ public class MutoProcessor {
     /**
      * .
      * @param fileName .
+     * @param exclusions .
      * @return .
      */
-    private boolean isFileExcluded(final String fileName) {
+    private boolean isFileExcluded(
+            final String fileName,
+            final List<String> exclusions) {
         File file = new File(fileName);
-        for (String excludeItem : this.excludes) {
+        for (String excludeItem : exclusions) {
             String absolutePath = file.getAbsolutePath();
             if (absolutePath.contains(excludeItem)
-                    || absolutePath.equals(excludeItem)
-            /* || absolutePath.matches(excludeItem) */) {
+                    || absolutePath.matches(excludeItem)) {
                 return true;
             }
         }
@@ -161,21 +159,50 @@ public class MutoProcessor {
      * @param rootDirectory .
      * @return .
      */
-    public final List<String> getFilesToCopy(
-            final String rootDirectory) {
+    private List<String> getFilesRecursively(final String rootDirectory) {
         List<String> files = new ArrayList<String>();
         File root = new File(rootDirectory).getAbsoluteFile();
         String[] fileList = root.list();
         for (String fileListItem : fileList) {
             File item = new File(root + File.separator + fileListItem);
-            if (isFileExcluded(item.getAbsolutePath())) {
-                continue;
-            }
             if (item.isDirectory()) {
-                files.addAll(this.getFilesToCopy(item
+                files.addAll(this.getFilesRecursively(item
                         .getAbsolutePath()));
             } else {
                 files.add(item.getAbsolutePath());
+            }
+        }
+        return files;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final List<String> getFilesToCopy() {
+        String absSourceDirectory = new File(sourceDirectory)
+                .getAbsolutePath();
+        List<String> files = getFilesRecursively(absSourceDirectory);
+        for (int i = 0; i < files.size(); i++) {
+            if (this.isFileExcluded(files.get(i), this.excludes)) {
+                files.remove(i);
+                i--;
+            }
+        }
+        return files;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final List<String> getFilesToProcess() {
+        String absTargetDirectory = new File(targetDirectory)
+                .getAbsolutePath();
+        List<String> files = getFilesRecursively(absTargetDirectory);
+        for (int i = 0; i < files.size(); i++) {
+            if (this.isFileExcluded(files.get(i),
+                    this.processFilesExclusions)) {
+                files.remove(i);
+                i--;
             }
         }
         return files;
@@ -201,31 +228,36 @@ public class MutoProcessor {
      */
     public final void copyWorkspace() throws IOException {
         File workspace = new File(this.targetDirectory);
-        this.excludes.add(targetDirectory);
+        this.excludes.add(targetDirectory.replace("\\", "\\\\"));
         this.cleanupWorkspace();
         String absSourceDirectory = new File(sourceDirectory)
                 .getAbsolutePath();
-        String absTargetDirectory = new File(targetDirectory)
-                .getAbsolutePath();
-
-        assert workspace.mkdirs();
-        List<String> filesToCopy = this
-                .getFilesToCopy(absSourceDirectory);
+        String absTargetDirectory = workspace.getAbsolutePath();
+        if (!workspace.exists() && !workspace.mkdirs()) {
+                throw new IOException(
+                        "Failed to create workspace at: "
+                                + workspace.getAbsolutePath());
+            /*if (!workspace.mkdir()) {
+                throw new IOException(
+                        "Failed to create workspace directory at: "
+                                + workspace.getAbsolutePath());
+            }*/
+        }
+        List<String> filesToCopy = this.getFilesToCopy();
         for (String sourceFile : filesToCopy) {
             File source = new File(sourceFile);
             String fileToCopy = sourceFile.replace(
                     absSourceDirectory, absTargetDirectory);
             File file = new File(fileToCopy);
-            if (!file.getParentFile().exists()) {
-                assert file.getParentFile().mkdirs();
+            if (!file.getAbsoluteFile().getParentFile().exists()
+                && !file.getAbsoluteFile().getParentFile().mkdirs()) {
+                throw new IOException("Failed to prepare target directory: "
+                            + file.getAbsoluteFile().getParent());
             }
-            if (file.exists()) {
-                continue;
-            }
-            Files.copy(source.toPath(),
-                    new File(fileToCopy).toPath());
+            Files.copy(source.toPath(), file.toPath());
         }
     }
+
     /**
      * .
      * @return .
@@ -237,8 +269,8 @@ public class MutoProcessor {
      * .
      * @return .
      */
-    public final List<File> getFilesToProcess() {
-        return processFiles;
+    public final List<String> getProcessFiles() {
+        return getFilesToProcess();
     }
 
     /**
@@ -247,13 +279,6 @@ public class MutoProcessor {
      */
     public final List<FileProcessingStrategy> getFileStrategies() {
         return fileStrategies;
-    }
-    /**
-     * .
-     * @return .
-     */
-    public final List<String> getIncludes() {
-        return includes;
     }
     /**
      * .
@@ -305,7 +330,7 @@ public class MutoProcessor {
         this.copyWorkspace();
         this.beforeSuite();
         for (FileProcessingStrategy fileStrategy:this.fileStrategies) {
-            fileStrategy.setFiles(this.processFiles);
+            fileStrategy.setFiles(this.getProcessFiles());
             while (fileStrategy.hasNext()) {
                 this.beforeTest();
                 fileStrategy.next();
@@ -361,25 +386,11 @@ public class MutoProcessor {
     }
     /**
      * .
-     * @param newFilesToProcess .
-     */
-    public final void setFilesToProcess(final List<File> newFilesToProcess) {
-        this.processFiles = newFilesToProcess;
-    }
-    /**
-     * .
      * @param newFileStrategies .
      */
     public final void setFileStrategies(
             final List<FileProcessingStrategy> newFileStrategies) {
         this.fileStrategies = newFileStrategies;
-    }
-    /**
-     * .
-     * @param includesValue .
-     */
-    public final void setIncludes(final List<String> includesValue) {
-        this.includes = includesValue;
     }
     /**
      * .
@@ -424,5 +435,20 @@ public class MutoProcessor {
     public final void setTestReportsLocation(
             final String newTestReportsLocation) {
         this.testReportsLocation = newTestReportsLocation;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final List<String> getProcessFilesExclusions() {
+        return processFilesExclusions;
+    }
+    /**
+     * .
+     * @param processFilesExclusionsValue .
+     */
+    public final void setProcessFilesExclusions(
+            final List<String> processFilesExclusionsValue) {
+        this.processFilesExclusions = processFilesExclusionsValue;
     }
 }

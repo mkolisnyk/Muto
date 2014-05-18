@@ -219,7 +219,7 @@ public class MavenMutoProcessor extends AbstractMojo {
         try {
             processor.setTargetDirectory(targetDirectory);
             processor.setSourceDirectory(sourceDirectory);
-            processor.setFilesToProcess(files);
+            //processor.setFilesToProcess(files);
             if (this.fileStrategies == null) {
                 processor.setFileStrategies(null);
             }
