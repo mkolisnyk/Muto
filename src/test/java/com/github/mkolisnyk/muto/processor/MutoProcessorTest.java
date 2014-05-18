@@ -22,7 +22,10 @@ public class MutoProcessorTest {
     
     @Before
     public void setUp() {
+        List<String> excludes = new ArrayList<String>();
+        excludes.add(".git");
         processor = new MutoProcessor();
+        processor.setExcludes(excludes);
         source = new File("");
         target = new File("target/muto/workspace");
         processor.setSourceDirectory(source.getAbsolutePath());
@@ -40,6 +43,7 @@ public class MutoProcessorTest {
     public void testProcessorPrepareWorkspace() throws IOException{
         processor.copyWorkspace();
         Assert.assertTrue(target.exists());
+        Assert.assertTrue(target.list().length > 0);
         processor.cleanupWorkspace();
         Assert.assertFalse(target.exists());
     }
@@ -166,5 +170,17 @@ public class MutoProcessorTest {
         target.createNewFile();
         processor.cleanupWorkspace();
         Assert.assertTrue(target.exists());
+    }
+    
+    @Test
+    public void testGetFilesToCopy() {
+        List<String> result = processor.getFilesToCopy(".");
+        Assert.assertTrue(result.size() > 0);
+        Assert.assertFalse(result.contains(target.getAbsolutePath()));
+        
+        for(String item:result) {
+            File file = new File(item);
+            Assert.assertTrue(file.exists());
+        }
     }
 }

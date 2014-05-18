@@ -16,6 +16,7 @@ public class NumberSignMutationRule extends MutationRule {
      * @param position .
      * @return .
      */
+    @Override
     public final String apply(final String input, final int position) {
         String result = input;
         Pattern pattern = Pattern.compile("([-]?)(\\d+)");
@@ -43,6 +44,7 @@ public class NumberSignMutationRule extends MutationRule {
      * @param input .
      * @return .
      */
+    @Override
     public final int total(final String input) {
         int count = 0;
         Pattern pattern = Pattern.compile("([-]?)(\\d+)");

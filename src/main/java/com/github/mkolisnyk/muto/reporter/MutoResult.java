@@ -104,6 +104,7 @@ public class MutoResult {
     /**
      * .
      */
+    @SuppressWarnings("unchecked")
     public final void retrieveResults() {
         results = new ArrayList<JUnitTestSuite>();
         Iterator<File> iter = FileUtils.iterateFiles(new File(
