@@ -59,7 +59,7 @@ public class OneByOneFileProcessingStrategyTest {
         int counter = 0;
         String actual;
         while(fileStrategy.hasNext()) {
-            fileStrategy.next();
+            fileStrategy.doNext();
             actual = FileUtils.readFileToString(file1);
             Assert.assertEquals("Iteration " + counter, fileContent1[counter], actual);
             actual = FileUtils.readFileToString(file2);

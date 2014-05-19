@@ -1,20 +1,23 @@
 package com.github.mkolisnyk.muto.generator.strategies;
 
 import com.github.mkolisnyk.muto.generator.MutationRule;
-import com.github.mkolisnyk.muto.generator.MutationStrategy;
 
 /**
  * .
  * @author Myk Kolisnyk
  */
-public class OneByOneMutationStrategy extends MutationStrategy {
+public class OneByOneMutationStrategy extends IterativeMutationStrategy {
 
     /**
      * .
      */
     private int currentRuleIndex = 0;
+    /**
+     * @param input .
+     * @return .
+     */
     @Override
-    public final String next(final String input) {
+    protected final String next(final String input) {
         int total = this.getRuleSet().size();
         MutationRule rule;
         if (currentRuleIndex >= total) {
@@ -28,7 +31,7 @@ public class OneByOneMutationStrategy extends MutationStrategy {
             return input;
         }
         rule = this.getRuleSet().get(currentRuleIndex);
-        String result = rule.next(input);
+        String result = rule.doNext(input);
         this.setLocation(rule.getLocation());
         return result;
     }

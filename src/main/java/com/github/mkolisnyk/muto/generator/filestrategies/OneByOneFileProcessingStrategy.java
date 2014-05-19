@@ -22,13 +22,13 @@ public class OneByOneFileProcessingStrategy extends
     private int currentStrategyIndex = 0;
 
     @Override
-    public final void next() {
+    protected final void next() {
         File file = new File(this.getFiles().get(currentFileIndex));
         MutationStrategy strategy = this.getMutationStrategies().get(
                 currentStrategyIndex);
         String content = "";
         content = read(file.getAbsolutePath());
-        String newContent = strategy.next(content);
+        String newContent = strategy.doNext(content);
         MutationLocation location = strategy.getLocation();
         location.setFileName(file.getAbsolutePath());
         this.setLocation(location);

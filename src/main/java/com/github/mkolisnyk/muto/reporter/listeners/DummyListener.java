@@ -32,4 +32,40 @@ public class DummyListener implements MutoListener {
      */
     public final void afterTestRun(final MutoResult result) {
     }
+
+    /**
+     * .
+     */
+    public final void beforeFileStrategyRun() {
+    }
+
+    /**
+     * .
+     */
+    public final void afterFileStrategyRun() {
+    }
+
+    /**
+     * .
+     */
+    public final void beforeMutationStrategyRun() {
+    }
+
+    /**
+     * .
+     */
+    public final void afterMutationStrategyRun() {
+    }
+
+    /**
+     * .
+     */
+    public final void beforeMutationRuleRun() {
+    }
+
+    /**
+     * .
+     */
+    public final void afterMutationRuleRun() {
+    }
 }

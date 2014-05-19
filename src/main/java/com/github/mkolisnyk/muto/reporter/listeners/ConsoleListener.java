@@ -51,4 +51,40 @@ public class ConsoleListener implements MutoListener {
                         + "Test Suites changed: TBD",
                         result.getExitCode()));
     }
+
+    /**
+     * .
+     */
+    public final void beforeFileStrategyRun() {
+    }
+
+    /**
+     * .
+     */
+    public final void afterFileStrategyRun() {
+    }
+
+    /**
+     * .
+     */
+    public final void beforeMutationStrategyRun() {
+    }
+
+    /**
+     * .
+     */
+    public final void afterMutationStrategyRun() {
+    }
+
+    /**
+     * .
+     */
+    public final void beforeMutationRuleRun() {
+    }
+
+    /**
+     * .
+     */
+    public final void afterMutationRuleRun() {
+    }
 }

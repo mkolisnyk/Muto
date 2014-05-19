@@ -328,7 +328,7 @@ public class MutoProcessor {
             fileStrategy.setFiles(this.getProcessFiles());
             while (fileStrategy.hasNext()) {
                 this.beforeTest();
-                fileStrategy.next();
+                fileStrategy.doNext();
                 MutoResult result = new MutoResult(this.testReportsLocation);
                 MutationLocation locationValue = fileStrategy.getLocation();
                 result.setLocation(locationValue);

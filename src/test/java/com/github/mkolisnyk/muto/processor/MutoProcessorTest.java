@@ -13,6 +13,7 @@ import org.junit.Test;
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
 import com.github.mkolisnyk.muto.reporter.MutoResult;
+import com.github.mkolisnyk.muto.reporter.listeners.DummyListener;
 
 public class MutoProcessorTest {
 
@@ -90,19 +91,7 @@ public class MutoProcessorTest {
         String newTestReportsLocation = "src";
         processor.setTestReportsLocation(newTestReportsLocation );
         List<MutoListener> listenersArray = new ArrayList<MutoListener>();
-        listenersArray.add(new MutoListener() {
-            public void beforeTestRun() {
-            }
-            
-            public void beforeSuiteRun() {
-            }
-            
-            public void afterTestRun(MutoResult result) {
-            }
-            
-            public void afterSuiteRun() {
-            }
-        });
+        listenersArray.add(new DummyListener());
         processor.setListeners(listenersArray );
         Assert.assertEquals(target.getAbsolutePath(), processor.getTargetDirectory());
         Assert.assertEquals(".", processor.getSourceDirectory());
@@ -146,6 +135,36 @@ public class MutoProcessorTest {
             
             public void afterSuiteRun() {
                 logSteps.add("End Suite Run");
+            }
+
+            public void beforeFileStrategyRun() {
+                // TODO Auto-generated method stub
+                
+            }
+
+            public void afterFileStrategyRun() {
+                // TODO Auto-generated method stub
+                
+            }
+
+            public void beforeMutationStrategyRun() {
+                // TODO Auto-generated method stub
+                
+            }
+
+            public void afterMutationStrategyRun() {
+                // TODO Auto-generated method stub
+                
+            }
+
+            public void beforeMutationRuleRun() {
+                // TODO Auto-generated method stub
+                
+            }
+
+            public void afterMutationRuleRun() {
+                // TODO Auto-generated method stub
+                
             }
         });
         processor.setListeners(listenersArray );

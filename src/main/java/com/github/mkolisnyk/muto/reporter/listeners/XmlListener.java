@@ -40,12 +40,36 @@ public class XmlListener implements MutoListener {
         String outputFile =
                result.getOutputLocation()
                 + File.separator + "muto_result_" + testCount + ".xml";
-        /*FileWriter writer = null;
-        try {
-            writer = new FileWriter(new File(outputFile));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
         JAXB.marshal(result, new File(outputFile));
+    }
+    /**
+     * .
+     */
+    public final void beforeFileStrategyRun() {
+    }
+    /**
+     * .
+     */
+    public final void afterFileStrategyRun() {
+    }
+    /**
+     * .
+     */
+    public final void beforeMutationStrategyRun() {
+    }
+    /**
+     * .
+     */
+    public final void afterMutationStrategyRun() {
+    }
+    /**
+     * .
+     */
+    public final void beforeMutationRuleRun() {
+    }
+    /**
+     * .
+     */
+    public final void afterMutationRuleRun() {
     }
 }

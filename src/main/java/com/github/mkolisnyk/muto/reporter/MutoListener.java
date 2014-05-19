@@ -25,4 +25,30 @@ public interface MutoListener {
      * @param result .
      */
     void afterTestRun(MutoResult result);
+    /**
+     * .
+     */
+    void beforeFileStrategyRun();
+    /**
+     * .
+     */
+    void afterFileStrategyRun();
+
+    /**
+     * .
+     */
+    void beforeMutationStrategyRun();
+    /**
+     * .
+     */
+    void afterMutationStrategyRun();
+
+    /**
+     * .
+     */
+    void beforeMutationRuleRun();
+    /**
+     * .
+     */
+    void afterMutationRuleRun();
 }

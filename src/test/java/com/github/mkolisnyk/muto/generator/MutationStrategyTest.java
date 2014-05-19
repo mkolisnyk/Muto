@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.github.mkolisnyk.muto.generator.strategies.IterativeMutationStrategy;
+
 public class MutationStrategyTest {
 
     private class FakeMutationRule extends MutationRule {
@@ -19,7 +21,7 @@ public class MutationStrategyTest {
         }
     }
     
-    private class FakeMutationStrategy extends MutationStrategy {
+    private class FakeMutationStrategy extends IterativeMutationStrategy {
 
         @Override
         public String next(String input) {
@@ -27,7 +29,7 @@ public class MutationStrategyTest {
                 rule.next(input);
             }
             return null;
-        }        
+        }
     }
 
     private MutationStrategy strategy;

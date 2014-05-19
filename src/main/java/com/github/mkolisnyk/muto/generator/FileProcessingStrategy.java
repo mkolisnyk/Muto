@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 
 import com.github.mkolisnyk.muto.data.MutationLocation;
+import com.github.mkolisnyk.muto.reporter.MutoListener;
 
 /**
  * @author Myk Kolisnyk
@@ -32,7 +33,23 @@ public abstract class FileProcessingStrategy {
     /**
      * .
      */
-    public abstract void next();
+    private List<MutoListener> listeners = new ArrayList<MutoListener>();
+    /**
+     * .
+     */
+    protected abstract void next();
+    /**
+     * .
+     */
+    public final void doNext() {
+        for (MutoListener listener : this.getListeners()) {
+            listener.beforeFileStrategyRun();
+        }
+        this.next();
+        for (MutoListener listener : this.getListeners()) {
+            listener.afterFileStrategyRun();
+        }
+    }
     /**
      * .
      * @return .
@@ -51,6 +68,20 @@ public abstract class FileProcessingStrategy {
      */
     public final void setLocation(final MutationLocation locationValue) {
         this.location = locationValue;
+    }
+    /**
+     * .
+     * @return .
+     */
+    public final List<MutoListener> getListeners() {
+        return listeners;
+    }
+    /**
+     * .
+     * @param listenersValue .
+     */
+    public final void setListeners(final List<MutoListener> listenersValue) {
+        this.listeners = listenersValue;
     }
     /**
      * .

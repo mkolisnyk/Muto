@@ -1,6 +1,10 @@
 package com.github.mkolisnyk.muto.generator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.github.mkolisnyk.muto.data.MutationLocation;
+import com.github.mkolisnyk.muto.reporter.MutoListener;
 
 /**
  * .
@@ -16,7 +20,10 @@ public abstract class MutationRule {
      * .
      */
     private MutationLocation location;
-
+    /**
+     * .
+     */
+    private List<MutoListener> listeners = new ArrayList<MutoListener>();
     /**
      * .
      */
@@ -38,7 +45,18 @@ public abstract class MutationRule {
     public final void setLocation(final MutationLocation newLocation) {
         this.location = newLocation;
     }
-
+    /**
+     * @return the listeners
+     */
+    public final List<MutoListener> getListeners() {
+        return listeners;
+    }
+    /**
+     * @param listenersValue the listeners to set
+     */
+    public final void setListeners(final List<MutoListener> listenersValue) {
+        this.listeners = listenersValue;
+    }
     /**
      * .
      * @param input .
@@ -58,10 +76,25 @@ public abstract class MutationRule {
      * @param input .
      * @return .
      */
-    public final String next(final String input) {
+    protected final String next(final String input) {
         return apply(input, tick++);
     }
 
+    /**
+     * .
+     * @param input .
+     * @return .
+     */
+    public final String doNext(final String input) {
+        for (MutoListener listener : this.getListeners()) {
+            listener.beforeMutationRuleRun();
+        }
+        String result = this.next(input);
+        for (MutoListener listener : this.getListeners()) {
+            listener.afterMutationRuleRun();
+        }
+        return result;
+    }
     /**
      * @param input .
      * @return .

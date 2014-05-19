@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.mkolisnyk.muto.data.MutationLocation;
+import com.github.mkolisnyk.muto.reporter.MutoListener;
 
 /**
  * @author Myk Kolisnyk
@@ -18,7 +19,10 @@ public abstract class MutationStrategy {
      * .
      */
     private List<MutationRule> ruleSet = null;
-
+    /**
+     * .
+     */
+    private List<MutoListener> listeners = new ArrayList<MutoListener>();
     /**
      * .
      * @return .
@@ -54,27 +58,45 @@ public abstract class MutationStrategy {
         this.location = locationValue;
     }
     /**
-     * .
-     * @param input .
-     * @return .
+     * @return the listeners
      */
-    public abstract String next(String input);
+    public final List<MutoListener> getListeners() {
+        return listeners;
+    }
+    /**
+     * @param listenersValue the listeners to set
+     */
+    public final void setListeners(final List<MutoListener> listenersValue) {
+        this.listeners = listenersValue;
+    }
     /**
      * .
      * @param input .
      * @return .
      */
-    public final boolean hasNext(final String input) {
-        if (ruleSet == null) {
-            return false;
+    protected abstract String next(String input);
+    /**
+     * .
+     * @param input .
+     * @return .
+     */
+    public final String doNext(final String input) {
+        for (MutoListener listener : this.getListeners()) {
+            listener.beforeMutationStrategyRun();
         }
-        for (MutationRule rule:ruleSet) {
-            if (rule.hasNext(input)) {
-                return true;
-            }
+        String result = this.next(input);
+        for (MutoListener listener : this.getListeners()) {
+            listener.afterMutationStrategyRun();
         }
-        return false;
+        return result;
     }
+
+    /**
+     * .
+     * @param input .
+     * @return .
+     */
+    public abstract boolean hasNext(final String input);
     /**
      * .
      */
@@ -86,4 +108,10 @@ public abstract class MutationStrategy {
             rule.reset();
         }
     }
+    /**
+     * .
+     * @param input .
+     * @return .
+     */
+    public abstract int total(final String input);
 }
