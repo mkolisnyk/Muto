@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.commons.io.FileUtils;
-
 import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
@@ -208,6 +206,30 @@ public class MutoProcessor {
         return files;
     }
     /**
+     * .
+     * @param file .
+     * @throws Exception .
+     */
+    private void deleteFile(final File file) throws Exception {
+        if (!file.exists()) {
+            return;
+        }
+        if (file.isDirectory()) {
+            for (File item : file.listFiles()) {
+                deleteFile(item);
+            }
+        }
+        for (int i = 0; i < MAXTRIES; i++) {
+            if (file.delete()) {
+                break;
+            }
+        }
+        if (file.exists()) {
+            throw new IOException("Unable to delete file '"
+                    + file.getAbsolutePath() + "'");
+        }
+    }
+    /**
      * Removes working directory and all related resources.
      */
     public final void cleanupWorkspace() {
@@ -215,7 +237,7 @@ public class MutoProcessor {
         if (workspace.exists() && workspace.isDirectory()) {
             for (int i = 0; i < MAXTRIES; i++) {
                 try {
-                    FileUtils.deleteDirectory(workspace);
+                    deleteFile(workspace);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

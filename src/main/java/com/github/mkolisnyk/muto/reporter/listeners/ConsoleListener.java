@@ -56,35 +56,41 @@ public class ConsoleListener implements MutoListener {
      * .
      */
     public final void beforeFileStrategyRun() {
+        log.debug("Entering file processing strategy");
     }
 
     /**
      * .
      */
     public final void afterFileStrategyRun() {
+        log.debug("Exiting file processing strategy");
     }
 
     /**
      * .
      */
     public final void beforeMutationStrategyRun() {
+        log.debug("Entering mutation strategy");
     }
 
     /**
      * .
      */
     public final void afterMutationStrategyRun() {
+        log.debug("Exiting mutation strategy");
     }
 
     /**
      * .
      */
     public final void beforeMutationRuleRun() {
+        log.debug("Applying mutation");
     }
 
     /**
      * .
      */
     public final void afterMutationRuleRun() {
+        log.debug("Restoring mutation");
     }
 }

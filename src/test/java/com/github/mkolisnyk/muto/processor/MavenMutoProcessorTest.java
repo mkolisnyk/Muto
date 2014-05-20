@@ -53,7 +53,7 @@ public class MavenMutoProcessorTest {
         MavenMutoProcessor processor = new MavenMutoProcessor();
         targetDirectoryValue = (new File(targetDirectoryValue)).getAbsolutePath();
         sourceDirectoryValue = (new File(sourceDirectoryValue)).getAbsolutePath();
-        excludesValue.add(".git");
+        excludesValue.add("\\.git");
         processor.setExcludes(excludesValue);
         processor.setFileStrategies(null);
         processor.setListeners(null);
@@ -61,11 +61,12 @@ public class MavenMutoProcessorTest {
         processor.setSourceDirectory(sourceDirectoryValue);
         processor.setTargetDirectory(targetDirectoryValue);
         processor.setTestReportsLocation(null);
+        processor.setRunCommand("java -version");
         processor.execute();
 
         Assert.assertNotNull(processor.getFileStrategies());
         Assert.assertNotNull(processor.getListeners());
-        Assert.assertNotNull(processor.getMutationStrategies());
+        Assert.assertNull(processor.getMutationStrategies());
         Assert.assertEquals(sourceDirectoryValue,processor.getSourceDirectory());
         Assert.assertEquals(targetDirectoryValue,processor.getTargetDirectory());
         Assert.assertNull(processor.getTestReportsLocation());

@@ -39,12 +39,29 @@ public class ConsoleListenerTest {
         
         listener.beforeSuiteRun();
         listener.beforeTestRun();
+        listener.beforeFileStrategyRun();
+        listener.beforeMutationStrategyRun();
+        listener.beforeMutationRuleRun();
+        listener.afterMutationRuleRun();
+        listener.afterMutationStrategyRun();
+        listener.afterFileStrategyRun();
         listener.afterTestRun(result);
         listener.afterSuiteRun();
-        Assert.assertEquals("INFO - Starting suite" + System.lineSeparator()
-                + "INFO - Start test" + System.lineSeparator()
-                + "INFO - Test is done. Exit code: -1. Test Suites changed: TBD" + System.lineSeparator() 
-                + "INFO - Suite completed" + System.lineSeparator(), baos.toString());
+        Assert.assertEquals(
+            "INFO - Starting suite" + System.lineSeparator()
+            + "INFO - Start test" + System.lineSeparator()
+            + "DEBUG - Entering file "
+            + "processing strategy" + System.lineSeparator()
+            + "DEBUG - Entering mutation strategy" + System.lineSeparator()
+            + "DEBUG - Applying mutation" + System.lineSeparator()
+            + "DEBUG - Restoring mutation" + System.lineSeparator()
+            + "DEBUG - Exiting mutation strategy" + System.lineSeparator()
+            + "DEBUG - Exiting file "
+            + "processing strategy" + System.lineSeparator()
+            + "INFO - Test is done. Exit code: -1. "
+            + "Test Suites changed: TBD" + System.lineSeparator()
+            + "INFO - Suite completed" + System.lineSeparator(),
+            baos.toString());
     }
 
 }

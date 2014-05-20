@@ -76,6 +76,23 @@ public class MavenMutoProcessor extends AbstractMojo {
 
     /**
      * .
+     */
+    @Parameter(property = "muto.run.command")
+    private String runCommand;
+    /**
+     * @return the runCommand
+     */
+    public final String getRunCommand() {
+        return runCommand;
+    }
+    /**
+     * @param runCommandValue the runCommand to set
+     */
+    public final void setRunCommand(final String runCommandValue) {
+        this.runCommand = runCommandValue;
+    }
+    /**
+     * .
      * @return .
      */
     public final String getTargetDirectory() {
@@ -212,20 +229,22 @@ public class MavenMutoProcessor extends AbstractMojo {
             = new ArrayList<FileProcessingStrategy>();
         if (this.fileStrategies == null) {
             this.fileStrategies = new ArrayList<String>();
-            this.fileStrategies
+            /*this.fileStrategies
                     .add("com.github.mkolisnyk.muto.generator."
-                            + "filestrategies.OneByOneFileProcessingStrategy");
+                    + "filestrategies.OneByOneFileProcessingStrategy");*/
         }
         for (String item : this.fileStrategies) {
             Class<?> clazz = Class.forName(item, true,
                     ClassLoader.getSystemClassLoader());
             FileProcessingStrategy strategy = (FileProcessingStrategy) clazz
                     .newInstance();
+            strategy.setListeners(initListeners());
             List<MutationStrategy> mutoStrategies = this
                     .initMutationStrategies();
             for (MutationStrategy mutationStrategy : mutoStrategies) {
                 strategy.addMutationStrategy(mutationStrategy);
             }
+            strategies.add(strategy);
         }
         return strategies;
     }
@@ -243,13 +262,16 @@ public class MavenMutoProcessor extends AbstractMojo {
                     .add("com.github.mkolisnyk.muto.generator.strategies."
                             + "OneByOneMutationStrategy");
         }
+        List<MutoListener> listenerList = initListeners();
         for (String item : this.mutationStrategies) {
             Class<?> clazz = Class.forName(item, true,
                     ClassLoader.getSystemClassLoader());
             MutationStrategy strategy = (MutationStrategy) clazz
                     .newInstance();
+            strategy.setListeners(listenerList);
             List<MutationRule> rules = this.initMutationRules();
             for (MutationRule rule : rules) {
+                rule.setListeners(listenerList);
                 strategy.addRule(rule);
             }
             strategies.add(strategy);
@@ -292,6 +314,8 @@ public class MavenMutoProcessor extends AbstractMojo {
         processor.setFileStrategies(initFileProcessingStrategies());
         processor.setTestReportsLocation(testReportsLocation);
         processor.setListeners(initListeners());
+        processor.setRunCommand(runCommand);
+        processor.setExcludes(excludes);
         return processor;
     }
     /**
