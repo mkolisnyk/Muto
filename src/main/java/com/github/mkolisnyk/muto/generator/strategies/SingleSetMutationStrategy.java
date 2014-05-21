@@ -26,7 +26,10 @@ public class SingleSetMutationStrategy extends MutationStrategy {
         }
         int total = strategy.total(input);
         Random random = new Random();
-        int index = random.nextInt(total);
+        int index = 0;
+        if (total > 0) {
+            index = random.nextInt(total);
+        }
         for (int i = 0; i < index; i++) {
             strategy.next(input);
         }
@@ -51,6 +54,6 @@ public class SingleSetMutationStrategy extends MutationStrategy {
      */
     @Override
     public final int total(final String input) {
-        return 0;
+        return 1;
     }
 }

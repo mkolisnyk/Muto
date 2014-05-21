@@ -25,6 +25,12 @@ public class XmlListenerTest {
         result.setLocation(location);
         listener.beforeSuiteRun();
         listener.beforeTestRun();
+        listener.beforeFileStrategyRun();
+        listener.beforeMutationStrategyRun();
+        listener.beforeMutationRuleRun();
+        listener.afterMutationRuleRun(new MutationLocation());
+        listener.afterMutationStrategyRun();
+        listener.afterFileStrategyRun("Test");
         listener.afterTestRun(result);
         listener.afterSuiteRun();
         Assert.assertTrue(outputFile.exists());

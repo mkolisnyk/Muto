@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.xml.bind.JAXB;
 
+import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
 import com.github.mkolisnyk.muto.reporter.MutoResult;
 
@@ -49,8 +50,9 @@ public class XmlListener implements MutoListener {
     }
     /**
      * .
+     * @param fileName .
      */
-    public final void afterFileStrategyRun() {
+    public final void afterFileStrategyRun(final String fileName) {
     }
     /**
      * .
@@ -69,7 +71,8 @@ public class XmlListener implements MutoListener {
     }
     /**
      * .
+     * @param location .
      */
-    public final void afterMutationRuleRun() {
+    public final void afterMutationRuleRun(final MutationLocation location) {
     }
 }

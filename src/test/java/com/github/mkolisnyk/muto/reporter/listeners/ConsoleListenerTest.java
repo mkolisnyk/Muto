@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.reporter.MutoResult;
 
 public class ConsoleListenerTest {
@@ -42,9 +43,9 @@ public class ConsoleListenerTest {
         listener.beforeFileStrategyRun();
         listener.beforeMutationStrategyRun();
         listener.beforeMutationRuleRun();
-        listener.afterMutationRuleRun();
+        listener.afterMutationRuleRun(new MutationLocation());
         listener.afterMutationStrategyRun();
-        listener.afterFileStrategyRun();
+        listener.afterFileStrategyRun("");
         listener.afterTestRun(result);
         listener.afterSuiteRun();
         Assert.assertEquals(
@@ -54,10 +55,9 @@ public class ConsoleListenerTest {
             + "processing strategy" + System.lineSeparator()
             + "DEBUG - Entering mutation strategy" + System.lineSeparator()
             + "DEBUG - Applying mutation" + System.lineSeparator()
-            + "DEBUG - Restoring mutation" + System.lineSeparator()
+            + "DEBUG - Mutation was applied to {0, 0, \"\"}" + System.lineSeparator()
             + "DEBUG - Exiting mutation strategy" + System.lineSeparator()
-            + "DEBUG - Exiting file "
-            + "processing strategy" + System.lineSeparator()
+            + "DEBUG - Processed file: " + System.lineSeparator()
             + "INFO - Test is done. Exit code: -1. "
             + "Test Suites changed: TBD" + System.lineSeparator()
             + "INFO - Suite completed" + System.lineSeparator(),

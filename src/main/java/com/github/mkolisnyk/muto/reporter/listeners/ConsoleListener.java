@@ -4,6 +4,7 @@ import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
 
+import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
 import com.github.mkolisnyk.muto.reporter.MutoResult;
 
@@ -61,9 +62,10 @@ public class ConsoleListener implements MutoListener {
 
     /**
      * .
+     * @param fileName .
      */
-    public final void afterFileStrategyRun() {
-        log.debug("Exiting file processing strategy");
+    public final void afterFileStrategyRun(final String fileName) {
+        log.debug("Processed file: " + fileName);
     }
 
     /**
@@ -89,8 +91,9 @@ public class ConsoleListener implements MutoListener {
 
     /**
      * .
+     * @param location .
      */
-    public final void afterMutationRuleRun() {
-        log.debug("Restoring mutation");
+    public final void afterMutationRuleRun(final MutationLocation location) {
+        log.debug("Mutation was applied to " + location);
     }
 }

@@ -1,5 +1,6 @@
 package com.github.mkolisnyk.muto.reporter.listeners;
 
+import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
 import com.github.mkolisnyk.muto.reporter.MutoResult;
 
@@ -41,8 +42,9 @@ public class DummyListener implements MutoListener {
 
     /**
      * .
+     * @param fileName .
      */
-    public final void afterFileStrategyRun() {
+    public final void afterFileStrategyRun(final String fileName) {
     }
 
     /**
@@ -65,7 +67,8 @@ public class DummyListener implements MutoListener {
 
     /**
      * .
+     * @param location .
      */
-    public final void afterMutationRuleRun() {
+    public final void afterMutationRuleRun(final MutationLocation location) {
     }
 }

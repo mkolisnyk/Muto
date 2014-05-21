@@ -1,5 +1,7 @@
 package com.github.mkolisnyk.muto.reporter;
 
+import com.github.mkolisnyk.muto.data.MutationLocation;
+
 /**
  * @author Myk Kolisnyk
  */
@@ -31,8 +33,9 @@ public interface MutoListener {
     void beforeFileStrategyRun();
     /**
      * .
+     * @param fileName .
      */
-    void afterFileStrategyRun();
+    void afterFileStrategyRun(String fileName);
 
     /**
      * .
@@ -49,6 +52,7 @@ public interface MutoListener {
     void beforeMutationRuleRun();
     /**
      * .
+     * @param location .
      */
-    void afterMutationRuleRun();
+    void afterMutationRuleRun(MutationLocation location);
 }

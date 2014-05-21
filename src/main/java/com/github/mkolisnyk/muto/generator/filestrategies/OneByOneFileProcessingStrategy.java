@@ -30,6 +30,9 @@ public class OneByOneFileProcessingStrategy extends
         content = read(file.getAbsolutePath());
         String newContent = strategy.doNext(content);
         MutationLocation location = strategy.getLocation();
+        if (location == null) {
+            location = new MutationLocation();
+        }
         location.setFileName(file.getAbsolutePath());
         this.setLocation(location);
         write(file.getAbsolutePath(), newContent);

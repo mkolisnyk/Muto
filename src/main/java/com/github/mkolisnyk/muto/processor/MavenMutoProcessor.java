@@ -197,6 +197,18 @@ public class MavenMutoProcessor extends AbstractMojo {
         this.excludes = excludesValue;
     }
     /**
+     * @return the mutationRules .
+     */
+    public final List<String> getMutationRules() {
+        return mutationRules;
+    }
+    /**
+     * @param mutationRulesValue the mutationRules to set
+     */
+    public final void setMutationRules(final List<String> mutationRulesValue) {
+        this.mutationRules = mutationRulesValue;
+    }
+    /**
      * .
      * @return .
      * @throws Exception .

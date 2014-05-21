@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
 import com.github.mkolisnyk.muto.reporter.MutoResult;
@@ -138,33 +139,27 @@ public class MutoProcessorTest {
             }
 
             public void beforeFileStrategyRun() {
-                // TODO Auto-generated method stub
-                
+                logSteps.add("Start strategy run");
             }
 
-            public void afterFileStrategyRun() {
-                // TODO Auto-generated method stub
-                
+            public void afterFileStrategyRun(String fileName) {
+                logSteps.add("End strategy run");
             }
 
             public void beforeMutationStrategyRun() {
-                // TODO Auto-generated method stub
-                
+                logSteps.add("Start mutation strategy run");
             }
 
             public void afterMutationStrategyRun() {
-                // TODO Auto-generated method stub
-                
+                logSteps.add("End mutation strategy run");
             }
 
             public void beforeMutationRuleRun() {
-                // TODO Auto-generated method stub
-                
+                logSteps.add("Start mutation rule run");
             }
 
-            public void afterMutationRuleRun() {
-                // TODO Auto-generated method stub
-                
+            public void afterMutationRuleRun(MutationLocation location) {
+                logSteps.add("End mutation rule run");
             }
         });
         processor.setListeners(listenersArray );

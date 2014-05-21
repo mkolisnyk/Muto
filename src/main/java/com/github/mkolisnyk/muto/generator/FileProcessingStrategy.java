@@ -47,7 +47,11 @@ public abstract class FileProcessingStrategy {
         }
         this.next();
         for (MutoListener listener : this.getListeners()) {
-            listener.afterFileStrategyRun();
+            String fileName = "";
+            if (this.getLocation() != null) {
+                fileName = this.getLocation().getFileName();
+            }
+            listener.afterFileStrategyRun(fileName);
         }
     }
     /**

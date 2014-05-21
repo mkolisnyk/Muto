@@ -91,7 +91,7 @@ public abstract class MutationRule {
         }
         String result = this.next(input);
         for (MutoListener listener : this.getListeners()) {
-            listener.afterMutationRuleRun();
+            listener.afterMutationRuleRun(this.getLocation());
         }
         return result;
     }
