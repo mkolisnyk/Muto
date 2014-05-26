@@ -90,6 +90,10 @@ public class MutoProcessor {
     /**
      * .
      */
+    private List<String> processFilesIncludes = new ArrayList<String>();
+    /**
+     * .
+     */
     private List<FileProcessingStrategy> fileStrategies;
     /**
      * .
@@ -102,8 +106,9 @@ public class MutoProcessor {
 
     /**
      * .
+     * @throws Exception .
      */
-    private void afterSuite() {
+    private void afterSuite() throws Exception {
         for (MutoListener listener:listeners) {
             listener.afterSuiteRun();
         }
@@ -111,8 +116,9 @@ public class MutoProcessor {
     /**
      * .
      * @param result .
+     * @throws Exception .
      */
-    private void afterTest(final MutoResult result) {
+    private void afterTest(final MutoResult result) throws Exception {
         for (MutoListener listener:listeners) {
             listener.afterTestRun(result);
         }
@@ -147,6 +153,28 @@ public class MutoProcessor {
             String absolutePath = file.getAbsolutePath();
             if (absolutePath.contains(excludeItem)
                     || absolutePath.matches(excludeItem)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * .
+     * @param fileName .
+     * @param inclusions .
+     * @return .
+     */
+    private boolean isFileIncluded(
+            final String fileName,
+            final List<String> inclusions) {
+        File file = new File(fileName);
+        if (inclusions == null || inclusions.size() == 0) {
+            return true;
+        }
+        for (String includeItem : inclusions) {
+            String absolutePath = file.getAbsolutePath();
+            if (absolutePath.contains(includeItem)
+                    || absolutePath.matches(includeItem)) {
                 return true;
             }
         }
@@ -198,7 +226,9 @@ public class MutoProcessor {
         List<String> files = getFilesRecursively(absTargetDirectory);
         for (int i = 0; i < files.size(); i++) {
             if (this.isFileExcluded(files.get(i),
-                    this.processFilesExclusions)) {
+                    this.processFilesExclusions)
+            || !this.isFileIncluded(files.get(i),
+                    this.processFilesIncludes)) {
                 files.remove(i);
                 i--;
             }
@@ -362,6 +392,7 @@ public class MutoProcessor {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                result.retrieveResults();
                 this.afterTest(result);
             }
         }
@@ -467,5 +498,18 @@ public class MutoProcessor {
     public final void setProcessFilesExclusions(
             final List<String> processFilesExclusionsValue) {
         this.processFilesExclusions = processFilesExclusionsValue;
+    }
+    /**
+     * @return the processFilesIncludes
+     */
+    public final List<String> getProcessFilesIncludes() {
+        return processFilesIncludes;
+    }
+    /**
+     * @param processFilesIncludesValue the processFilesIncludes to set
+     */
+    public final void setProcessFilesIncludes(
+            final List<String> processFilesIncludesValue) {
+        this.processFilesIncludes = processFilesIncludesValue;
     }
 }

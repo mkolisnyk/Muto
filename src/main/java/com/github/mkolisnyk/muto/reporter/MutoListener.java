@@ -14,8 +14,9 @@ public interface MutoListener {
 
     /**
      * .
+     * @throws Exception .
      */
-    void afterSuiteRun();
+    void afterSuiteRun() throws Exception;
 
     /**
      * .
@@ -25,8 +26,9 @@ public interface MutoListener {
     /**
      * .
      * @param result .
+     * @throws Exception .
      */
-    void afterTestRun(MutoResult result);
+    void afterTestRun(MutoResult result) throws Exception;
     /**
      * .
      */

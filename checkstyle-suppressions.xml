@@ -6,9 +6,12 @@
 
 <suppressions>
     <suppress checks="DesignForExtensionCheck"
-              files="Window.java"
-              lines="1-500"/>
+              files="MutationStrategy.java"
+              lines="98-100"/>
     <suppress checks="MagicNumberCheck"
               files="JavadocStyleCheck.java"
               lines="221"/>
+    <suppress checks="JavadocTypeCheck"
+              files="MavenMutoReporter.java"
+              lines="1-120"/>
 </suppressions>

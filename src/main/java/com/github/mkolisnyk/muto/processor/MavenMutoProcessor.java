@@ -23,7 +23,7 @@ import com.github.mkolisnyk.muto.reporter.MutoListener;
 /**
  * @author Myk Kolisnyk
  */
-@Mojo(name = "generate", defaultPhase = LifecyclePhase.VERIFY)
+@Mojo(name = "process", defaultPhase = LifecyclePhase.VERIFY)
 public class MavenMutoProcessor extends AbstractMojo {
 
     /**
@@ -41,8 +41,18 @@ public class MavenMutoProcessor extends AbstractMojo {
     /**
      * .
      */
+    @Parameter(property = "muto.output.directory", defaultValue = "target/muto")
+    private String outputDirectory;
+    /**
+     * .
+     */
     @Parameter
     private List<String> excludes;
+    /**
+     * .
+     */
+    @Parameter
+    private List<String> includes;
     /**
      * .
      */
@@ -209,6 +219,30 @@ public class MavenMutoProcessor extends AbstractMojo {
         this.mutationRules = mutationRulesValue;
     }
     /**
+     * @return the includes
+     */
+    public final List<String> getIncludes() {
+        return includes;
+    }
+    /**
+     * @param includesValue the includes to set
+     */
+    public final void setIncludes(final List<String> includesValue) {
+        this.includes = includesValue;
+    }
+    /**
+     * @return the outputDirectory
+     */
+    public final String getOutputDirectory() {
+        return outputDirectory;
+    }
+    /**
+     * @param outputDirectoryValue the outputDirectory to set
+     */
+    public final void setOutputDirectory(final String outputDirectoryValue) {
+        this.outputDirectory = outputDirectoryValue;
+    }
+    /**
      * .
      * @return .
      * @throws Exception .
@@ -328,6 +362,8 @@ public class MavenMutoProcessor extends AbstractMojo {
         processor.setListeners(initListeners());
         processor.setRunCommand(runCommand);
         processor.setExcludes(excludes);
+        processor.setOutputLocation(outputDirectory);
+        processor.setProcessFilesIncludes(includes);
         return processor;
     }
     /**

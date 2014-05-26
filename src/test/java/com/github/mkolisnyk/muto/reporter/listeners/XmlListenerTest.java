@@ -11,7 +11,7 @@ import com.github.mkolisnyk.muto.reporter.MutoResult;
 public class XmlListenerTest {
 
     @Test
-    public void testAfterTestRun() {
+    public void testAfterTestRun() throws Exception {
         File reportsDir = new File("src/test/resources");
         File outputDir = new File("target/muto");
         File outputFile = new File(outputDir.getAbsolutePath() + File.separator + "muto_result_1.xml");

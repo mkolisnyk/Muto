@@ -26,10 +26,10 @@ public class SingleSetMutationStrategyTest {
     @Test
     public void testHasNextIsAlwaysFalse() {
         Assert.assertFalse(strategy.hasNext(sample));
-        Assert.assertEquals(0, strategy.total(sample));
+        Assert.assertEquals(1, strategy.total(sample));
         strategy.reset();
         Assert.assertFalse(strategy.hasNext(sample));
-        Assert.assertEquals(0, strategy.total(sample));
+        Assert.assertEquals(1, strategy.total(sample));
     }
 
 }

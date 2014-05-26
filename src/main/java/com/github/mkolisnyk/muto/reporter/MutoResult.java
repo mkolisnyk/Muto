@@ -50,6 +50,12 @@ public class MutoResult {
     }
     /**
      * .
+     */
+    public MutoResult() {
+        this("");
+    }
+    /**
+     * .
      * @return .
      */
     public final String getOutputLocation() {
@@ -113,7 +119,7 @@ public class MutoResult {
         results = new ArrayList<JUnitTestSuite>();
         Iterator<File> iter = FileUtils.iterateFiles(new File(
                 this.testReportsLocation), new String[] {"xml"},
-                true);
+                false);
         while (iter.hasNext()) {
             String file = iter.next().getAbsolutePath();
             JUnitTestSuite suite = retrieveResult(file);
