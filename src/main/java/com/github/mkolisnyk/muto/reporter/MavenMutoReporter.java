@@ -6,8 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Properties;
 import java.util.ResourceBundle;
+
+import javax.xml.bind.JAXB;
 
 import org.apache.maven.doxia.sink.Sink;
 import org.apache.maven.doxia.siterenderer.Renderer;
@@ -99,6 +102,11 @@ public class MavenMutoReporter extends AbstractMavenReport {
     @Override
     protected final void executeReport(final Locale locale)
             throws MavenReportException {
+        MavenMutoReporterHelper helper = new MavenMutoReporterHelper();
+        MutoResult[] resultArray;
+
+        resultArray = JAXB.unmarshal(new File(this.outputDirectory + File.separator + "muto_total.xml"), MutoResult[].class);
+        
         Sink sink = getSink();
         sink.head();
         sink.title();
@@ -111,9 +119,11 @@ public class MavenMutoReporter extends AbstractMavenReport {
         sink.sectionTitle1();
         sink.text("Overview");
         sink.sectionTitle1_();
-        sink.section1_();
         sink.paragraph();
+        Map<String,Integer> results = helper.getOverviewMap(resultArray);
+        MavenMutoReporterDrawer.drawOverviewChart(sink, results);
         sink.paragraph_();
+        sink.section1_();
         
         sink.section1();
         sink.sectionTitle1();
@@ -125,7 +135,7 @@ public class MavenMutoReporter extends AbstractMavenReport {
 
         sink.section1();
         sink.sectionTitle1();
-        sink.text("Result Details");
+        sink.text("Result Statistics");
         sink.sectionTitle1_();
         sink.paragraph();
         sink.paragraph_();
@@ -142,6 +152,38 @@ public class MavenMutoReporter extends AbstractMavenReport {
         sink.section2();
         sink.sectionTitle2();
         sink.text("Biggest Impact");
+        sink.sectionTitle2_();
+        sink.section2_();
+        sink.paragraph();
+        sink.paragraph_();
+
+        sink.section1();
+        sink.sectionTitle1();
+        sink.text("Result Details");
+        sink.sectionTitle1_();
+        sink.paragraph();
+        sink.paragraph_();
+        sink.section1_();
+
+        sink.section2();
+        sink.sectionTitle2();
+        sink.text("Evergreen Tests");
+        sink.sectionTitle2_();
+        sink.section2_();
+        sink.paragraph();
+        sink.paragraph_();
+
+        sink.section2();
+        sink.sectionTitle2();
+        sink.text("Passed Runs");
+        sink.sectionTitle2_();
+        sink.section2_();
+        sink.paragraph();
+        sink.paragraph_();
+
+        sink.section2();
+        sink.sectionTitle2();
+        sink.text("Failed/Errored Runs");
         sink.sectionTitle2_();
         sink.section2_();
         sink.paragraph();

@@ -4,6 +4,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import com.github.mkolisnyk.muto.generator.MutationRule;
+
 /**
  * @author Myk Kolisnyk
  */
@@ -28,7 +30,11 @@ public class MutationLocation {
      */
     @XmlElement(name = "matchedText")
     private String matchedText;
-
+    /**
+     * .
+     */
+    @XmlElement(name = "rule")
+    private String ruleName;
     /**
      * .
      */
@@ -36,6 +42,7 @@ public class MutationLocation {
         this.startPosition = 0;
         this.endPosition = 0;
         this.fileName = "";
+        this.ruleName = "";
     }
 
     /**
@@ -86,13 +93,33 @@ public class MutationLocation {
         return fileName;
     }
     /**
+     * @return the ruleName
+     */
+    public final String getRuleName() {
+        return ruleName;
+    }
+
+    /**
+     * @param ruleNameValue the ruleName to set
+     */
+    public final void setRuleName(String ruleNameValue) {
+        this.ruleName = ruleNameValue;
+    }
+
+    /**
      * .
      * @param fileNameValue .
      */
     public final void setFileName(final String fileNameValue) {
         this.fileName = fileNameValue;
     }
-
+    /**
+     * .
+     * @param rule .
+     */
+    public final <T extends MutationRule> void setRule(T rule) {
+        this.ruleName = rule.getClass().getCanonicalName();
+    }
     /**
      * .
      * @return .

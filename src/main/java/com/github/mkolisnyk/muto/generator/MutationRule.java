@@ -35,6 +35,7 @@ public abstract class MutationRule {
      * @return .
      */
     public final MutationLocation getLocation() {
+        this.location.setRule(this);
         return location;
     }
 
