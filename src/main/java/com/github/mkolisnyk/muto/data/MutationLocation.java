@@ -95,6 +95,7 @@ public class MutationLocation {
     /**
      * @return the ruleName
      */
+    @XmlTransient
     public final String getRuleName() {
         return ruleName;
     }
@@ -102,7 +103,7 @@ public class MutationLocation {
     /**
      * @param ruleNameValue the ruleName to set
      */
-    public final void setRuleName(String ruleNameValue) {
+    public final void setRuleName(final String ruleNameValue) {
         this.ruleName = ruleNameValue;
     }
 
@@ -115,9 +116,10 @@ public class MutationLocation {
     }
     /**
      * .
+     * @param <T> .
      * @param rule .
      */
-    public final <T extends MutationRule> void setRule(T rule) {
+    public final <T extends MutationRule> void setRule(final T rule) {
         this.ruleName = rule.getClass().getCanonicalName();
     }
     /**

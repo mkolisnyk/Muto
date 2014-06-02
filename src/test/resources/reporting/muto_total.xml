@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<mutoResult[]>
-    <item>
+<mutoResultsSet>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -166,10 +166,11 @@
         }&#xD;
         return depth;&#xD;
     </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -330,10 +331,11 @@
                 break;&#xD;
             }&#xD;
         </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -493,10 +495,11 @@
             location.setMatchedText(input.substring(start + 1,&#xD;
                     end + 1));&#xD;
         </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -667,10 +670,11 @@
                 }&#xD;
             }&#xD;
         </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -831,10 +835,11 @@
                     + result.substring(location.getEndPosition() + 1);&#xD;
             this.setLocation(location);&#xD;
         //</matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -996,10 +1001,11 @@
         }&#xD;
         return count;&#xD;
     </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -1157,10 +1163,11 @@
             <matchedText>') {&#xD;
                 depth++;&#xD;
             } else if (input.charAt(i) == '</matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -1318,10 +1325,11 @@
             <matchedText>&#xD;
                 depth--;&#xD;
             </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -1480,10 +1488,11 @@
                 start = i;&#xD;
                 break;&#xD;
             </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -1642,10 +1651,11 @@
                 end = i - 1;&#xD;
                 break;&#xD;
             </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -1804,10 +1814,11 @@
                 location = new MutationLocation(-1, -1);&#xD;
                 depth++;&#xD;
             </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -1969,10 +1980,11 @@
         }&#xD;
         return max;&#xD;
     </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -2137,10 +2149,11 @@
                     break;&#xD;
                 }&#xD;
             </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -2299,10 +2312,11 @@
                 count++;&#xD;
             }&#xD;
         </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -2460,10 +2474,11 @@
             <matchedText>&#xD;
                 depth++;&#xD;
             </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -2622,10 +2637,11 @@
                     location = new MutationLocation(-1, -1);&#xD;
                     depth++;&#xD;
                 </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -2783,10 +2799,11 @@
             <matchedText>&#xD;
                     break;&#xD;
                 </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -2944,10 +2961,11 @@
             <matchedText>&#xD;
                 count++;&#xD;
             </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -3101,10 +3119,12 @@
             </testcase>
         </results>
         <exitCode>0</exitCode>
-        <location start="-1" end="-1" file="C:\Dev\Work\muto\target\muto\workspace\src\main\java\com\github\mkolisnyk\muto\generator\rules\BlockCleanMutationRule.java"/>
+        <location start="-1" end="-1" file="C:\Dev\Work\muto\target\muto\workspace\src\main\java\com\github\mkolisnyk\muto\generator\rules\BlockCleanMutationRule.java">
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
+        </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -3282,10 +3302,11 @@
         }&#xD;
         return location;&#xD;
     </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -3471,10 +3492,11 @@
         //}&#xD;
         return result;&#xD;
     </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -3633,10 +3655,11 @@
         String result = transform(input, position);&#xD;
         return result;&#xD;
     </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -3801,10 +3824,11 @@
         return count;&#xD;
     }&#xD;
 </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -3966,10 +3990,11 @@
                 depth--;&#xD;
             }&#xD;
         </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -4127,10 +4152,11 @@
             <matchedText>&#xD;
             max = Math.max(max, depthAtPosition(input, i));&#xD;
         </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-    <item>
+    </resultList>
+    <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">
                 <error message="Test exception" type="java.lang.Exception">java.lang.Exception: Test exception
@@ -4291,7 +4317,8 @@
                 break;&#xD;
             }&#xD;
         </matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
         </location>
         <outputLocation>target/muto/results</outputLocation>
-    </item>
-</mutoResult[]>
+    </resultList>
+</mutoResultsSet>

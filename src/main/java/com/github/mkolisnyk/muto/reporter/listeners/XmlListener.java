@@ -1,8 +1,8 @@
 package com.github.mkolisnyk.muto.reporter.listeners;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.xml.bind.JAXB;
@@ -15,6 +15,7 @@ import org.apache.log4j.SimpleLayout;
 import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
 import com.github.mkolisnyk.muto.reporter.MutoResult;
+import com.github.mkolisnyk.muto.reporter.MutoResultSet;
 
 /**
  * @author Myk Kolisnyk
@@ -60,7 +61,7 @@ public class XmlListener implements MutoListener {
                         + finalReportFile.getAbsolutePath());
             }
         }
-        List<MutoResult> results = new ArrayList<MutoResult>();
+        List<MutoResult> results = new LinkedList<MutoResult>();
         File output = new File(this.outputLocation);
         log.debug("Final output: " + finalReport);
         log.debug("Reports location: " + output.getAbsolutePath());
@@ -84,7 +85,9 @@ public class XmlListener implements MutoListener {
         for (int i = 0; i < results.size(); i++) {
             resultArray[i] = results.get(i);
         }
-        JAXB.marshal(resultArray, finalReportFile);
+        MutoResultSet resultSet = new MutoResultSet();
+        resultSet.setResultList(resultArray);
+        JAXB.marshal(resultSet, finalReportFile);
     }
     /**
      * .

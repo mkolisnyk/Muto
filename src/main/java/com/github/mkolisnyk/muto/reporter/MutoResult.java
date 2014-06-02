@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.xml.bind.JAXB;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.apache.commons.io.FileUtils;
@@ -19,7 +20,25 @@ import com.github.mkolisnyk.muto.reporter.result.JUnitTestSuite;
  * @author Myk Kolisnyk
  *
  */
+@XmlRootElement(name = "mutoResult")
 public class MutoResult {
+    /**
+     * .
+     */
+    public static final int PASSED = 0;
+    /**
+     * .
+     */
+    public static final int FAILED = 1;
+    /**
+     * .
+     */
+    public static final int ERRORRED = 2;
+    /**
+     * .
+     */
+    public static final int UNDEFINED = 3;
+
     /**
      * .
      */
@@ -135,5 +154,60 @@ public class MutoResult {
      */
     public final JUnitTestSuite retrieveResult(final String file) {
         return JAXB.unmarshal(file, JUnitTestSuite.class);
+    }
+
+    /**
+     * .
+     * @return .
+     */
+    private int getStatus() {
+        if (this.results == null || this.results.size() == 0) {
+            if (this.getExitCode() != 0) {
+                return FAILED;
+            } else {
+                return UNDEFINED;
+            }
+        }
+        int errors = 0;
+        for (JUnitTestSuite suite : results) {
+            errors = suite.getErrors() + suite.getFailures();
+        }
+        if (errors > 0) {
+            return ERRORRED;
+        } else {
+            return PASSED;
+        }
+    }
+
+    /**
+     * .
+     * @return .
+     */
+    public final boolean isPassed() {
+        return this.getStatus() == PASSED;
+    }
+
+    /**
+     * .
+     * @return .
+     */
+    public final boolean isFailed() {
+        return this.getStatus() == FAILED;
+    }
+
+    /**
+     * .
+     * @return .
+     */
+    public final boolean isErrorred() {
+        return this.getStatus() == ERRORRED;
+    }
+
+    /**
+     * .
+     * @return .
+     */
+    public final boolean isUndefined() {
+        return this.getStatus() == UNDEFINED;
     }
 }

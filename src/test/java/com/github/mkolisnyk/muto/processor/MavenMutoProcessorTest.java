@@ -140,8 +140,8 @@ public class MavenMutoProcessorTest {
         //listenersValue.add(ConsoleListener.class.getCanonicalName());
         listenersValue.add(XmlListener.class.getCanonicalName());
         processor.setListeners(listenersValue);
-        mutationStrategiesValue.add(SingleSetMutationStrategy.class.getCanonicalName());
-        //mutationStrategiesValue.add(OneByOneMutationStrategy.class.getCanonicalName());
+        //mutationStrategiesValue.add(SingleSetMutationStrategy.class.getCanonicalName());
+        mutationStrategiesValue.add(OneByOneMutationStrategy.class.getCanonicalName());
         processor.setMutationStrategies(mutationStrategiesValue);
         mutationRulesValue.add(BlockCleanMutationRule.class.getCanonicalName());
         processor.setMutationRules(mutationRulesValue);
