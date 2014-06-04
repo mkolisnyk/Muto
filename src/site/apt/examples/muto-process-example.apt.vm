@@ -1,0 +1,55 @@
+	------
+	Muto Process Examples
+	------
+	Myk Kolisnyk
+	------
+	2014-06-04
+
+Overview
+
+	The <<muto:process>> goal is targeted to
+
+Parameters to specify
+
+
+
+Running Muto Processor
+
+* Maven Configuration
+
+	The sample <<pom.xml>> fragment shows how to generate such report:
+	
++------+
++------+
+
+* Command Line
+
++------+
++------+
+
+Customize Muto Processing
+
+* Restrict initial file set to process
+
++------+
++------+
+
+* Restricting the set of tests to run
+
++------+
++------+
+
+* Identifying the lists of mutations to apply
+
++------+
++------+
+
+* Identifying the set of files to apply mutations to
+
++------+
++------+
+
+* Customizing results output
+
++------+
++------+

@@ -1,0 +1,101 @@
+	------
+	Muto Plugin Usage Example
+	------
+	Myk Kolisnyk
+	------
+	2014-06-03
+
+Overview
+
+	Muto plugin has 2 major modes:
+	
+	* Prepare and perform mutation testing. By default it is performed during <<verify>> phase. 
+	
+	* Generate report based on results. By default it is performed during <<site>> phase.
+
+Initiate Mutation Testing 
+
+	Mutation testing is initiated within <<build>> configuration. All available parameters can be split into the following groups:
+	
+	* <<Workspace preparation parameters>> - define major workspace parameters like initial location where the sources are taken from, destination location and various include/exclude masks. 
+	
+	* <<Rule definition parameters>> - identify lists of rules to be applied during mutation testing.
+	
+	* <<Run parameters>> - define which command is to be run and where results can be found
+	
+	
+	
+	Here is basic example of Muto run initialising:
+
++------+
+<project>
+	...
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.mkolisnyk</groupId>
+				<artifactId>muto</artifactId>
+				<version>${project.version}</version>
+				<configuration>
+					<sourceDirectory>.</sourceDirectory>
+					<targetDirectory>target/muto/workspace</targetDirectory>
+					<excludes>
+						<exclude>\\.git</exclude>
+				        <exclude>target</exclude>
+				        <exclude>src/site</exclude>
+					<excludes>
+					<includes>
+						<include>(.*).java</include>
+					<includes>
+
+					<runCommand>mvn clean test</runCommand>
+					<testReportsLocation>target/muto/workspace/target/surfire</testReportsLocation>
+					<outputDirectory>target/muto</outputDirectory>
+				</configuration>
+			</plugin>
+			...
+		</plugins>
+	</build>
+	...
+</project>
++------+
+
+	This action can be activated using the following command line:
+
++------+
+	mvn muto:process
++------+
+
+	More detailed examples can be found on the {{{./examples/muto-process-example.html}Muto Processing Examples}} page.
+
+Generate Maven Report
+
+	Reporting requires just the location of the final mutation testing results report containing joint run information. Typical report generation can be initialised the following way:
+
++------+
+<project>
+	...
+	<!-- To use the report goals in your POM or parent POM -->
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>com.github.mkolisnyk</groupId>
+				<artifactId>muto</artifactId>
+				<version>${project.version}</version>
+				<configuration>
+					<outputDirectory>src/test/resources/reporting</outputDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+	...
+</project>
++------+
+
+	This action can be activated using the following command line:
+
++------+
+	mvn muto:muto-report
++------+
+
+	More detailed examples can be found on the {{{./examples/muto-reporting-example.html}Muto Reporting Examples}} page.

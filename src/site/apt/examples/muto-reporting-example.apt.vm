@@ -1,0 +1,36 @@
+	------
+	Maven Traceability Matrix Example
+	------
+	Myk Kolisnyk
+	------
+	2013-11-03
+
+Overview
+
+
+
+Parameters to specify
+
+
+Generating Report
+
+	The sample <<pom.xml>> fragment shows how to generate such report:
+	
++------+
+<reporting>
+  <plugins>
+    <plugin>
+      <groupId>com.github.mkolisnyk</groupId>
+      <artifactId>muto</artifactId>
+      <version>${project.version}</version>
+    </plugin>
+  </plugins>
+</reporting>
++------+
+
+	So, in order to get this report generated you should run Maven command like:
+	
++------+
+mvn muto:muto-report
++------+
+

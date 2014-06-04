@@ -1,0 +1,96 @@
+	------
+	Muto - Mutation Automated Testing Engine Overview
+	------
+	Myk Kolisnyk
+	------
+	2014-06-03
+
+
+%{toc}
+
+Introduction
+
+	{{{http://mkolisnyk.github.io/Muto/}Muto}} is an engine for automated {{{http://en.wikipedia.org/wiki/Mutation_testing}mutation testing} for Java.
+	 It goes through source code and inserts various modifications into the code under test based on pre-defined rules. Once mutation is inserted it executes 
+	 existing set of tests (unit/integration/system etc) to find if existing tests cover entire code well and are capable to detect any potential code 
+	 disruption which may be caused during development process.
+	 
+	 Main goal of this engine is to provide the mechanism of tests quality identification. It verifies if existing set of tests covers any place of
+	 application under test code and really perform verifications. As the result it helps identifying tests which always pass and thus they require
+	 more attention as they potentially do not reveal any potential problems.
+	 
+	 Another goal is to provide the API for extending the set of rules which can be used for mutation insertion.
+	 
+	 Eventually, this engine is supposed to be integrated into build system and be executed on regular basis to verify the quality of existing set of tests. 
+
+Author
+
+  Myk Kolisnyk
+
+Build Status
+
+[https://travis-ci.org/mkolisnyk/Muto.svg?branch=master]
+
+  {{{https://travis-ci.org/mkolisnyk/Muto/builds}View build congifuration}}
+ 
+~~ Licensed to the Apache Software Foundation (ASF) under one
+~~ or more contributor license agreements.  See the NOTICE file
+~~ distributed with this work for additional information
+~~ regarding copyright ownership.  The ASF licenses this file
+~~ to you under the Apache License, Version 2.0 (the
+~~ "License"); you may not use this file except in compliance
+~~ with the License.  You may obtain a copy of the License at
+~~
+~~   http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~ Unless required by applicable law or agreed to in writing,
+~~ software distributed under the License is distributed on an
+~~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~~ KIND, either express or implied.  See the License for the
+~~ specific language governing permissions and limitations
+~~ under the License.
+ 
+~~ NOTE: For help with the syntax of this file, see:
+~~ http://maven.apache.org/doxia/references/apt-format.html
+ 
+ 
+Muto (the mutation automated testing engine)
+ 
+  Plugin introduction, description, and other relevant information.
+ 
+* Goals Overview
+ 
+  General Information about the goals.
+ 
+  * {{{./process-mojo.html}muto:process}}	Prepares workspace, introduces mutation and executes tests
+  
+  * {{{./muto-report-mojo.html}muto:muto-report}}	Generates HTML report based on Muto results information
+  
+  
+  
+  For more details see {{{plugin-info.html}goals overview page}}.
+  
+* Usage
+ 
+  General instructions on how to use the Plugin Name can be found on the {{{./usage.html}usage page}}. Some more
+  specific use cases are described in the examples given below.
+ 
+  In case you still have questions regarding the plugin's usage, please have a look at the {{{./faq.html}FAQ}} and feel
+  free to contact the {{{./team-list.html}project team}}.
+ 
+  If you feel like the plugin is missing a feature or has a defect, you can fill a feature request or bug report in our
+  {{{./issue-tracking.html}issue tracker}}. When creating a new issue, please provide a comprehensive description of your
+  concern. Especially for fixing bugs it is crucial that the developers can reproduce your problem. For this reason,
+  entire debug logs, POMs or most preferably little demo projects attached to the issue are very much appreciated.
+  Of course, patches are welcome, too. Contributors can check out the project from our
+  {{{./source-repository.html}source repository}} and will find supplementary information in the
+  {{{http://maven.apache.org/guides/development/guide-helping.html}guide to helping with Maven}}. 
+ 
+* Examples
+ 
+  To provide you with better understanding on some usages of the Plugin Name,
+  you can take a look into the following examples:
+ 
+  * {{{./examples/muto-process-example.html}Muto Process Example}}
+ 
+  * {{{./examples/muto-reporting-example.html}Muto Reporting Example}}
