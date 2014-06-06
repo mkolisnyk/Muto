@@ -305,6 +305,11 @@
 						<packageLineRate>85</packageLineRate>
 						<packageBranchRate>85</packageBranchRate>
 					</check>
+					<instrumentation>
+						<excludes>
+							<exclude>**/HelpMojo.class</exclude>
+						</excludes>
+					</instrumentation>
 				</configuration>
 				<executions>
 					<execution>
@@ -352,11 +357,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>com.github.mkolisnyk</groupId>
-				<artifactId>muto</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
-			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -402,11 +402,12 @@
 		    <artifactId>plexus-utils</artifactId>
 		    <version>2.0.1</version>
 		</dependency>
-		<dependency>
-			<groupId>com.github.mkolisnyk</groupId>
-			<artifactId>muto</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+	    <dependency>
+	      <groupId>org.apache.maven.shared</groupId>
+	      <artifactId>maven-plugin-testing-harness</artifactId>
+	      <version>1.1</version>
+	      <scope>test</scope>
+	    </dependency>
 	</dependencies>
 	<reporting>
 		<plugins>
@@ -485,14 +486,10 @@
 				<version>2.4</version>
 			</plugin>
 			<plugin>
-				<groupId>com.github.mkolisnyk</groupId>
-				<artifactId>muto</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
-				<configuration>
-					<outputDirectory>src/test/resources/reporting</outputDirectory>
-				</configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-plugin-plugin</artifactId>
+				<version>3.2</version>
 			</plugin>
-			<!-- com.github.mkolisnyk:muto:0.0.1-SNAPSHOT -->
 		</plugins>		
 	</reporting>
 </project>

@@ -33,12 +33,12 @@ under the License.
       <item name="Muto Reporting Example" href="examples/muto-reporting-example.html"/>
     </menu>
     
-    <menu name="Developers Guide">
+    <!-- <menu name="Developers Guide">
     	<item name="General Concepts Overview" href=""/>
     	<item name="Extending Code Mutations" href=""/>
     	<item name="Coding Standards" href=""/>
     	<item name="Quality Control" href=""/>
-    </menu>
+    </menu>-->
     
     <menu ref="reports"/>
     

@@ -139,6 +139,7 @@ public class MavenMutoProcessorTest {
         processor.setFileStrategies(fileStrategiesValue);
         //listenersValue.add(ConsoleListener.class.getCanonicalName());
         listenersValue.add(XmlListener.class.getCanonicalName());
+        listenersValue.add(DummyListener.class.getCanonicalName());
         processor.setListeners(listenersValue);
         //mutationStrategiesValue.add(SingleSetMutationStrategy.class.getCanonicalName());
         mutationStrategiesValue.add(OneByOneMutationStrategy.class.getCanonicalName());

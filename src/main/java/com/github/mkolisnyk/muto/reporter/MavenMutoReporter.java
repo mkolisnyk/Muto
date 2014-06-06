@@ -23,6 +23,10 @@ import org.apache.maven.reporting.MavenReportException;
 public class MavenMutoReporter extends AbstractMavenReport {
     /**
      * .
+     */
+    private Sink sink;
+    /**
+     * .
      * @parameter expression="${project.reporting.outputDirectory}"
      * @required
      * @readonly
@@ -96,6 +100,27 @@ public class MavenMutoReporter extends AbstractMavenReport {
         this.siteRenderer = siteRendererValue;
     }
 
+    /**
+     * .
+     * @return .
+     */
+    @Override
+    public final Sink getSink() {
+        if (sink != null) {
+            return sink;
+        } else {
+            return super.getSink();
+        }
+    }
+
+    /**
+     * .
+     * @param sinkValue .
+     */
+    public final void setSink(final Sink sinkValue) {
+        sink = sinkValue;
+    }
+
     @Override
     protected final void executeReport(final Locale locale)
             throws MavenReportException {
@@ -108,7 +133,7 @@ public class MavenMutoReporter extends AbstractMavenReport {
                 ),
                 MutoResultSet.class);
 
-        Sink sink = getSink();
+        sink = getSink();
         sink.head();
         sink.title();
         sink.text(this.getName(locale));

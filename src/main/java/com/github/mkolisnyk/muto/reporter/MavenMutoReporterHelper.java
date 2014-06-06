@@ -1,12 +1,7 @@
 package com.github.mkolisnyk.muto.reporter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -29,37 +24,6 @@ public class MavenMutoReporterHelper {
      * .
      */
     public  static final String ERRORED = "Errored";
-
-    /**
-     * .
-     * @param <K> .
-     * @param <V> .
-     * @param map .
-     * @param ascending .
-     * @return .
-     */
-    static <K, V extends Comparable<? super V>>
-        List<Entry<K, V>> entriesSortedByValues(
-            final Map<K, V> map, final boolean ascending) {
-
-        List<Entry<K, V>> sortedEntries = new ArrayList<Entry<K, V>>(
-                map.entrySet());
-
-        Collections.sort(sortedEntries,
-                new Comparator<Entry<K, V>>() {
-                    @Override
-                    public int compare(
-                            final Entry<K, V> e1,
-                            final Entry<K, V> e2) {
-                        if (ascending) {
-                            return e2.getValue().compareTo(e1.getValue());
-                        } else {
-                            return e1.getValue().compareTo(e2.getValue());
-                        }
-                    }
-                });
-        return sortedEntries;
-    }
 
     /**
      * .
@@ -111,10 +75,12 @@ public class MavenMutoReporterHelper {
             for (JUnitTestSuite suite:item.getResults()) {
                 int currentRating = suite.getErrors() + suite.getFailures();
                 String suiteName = suite.getName();
-                if (result.containsKey(suiteName)) {
+                if (result.containsKey("" + suiteName)) {
                     currentRating += result.get(suiteName);
                 }
-                result.put(suiteName, currentRating);
+                if (suiteName != null) {
+                    result.put(suiteName, currentRating);
+                }
             }
         }
         return result;

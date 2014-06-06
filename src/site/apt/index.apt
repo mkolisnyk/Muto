@@ -10,7 +10,7 @@
 
 Introduction
 
-	{{{http://mkolisnyk.github.io/Muto/}Muto}} is an engine for automated {{{http://en.wikipedia.org/wiki/Mutation_testing}mutation testing} for Java.
+	{{{http://mkolisnyk.github.io/Muto/}Muto}} is an engine for automated {{{http://en.wikipedia.org/wiki/Mutation_testing}mutation testing}} for Java.
 	 It goes through source code and inserts various modifications into the code under test based on pre-defined rules. Once mutation is inserted it executes 
 	 existing set of tests (unit/integration/system etc) to find if existing tests cover entire code well and are capable to detect any potential code 
 	 disruption which may be caused during development process.

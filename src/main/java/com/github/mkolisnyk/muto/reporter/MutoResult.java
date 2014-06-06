@@ -102,6 +102,13 @@ public class MutoResult {
     public final List<JUnitTestSuite> getResults() {
         return results;
     }
+
+    /**
+     * @param resultsValue the results to set
+     */
+    public final void setResults(final List<JUnitTestSuite> resultsValue) {
+        this.results = resultsValue;
+    }
     /**
      * .
      * @return .

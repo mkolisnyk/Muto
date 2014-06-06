@@ -7,11 +7,25 @@
 
 Overview
 
-	The <<muto:process>> goal is targeted to
+	The <<muto:process>> goal performs mutation testing of the current project code. During execution it goes through the following stages:
+	
+	* <<Workspace creation>> - creates folder where current project is copied to. This is done to minimize probability of committing mutation after testing.
+	
+	* <<Mutation generation>> - based on rules specified the Muto applies changes to the code in the workspace.
+	
+	* <<Command execution>> - normally that should be a command running tests against mutated code.
+	
+	* <<Initial state restoration>> - after testing is done and reports are generated the initial state is to be restored.
+	
+	* <<Workspace cleanup>> - once all runs are done the workspace is cleaned up.
+	
+	
+	
+	The final result is the report containing information about all mutations applied and results collected.
 
 Parameters to specify
 
-
+	
 
 Running Muto Processor
 
@@ -20,36 +34,218 @@ Running Muto Processor
 	The sample <<pom.xml>> fragment shows how to generate such report:
 	
 +------+
-+------+
-
-* Command Line
-
-+------+
+<project>
+	...
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.mkolisnyk</groupId>
+				<artifactId>muto</artifactId>
+				<version>${project.version}</version>
+				<configuration>
+					<sourceDirectory>.</sourceDirectory>
+					<targetDirectory>target/muto/workspace</targetDirectory>
+					<runCommand>mvn compile test</runCommand>
+					<testReportsLocation>target/muto/workspace/target/surfire</testReportsLocation>
+					<outputDirectory>target/muto</outputDirectory>
+				</configuration>
+			</plugin>
+			...
+		</plugins>
+	</build>
+	...
+</project>
 +------+
 
 Customize Muto Processing
 
 * Restrict initial file set to process
 
+	By default the engine copies all current project content into separate working directory. But project folder may contain some auxiliary folders like <<.git>> or 
+	<<.svn>> or some temporary stuff like <<target>>, <<bin>> etc. These resources are not really needed in the workspace so it would be good to avoid such directories
+	from being copied into the workspace. For such optimization there are <<excludes>> and <<includes>> parameters. They specify the list of inclusion/exclusion patterns.
+	
+	The below configuration will copy all <<*.java>> files into workspace folder while <<.git>>, <<target>> and <<src/site>> folders will be excluded. The <<pom.xml>> fragment looks like: 
+
 +------+
+<project>
+	...
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.mkolisnyk</groupId>
+				<artifactId>muto</artifactId>
+				<version>${project.version}</version>
+				<configuration>
+					<sourceDirectory>.</sourceDirectory>
+					<targetDirectory>target/muto/workspace</targetDirectory>
+					<excludes>
+						<exclude>\\.git</exclude>
+				        <exclude>target</exclude>
+				        <exclude>src/site</exclude>
+					<excludes>
+					<includes>
+						<include>(.*).java</include>
+					<includes>
+
+					<runCommand>mvn compile test</runCommand>
+					<testReportsLocation>target/muto/workspace/target/surfire</testReportsLocation>
+					<outputDirectory>target/muto</outputDirectory>
+				</configuration>
+			</plugin>
+			...
+		</plugins>
+	</build>
+	...
+</project>
 +------+
 
 * Restricting the set of tests to run
 
+	In some cases we're interested just in some specific tests to run against the mutated version. Actually, this is the same as if we run those tests from command line.
+	So, normally we can restrict out test suite by:
+	
+	* groups/categories
+	
+	* File/Class names
+	
+	* File patterns 
+
+	So, actually, we need to run specific command line for the build engine which we use to run our tests. Something like:
+
 +------+
+<project>
+	...
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.mkolisnyk</groupId>
+				<artifactId>muto</artifactId>
+				<version>${project.version}</version>
+				<configuration>
+					...
+					<runCommand>mvn compile test -Dcategory=regression</runCommand>
+					...
+				</configuration>
+			</plugin>
+			...
+		</plugins>
+	</build>
+	...
+</project>
 +------+
 
 * Identifying the lists of mutations to apply
 
+	By default all built-in mutation types are applied during mutation testing suite execution. But in some cases we need some specific rules to be used.
+	Also, since Muto is extensible engine, there may be a need to create some custom mutation rules/strategies. Naturally, we'd like to see them running as well.
+	
+	For this purpose the plugin configuration has entries like:
+	
+	* mutationRules - contains the list of class names corresponding to mutation rules
+	
+	* mutationStrategies - contains the list of class names representing mutation insertion strategies
+	
+	* fileStrategies - contains the list of class names representing file processing strategies
+
+
+
+	Each of them can be customized to fit exact mutation approach you really need. Here is the example of Maven configuration defining mutation related attributes:
+
 +------+
+<project>
+	...
+	<build>
+		<plugins>
+			<plugin>
+                <groupId>com.github.mkolisnyk</groupId>
+                <artifactId>muto</artifactId>
+                <version>${project.version}</version>
+                <configuration>
+					...
+					<fileStrategies>
+						<fileStrategy>com.github.mkolisnyk.muto.generator.filestrategies.OneByOneFileProcessingStrategy</fileStrategy>
+					</fileStrategies>
+					<mutationStrategies>
+						<mutationStrategy>com.github.mkolisnyk.muto.generator.strategies.OneByOneMutationStrategy</mutationStrategy>
+					</mutationStrategies>
+					<mutationRules>
+						<mutationRule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</mutationRule>
+						<mutationRule>com.github.mkolisnyk.muto.generator.rules.NumberSignMutationRule</mutationRule>
+					</mutationRules>
+					...
+                </configuration>
+            </plugin>
+			...
+		</plugins>
+	</build>
+	...
+</project>
 +------+
+
+	<<NOTE:>> if there's a need to apply some custom mutation attributes which are out of scope of standard set of classes we should make sure 
+	those classes are included into classpath.
 
 * Identifying the set of files to apply mutations to
 
+	In some cases we need to apply mutations to specific set of files, not the entire suite. This can be done by identifying <<includes>> attribute.
+	When engine runs it takes <<includes>> information to identify the list of files to process.
+
 +------+
+<project>
+	...
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.mkolisnyk</groupId>
+				<artifactId>muto</artifactId>
+				<version>${project.version}</version>
+				<configuration>
+					...
+					<includes>
+						<include>(.*)Strategy.java</include>
+					<includes>
+					...
+				</configuration>
+			</plugin>
+			...
+		</plugins>
+	</build>
+	...
+</project>
 +------+
+
+	After such settings all mutations will be applied only to files matchine the <<(.*)Strategy.java>> pattern
 
 * Customizing results output
 
+	By default no output is done. But all reporting functionality is concentrated inside listeners. If we want to
+	make XML output or just simply write results into the console we should define <<listeners>> attribute. Here is
+	an example of it:
+
 +------+
+<project>
+	...
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.mkolisnyk</groupId>
+				<artifactId>muto</artifactId>
+				<version>${project.version}</version>
+				<configuration>
+					...
+					<listeners>
+						<listener>com.github.mkolisnyk.muto.reporter.listeners.ConsoleListener</listener>
+						<listener>com.github.mkolisnyk.muto.reporter.listeners.XmlListener</listener>
+					<listeners>
+					...
+				</configuration>
+			</plugin>
+			...
+		</plugins>
+	</build>
+	...
+</project>
 +------+
+
+	Such instruction will produce both console and XML output.

@@ -3,34 +3,31 @@
 	------
 	Myk Kolisnyk
 	------
-	2013-11-03
+	2014-06-04
 
-Overview
+Customizing Reports Directory
 
-
-
-Parameters to specify
-
-
-Generating Report
-
+	Due to different configuration reasons there may be a need to get input from non-default directory.
+	In order to do this we should define <<outputDirectory>> parameter.
 	The sample <<pom.xml>> fragment shows how to generate such report:
 	
 +------+
-<reporting>
-  <plugins>
-    <plugin>
-      <groupId>com.github.mkolisnyk</groupId>
-      <artifactId>muto</artifactId>
-      <version>${project.version}</version>
-    </plugin>
-  </plugins>
-</reporting>
-+------+
-
-	So, in order to get this report generated you should run Maven command like:
-	
-+------+
-mvn muto:muto-report
+<project>
+	...
+	<!-- To use the report goals in your POM or parent POM -->
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>com.github.mkolisnyk</groupId>
+				<artifactId>muto</artifactId>
+				<version>${project.version}</version>
+				<configuration>
+					<outputDirectory>src/test/resources/reporting</outputDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+	...
+</project>
 +------+
 

@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mutoResultsSet>
+	<resultList>
+		<results></results>
+		<exitCode>1</exitCode>
+        <location start="435" end="706" file="C:\Dev\Work\muto\target\muto\workspace\src\main\java\com\github\mkolisnyk\muto\generator\rules\BlockCleanMutationRule.java">
+            <matchedText>&#xD;
+        int depth = 0;&#xD;
+        for (int i = 0; i &lt;= position; i++) {&#xD;
+            if (input.charAt(i) == '{') {&#xD;
+                depth++;&#xD;
+            } else if (input.charAt(i) == '}') {&#xD;
+                depth--;&#xD;
+            }&#xD;
+        }&#xD;
+        return depth;&#xD;
+    		</matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
+        </location>
+        <outputLocation>target/muto/results</outputLocation>
+	</resultList>
+
+	<resultList>
+		<results  failures="0" time="0.018" errors="0" skipped="0" tests="6" name="com.github.mkolisnyk.muto.data.MutationLocationTest">
+			<testcase time="0.042" classname="com.github.mkolisnyk.muto.data.MutationLocationTest" name="testEqualsSameObjectShouldReturnTrue"/>
+			<testcase time="0" classname="com.github.mkolisnyk.muto.data.MutationLocationTest" name="testEqualsDifferentObjectOfTheSameTypeShouldReturnFalse"/>
+			<testcase time="0.001" classname="com.github.mkolisnyk.muto.data.MutationLocationTest" name="testEqualsDifferentObjectTypeShouldReturnFalse"/>
+			<testcase time="0" classname="com.github.mkolisnyk.muto.data.MutationLocationTest" name="testHashCode"/>
+			<testcase time="0" classname="com.github.mkolisnyk.muto.data.MutationLocationTest" name="testEqualsNullObjectTypeShouldReturnFalse"/>
+			<testcase time="0.001" classname="com.github.mkolisnyk.muto.data.MutationLocationTest" name="testEqualsSimilarObjectShouldReturnTrue"/>
+		</results>
+		<exitCode>0</exitCode>
+        <location start="435" end="706" file="C:\Dev\Work\muto\target\muto\workspace\src\main\java\com\github\mkolisnyk\muto\generator\rules\BlockCleanMutationRule.java">
+            <matchedText>&#xD;
+        int depth = 0;&#xD;
+        for (int i = 0; i &lt;= position; i++) {&#xD;
+            if (input.charAt(i) == '{') {&#xD;
+                depth++;&#xD;
+            } else if (input.charAt(i) == '}') {&#xD;
+                depth--;&#xD;
+            }&#xD;
+        }&#xD;
+        return depth;&#xD;
+    		</matchedText>
+            <rule>com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule</rule>
+        </location>
+        <outputLocation>target/muto/results</outputLocation>
+	</resultList>
     <resultList>
         <results failures="1" time="0.018" errors="1" skipped="0" tests="2" name="com.github.mkolisnyk.muto.generator.MutationStrategyTest">
             <testcase time="0.012" classname="com.github.mkolisnyk.muto.generator.MutationStrategyTest" name="testReset">

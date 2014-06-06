@@ -92,6 +92,9 @@ public class JUnitTestSuite {
      */
     @XmlTransient
     public final JUnitTestCase[] getTestCases() {
+        if (testCases == null) {
+            return new JUnitTestCase[] {};
+        }
         return testCases.clone();
     }
     /**
