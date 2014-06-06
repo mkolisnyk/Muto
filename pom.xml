@@ -73,7 +73,7 @@
 			</resource>
 		</resources>
 		<plugins>
-			<!-- <plugin>
+			<plugin>
 				<groupId>com.github.github</groupId>
 				<artifactId>site-maven-plugin</artifactId>
 				<version>0.8</version>
@@ -84,7 +84,7 @@
 					<repositoryName>Muto</repositoryName>
 					<repositoryOwner>mkolisnyk</repositoryOwner>
 					<merge>true</merge>
-					<path>${project.artifactId}</path>
+					<path>${project.version}</path>
 					<dryRun>false</dryRun>
 				</configuration>
 				<executions>
@@ -95,7 +95,7 @@
 						<phase>site</phase>
 					</execution>
 				</executions>
-			</plugin>-->
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-plugin-plugin</artifactId>
