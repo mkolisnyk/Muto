@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.xml.bind.JAXB;
 
+import org.junit.Assert;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
@@ -56,10 +58,9 @@ public class XmlListener implements MutoListener {
                 + "muto_total.xml";
         File finalReportFile = new File(finalReport);
         while (finalReportFile.exists()) {
-            if (!finalReportFile.delete()) {
-                throw new Exception("Unable to devele file: "
-                        + finalReportFile.getAbsolutePath());
-            }
+            Assert.assertTrue("Unable to devele file: "
+                                + finalReportFile.getAbsolutePath(),
+                    finalReportFile.delete());
         }
         List<MutoResult> results = new LinkedList<MutoResult>();
         File output = new File(this.outputLocation);
@@ -106,9 +107,8 @@ public class XmlListener implements MutoListener {
         String outputFile =
                output.getAbsolutePath()
                 + File.separator + "muto_result_" + testCount + ".xml";
-        if (!output.getAbsoluteFile().exists() && !output.mkdirs()) {
-            throw new Exception("Unable to prepare output folder: "
-                    + output.getAbsolutePath());
+        if (!output.getAbsoluteFile().exists()) {
+            Assert.assertTrue(output.mkdirs());
         }
         JAXB.marshal(result, new File(outputFile));
     }

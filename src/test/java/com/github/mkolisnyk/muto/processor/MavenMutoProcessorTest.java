@@ -82,6 +82,7 @@ public class MavenMutoProcessorTest {
         processor.setFileStrategies(null);
         processor.setListeners(null);
         processor.setMutationStrategies(null);
+        processor.setMutationRules(null);
         processor.setSourceDirectory(sourceDirectoryValue);
         processor.setTargetDirectory(targetDirectoryValue);
         processor.setTestReportsLocation(null);

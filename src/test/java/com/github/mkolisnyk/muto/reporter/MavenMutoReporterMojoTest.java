@@ -47,6 +47,12 @@ public class MavenMutoReporterMojoTest extends AbstractMojoTestCase {
     }
 
     @Test
+    public void testGetValuesInvalidLocale() {
+        Assert.assertEquals("", reporter.getName(null));
+        Assert.assertEquals("", reporter.getDescription(null));
+    }
+    
+    @Test
     public void testGetOutputName() {
         Assert.assertEquals("muto", reporter.getOutputName());
     }
@@ -61,6 +67,7 @@ public class MavenMutoReporterMojoTest extends AbstractMojoTestCase {
         Assert.assertEquals(renderer, reporter.getSiteRenderer());
         Assert.assertNull(reporter.getProject());
         reporter.setOutputDirectory("src/test/resources/reporting");
+        Assert.assertEquals("src/test/resources/reporting", reporter.getOutputDirectory());
         SiteRendererSink sink = SinkFactory.createSink( outputHtml.getParentFile(), outputHtml.getName() );
         reporter.setSink(sink);
         reporter.setSiteRenderer(renderer);

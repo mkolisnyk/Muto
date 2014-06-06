@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Assert;
+
 import org.apache.commons.io.FileUtils;
 
 import com.github.mkolisnyk.muto.data.MutationLocation;
@@ -115,7 +117,7 @@ public abstract class FileProcessingStrategy {
             FileUtils.copyFile(src, dest);
             FileUtils.writeStringToFile(src, content);
         } catch (IOException e) {
-            e.printStackTrace();
+            Assert.fail(e.getLocalizedMessage());
         }
     }
     /**
@@ -128,9 +130,9 @@ public abstract class FileProcessingStrategy {
         if (dest.exists()) {
             try {
                 FileUtils.copyFile(dest, src);
-                assert dest.delete();
+                Assert.assertTrue(dest.delete());
             } catch (IOException e) {
-                e.printStackTrace();
+                Assert.fail(e.getLocalizedMessage());
             }
         }
     }
