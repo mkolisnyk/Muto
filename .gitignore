@@ -12,3 +12,6 @@
 hs_err_pid*
 /target
 .settings
+/.pydevproject
+/pom.xml.releaseBackup
+/release.properties
