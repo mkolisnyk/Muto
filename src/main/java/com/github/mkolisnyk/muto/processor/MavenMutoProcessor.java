@@ -254,6 +254,9 @@ public class MavenMutoProcessor extends AbstractMojo {
             this.listeners
                     .add("com.github.mkolisnyk.muto.reporter.listeners."
                             + "DummyListener");
+            this.listeners
+                    .add("com.github.mkolisnyk.muto.reporter.listeners."
+                            + "ConsoleListener");
         }
         for (String item : this.listeners) {
             Class<?> clazz = Class.forName(item, true,
@@ -275,9 +278,9 @@ public class MavenMutoProcessor extends AbstractMojo {
             = new ArrayList<FileProcessingStrategy>();
         if (this.fileStrategies == null) {
             this.fileStrategies = new ArrayList<String>();
-            /*this.fileStrategies
+            this.fileStrategies
                     .add("com.github.mkolisnyk.muto.generator."
-                    + "filestrategies.OneByOneFileProcessingStrategy");*/
+                    + "filestrategies.OneByOneFileProcessingStrategy");
         }
         for (String item : this.fileStrategies) {
             Class<?> clazz = Class.forName(item, true,
@@ -306,7 +309,7 @@ public class MavenMutoProcessor extends AbstractMojo {
             this.mutationStrategies = new ArrayList<String>();
             this.mutationStrategies
                     .add("com.github.mkolisnyk.muto.generator.strategies."
-                            + "OneByOneMutationStrategy");
+                            + "SingleSetMutationStrategy");
         }
         List<MutoListener> listenerList = initListeners();
         for (String item : this.mutationStrategies) {

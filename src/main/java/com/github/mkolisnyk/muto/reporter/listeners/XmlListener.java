@@ -7,12 +7,11 @@ import java.util.List;
 
 import javax.xml.bind.JAXB;
 
-import org.junit.Assert;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
+import org.junit.Assert;
 
 import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.reporter.MutoListener;

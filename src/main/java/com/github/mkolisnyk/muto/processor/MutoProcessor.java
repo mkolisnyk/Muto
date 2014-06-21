@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
+import com.github.mkolisnyk.muto.Log;
 import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.generator.FileProcessingStrategy;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
@@ -50,11 +51,6 @@ public class MutoProcessor {
           }
         }
       }
-    /*private static Logger logger = Logger.getLogger(MutoProcessor.class);
-
-    static {
-        logger.addAppender(new ConsoleAppender(new SimpleLayout()));
-    }*/
     /**
      * .
      */
@@ -241,20 +237,39 @@ public class MutoProcessor {
      * @throws Exception .
      */
     private void deleteFile(final File file) throws Exception {
+        Log.debug(String.format("Processing file: %s", file.getAbsolutePath()));
         if (!file.exists()) {
+            Log.debug(
+                    String.format(
+                            "The file '%s' wasn't found",
+                            file.getAbsolutePath()));
             return;
         }
         if (file.isDirectory()) {
+            Log.debug(
+                    String.format(
+                            "The '%s' file is directory. Cleanup the content",
+                            file.getAbsolutePath()));
             for (File item : file.listFiles()) {
+                Log.debug(
+                        String.format(
+                                "The '%s' sub-item is found.",
+                                item.getAbsolutePath()));
                 deleteFile(item);
             }
         }
         for (int i = 0; i < MAXTRIES; i++) {
+            Log.debug(
+                    String.format(
+                            "Deleting file: %s",
+                            file.getAbsolutePath()));
             if (file.delete()) {
+                Log.debug("Done");
                 break;
             }
         }
         if (file.exists()) {
+            Log.error("File wasn't removed");
             throw new IOException("Unable to delete file '"
                     + file.getAbsolutePath() + "'");
         }
@@ -264,15 +279,20 @@ public class MutoProcessor {
      */
     public final void cleanupWorkspace() {
         File workspace = new File(this.targetDirectory);
+        Log.info(
+                String.format(
+                        "Cleanup the workspace folder at: %s",
+                        workspace.getAbsolutePath()));
         if (workspace.exists() && workspace.isDirectory()) {
             for (int i = 0; i < MAXTRIES; i++) {
                 try {
                     deleteFile(workspace);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Log.error("Failed to perform cleanup", e);
                 }
             }
         }
+        Log.debug("Cleanup completed");
     }
     /**
      * Copies project files into working directory.
@@ -285,23 +305,42 @@ public class MutoProcessor {
         String absSourceDirectory = new File(sourceDirectory)
                 .getAbsolutePath();
         String absTargetDirectory = workspace.getAbsolutePath();
+        Log.info(
+                String.format(
+                        "Preparing workspace at: %s",
+                        workspace.getAbsolutePath()));
         if (!workspace.exists() && !workspace.mkdirs()) {
-                throw new IOException(
-                        "Failed to create workspace at: "
-                                + workspace.getAbsolutePath());
+            Log.error(
+                    String.format(
+                            "Failed to create workspace at: %s",
+                            workspace.getAbsolutePath()));
+            throw new IOException(
+                    "Failed to create workspace at: "
+                            + workspace.getAbsolutePath());
         }
         List<String> filesToCopy = this.getFilesToCopy();
+        Log.debug("Copying files...");
         for (String sourceFile : filesToCopy) {
             File source = new File(sourceFile);
             String fileToCopy = sourceFile.replace(
                     absSourceDirectory, absTargetDirectory);
+            Log.debug(
+                    String.format(
+                            "Source file: %s",
+                            source.getAbsolutePath()));
             File file = new File(fileToCopy);
+            Log.debug(
+                    String.format(
+                            "Destination file: %s",
+                            file.getAbsolutePath()));
             if (!file.getAbsoluteFile().getParentFile().exists()
                 && !file.getAbsoluteFile().getParentFile().mkdirs()) {
                 throw new IOException("Failed to prepare target directory: "
                             + file.getAbsoluteFile().getParent());
             }
+            Log.debug("Doing the copy...");
             Files.copy(source.toPath(), file.toPath());
+            Log.debug("Done.");
         }
     }
 
@@ -374,12 +413,19 @@ public class MutoProcessor {
      * @throws Exception .
      */
     public final void process() throws Exception {
+        Log.info(String.format("%s", this));
         this.copyWorkspace();
         this.beforeSuite();
+        Log.debug("Iterating through file strategies");
         for (FileProcessingStrategy fileStrategy:this.fileStrategies) {
+            Log.debug(
+                    String.format(
+                            "File strategy: %s",
+                            fileStrategy.getClass().getCanonicalName()));
             fileStrategy.setFiles(this.getProcessFiles());
             while (fileStrategy.hasNext()) {
                 this.beforeTest();
+                Log.debug("File strategy step start");
                 fileStrategy.doNext();
                 MutoResult result = new MutoResult(this.testReportsLocation);
                 MutationLocation locationValue = fileStrategy.getLocation();
@@ -387,10 +433,16 @@ public class MutoProcessor {
                 result.setOutputLocation(this.outputLocation);
                 try {
                     int exitCode = -1;
+                    Log.debug(
+                            String.format(
+                                    "Running command: %s",
+                                    this.getRunCommand()));
                     exitCode = this.runCommand();
                     result.setExitCode(exitCode);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    Log.error(
+                            String.format(
+                                    "Execution failed."));
                 }
                 result.retrieveResults();
                 this.afterTest(result);
@@ -398,6 +450,7 @@ public class MutoProcessor {
         }
         this.afterSuite();
         this.cleanupWorkspace();
+        Log.info("Processing was completed.");
     }
     /**
      * Runs specific command and tracks the status code.
@@ -405,6 +458,11 @@ public class MutoProcessor {
      * @throws Exception .
      */
     public final int runCommand() throws Exception {
+        Log.info(
+                String.format(
+                        "Running commant: '%s' at %s",
+                        runCommand,
+                        targetDirectory));
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec(runCommand, null, new File(
                 this.targetDirectory));
@@ -415,6 +473,7 @@ public class MutoProcessor {
             if (worker.exit != null) {
                 return worker.exit;
             } else {
+                Log.error("Timeout was exceeded.");
                 throw new TimeoutException();
             }
         } catch (InterruptedException ex) {
@@ -511,5 +570,27 @@ public class MutoProcessor {
     public final void setProcessFilesIncludes(
             final List<String> processFilesIncludesValue) {
         this.processFilesIncludes = processFilesIncludesValue;
+    }
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public final String toString() {
+        String ls = System.getProperty("line.separator");
+        String result = "MutoProcessor Settings:" + ls
+                + "- Source Directory: " + sourceDirectory + ls
+                + "- Target Directory: " + targetDirectory + ls
+                + "- Output Location: " + outputLocation + ls
+                + "- Run Command:" + runCommand + ls;
+        /*return "MutoProcessor [sourceDirectory=" + sourceDirectory
+                + ", excludes=" + excludes + ", targetDirectory="
+                + targetDirectory + ", runCommand=" + runCommand
+                + ", testReportsLocation=" + testReportsLocation
+                + ", outputLocation=" + outputLocation
+                + ", processFilesExclusions="
+                + processFilesExclusions + ", processFilesIncludes="
+                + processFilesIncludes + ", fileStrategies="
+                + fileStrategies + ", listeners=" + listeners + "]";*/
+        return result;
     }
 }

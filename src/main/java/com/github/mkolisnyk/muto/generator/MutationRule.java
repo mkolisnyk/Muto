@@ -3,6 +3,7 @@ package com.github.mkolisnyk.muto.generator;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.mkolisnyk.muto.Log;
 import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
 
@@ -90,7 +91,9 @@ public abstract class MutationRule {
         for (MutoListener listener : this.getListeners()) {
             listener.beforeMutationRuleRun();
         }
+        Log.debug("Starting next iteration of rule application");
         String result = this.next(input);
+        Log.debug("Rule iteration has been done");
         for (MutoListener listener : this.getListeners()) {
             listener.afterMutationRuleRun(this.getLocation());
         }
@@ -108,6 +111,7 @@ public abstract class MutationRule {
      * .
      */
     public final void reset() {
+        Log.debug("Reset rule");
         tick = 0;
     }
     /**
@@ -115,6 +119,7 @@ public abstract class MutationRule {
      * @return .
      */
     public final int getTick() {
+        Log.debug(String.format("Mutation rule current tick is: %d", tick));
         return tick;
     }
 }

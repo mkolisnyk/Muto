@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 
-import org.apache.commons.io.FileUtils;
-
+import com.github.mkolisnyk.muto.Log;
 import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
 
@@ -47,7 +47,9 @@ public abstract class FileProcessingStrategy {
         for (MutoListener listener : this.getListeners()) {
             listener.beforeFileStrategyRun();
         }
+        Log.debug("Switching to the next processing step");
         this.next();
+        Log.debug("Processing step is done");
         for (MutoListener listener : this.getListeners()) {
             String fileName = "";
             if (this.getLocation() != null) {
@@ -95,13 +97,23 @@ public abstract class FileProcessingStrategy {
      * @return .
      */
     public final String read(final String fileName) {
+        Log.debug(
+                String.format("Reading contents of the file: '%s'",
+                        fileName));
         try {
             File src = new File(fileName);
+            Log.debug(
+                    String.format(
+                            "The full path is: '%s'",
+                            src.getAbsolutePath()));
             restore(fileName);
             this.location.setFileName(fileName);
             return FileUtils.readFileToString(src);
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.error(
+                    String.format(
+                            "There was the problem reading '%s' file.",
+                            fileName), e);
         }
         return "";
     }
@@ -111,12 +123,24 @@ public abstract class FileProcessingStrategy {
      * @param content .
      */
     public final void write(final String fileName, final String content) {
+        Log.debug(String.format("Writing text to the file: '%s'", fileName));
         try {
             File src = new File(fileName);
+            Log.debug(
+                    String.format("Initial file: '%s'",
+                            src.getAbsolutePath()));
             File dest = new File(fileName + BACKUP_EXT);
+            Log.debug(
+                    String.format("Backup file: '%s'",
+                            dest.getAbsolutePath()));
+            Log.debug("Make a backup copy");
             FileUtils.copyFile(src, dest);
+            Log.debug("Update source file content");
             FileUtils.writeStringToFile(src, content);
         } catch (IOException e) {
+            Log.error(
+                    String.format("There was the problem writing '%s' file.",
+                            fileName), e);
             Assert.fail(e.getLocalizedMessage());
         }
     }
@@ -127,11 +151,19 @@ public abstract class FileProcessingStrategy {
     public final void restore(final String fileName) {
         File src = new File(fileName);
         File dest = new File(fileName + BACKUP_EXT);
+        Log.debug(String.format("Initial file: '%s'", src.getAbsolutePath()));
+        Log.debug(String.format("Backup file: '%s'", dest.getAbsolutePath()));
         if (dest.exists()) {
             try {
+                Log.debug("Start restoring file");
                 FileUtils.copyFile(dest, src);
+                Log.debug("Remove backup copy");
                 Assert.assertTrue(dest.delete());
-            } catch (IOException e) {
+            } catch (Throwable e) {
+                Log.error(
+                        String.format(
+                                "There was the problem restoring '%s' file.",
+                                fileName), e);
                 Assert.fail(e.getLocalizedMessage());
             }
         }
@@ -158,7 +190,10 @@ public abstract class FileProcessingStrategy {
     public final void addMutationStrategy(
             final MutationStrategy mutationStrategy) {
         if (this.mutationStrategies == null) {
-           this.mutationStrategies = new ArrayList<MutationStrategy>();
+            Log.debug(
+                    "Mutation strategies weren't initialized."
+                    + " Creating empty list.");
+            this.mutationStrategies = new ArrayList<MutationStrategy>();
         }
         this.mutationStrategies.add(mutationStrategy);
     }
@@ -180,6 +215,7 @@ public abstract class FileProcessingStrategy {
      * .
      */
     public final void resetStrategies() {
+        Log.debug("Reset all available mutation strategies");
         for (MutationStrategy strategy:mutationStrategies) {
             strategy.reset();
         }

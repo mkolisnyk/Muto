@@ -17,7 +17,6 @@ import com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule;
 import com.github.mkolisnyk.muto.generator.rules.NumberSignMutationRule;
 import com.github.mkolisnyk.muto.generator.strategies.OneByOneMutationStrategy;
 import com.github.mkolisnyk.muto.generator.strategies.SingleSetMutationStrategy;
-import com.github.mkolisnyk.muto.reporter.listeners.ConsoleListener;
 import com.github.mkolisnyk.muto.reporter.listeners.DummyListener;
 import com.github.mkolisnyk.muto.reporter.listeners.XmlListener;
 
@@ -79,22 +78,24 @@ public class MavenMutoProcessorTest {
         sourceDirectoryValue = (new File(sourceDirectoryValue)).getAbsolutePath();
         excludesValue.add("\\.git");
         processor.setExcludes(excludesValue);
+        includesValue.add("BlockCleanMutationRule.java");
+        processor.setIncludes(includesValue);
         processor.setFileStrategies(null);
         processor.setListeners(null);
         processor.setMutationStrategies(null);
         processor.setMutationRules(null);
         processor.setSourceDirectory(sourceDirectoryValue);
         processor.setTargetDirectory(targetDirectoryValue);
-        processor.setTestReportsLocation(null);
+        processor.setTestReportsLocation(testReportsLocationValue);
         processor.setRunCommand("java -version");
         processor.execute();
 
         Assert.assertNotNull(processor.getFileStrategies());
         Assert.assertNotNull(processor.getListeners());
-        Assert.assertNull(processor.getMutationStrategies());
+        Assert.assertNotNull(processor.getMutationStrategies());
         Assert.assertEquals(sourceDirectoryValue,processor.getSourceDirectory());
         Assert.assertEquals(targetDirectoryValue,processor.getTargetDirectory());
-        Assert.assertNull(processor.getTestReportsLocation());
+        Assert.assertEquals(testReportsLocationValue,processor.getTestReportsLocation());
     }
 
     @Test
@@ -109,7 +110,7 @@ public class MavenMutoProcessorTest {
             List<MutationStrategy> mutationStrategies = fileStrategy.getMutationStrategies();
             
             List<Class<?>> expectedMutationStrategyClasses = new ArrayList<Class<?>>();
-            expectedMutationStrategyClasses.add(OneByOneMutationStrategy.class);
+            expectedMutationStrategyClasses.add(SingleSetMutationStrategy.class);
             
             for (MutationStrategy strategy:mutationStrategies) {
                 Assert.assertTrue(expectedMutationStrategyClasses.contains(strategy.getClass()));

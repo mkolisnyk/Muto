@@ -1,8 +1,9 @@
 package com.github.mkolisnyk.muto.reporter.listeners;
 
 import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Layout;
 import org.apache.log4j.Logger;
-import org.apache.log4j.SimpleLayout;
+import org.apache.log4j.PatternLayout;
 
 import com.github.mkolisnyk.muto.data.MutationLocation;
 import com.github.mkolisnyk.muto.reporter.MutoListener;
@@ -15,10 +16,21 @@ public class ConsoleListener implements MutoListener {
     /**
      * .
      */
+    private static final String LAYOUT_PATTERN
+                    = "%d\t%-5p\t%m%n";
+    /**
+     * .
+     */
+    private static final Layout LOG4NET_LAYOUT
+                    = new PatternLayout(LAYOUT_PATTERN);
+
+    /**
+     * .
+     */
     private static Logger log = Logger.getLogger(ConsoleListener.class);
 
     static {
-        log.addAppender(new ConsoleAppender(new SimpleLayout()));
+        log.addAppender(new ConsoleAppender(LOG4NET_LAYOUT));
     }
 
     /**

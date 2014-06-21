@@ -84,10 +84,6 @@ public class BlockCleanMutationRule extends MutationRule {
 
         MutationLocation location = new MutationLocation(-1, -1);
         for (int i = 0; i <= position; i++) {
-            /*if (location == null) {
-                location = new MutationLocation(-1, -1);
-                depth++;
-            }*/
             while (depth <= maxDepth) {
                 location = this.nextBlockOnLevel(input,
                         location.getEndPosition() + 1, depth);
