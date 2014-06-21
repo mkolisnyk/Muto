@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.mkolisnyk</groupId>
 	<artifactId>muto</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>Muto</name>
 
 	<url>https://github.com/mkolisnyk/Muto/tree/master</url>
