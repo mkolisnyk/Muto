@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./NumberSignMutationRule.html" title="com.github.mkolisnyk.muto.generator.rules.NumberSignMutationRule" alt="" coords="16,11,285,121"/>
+<area shape="rect" id="node1" href="./NumberSignMutationRule.html" title="&lt;TABLE&gt;" alt="" coords="5,5,296,127"/>
+<area shape="rect" id="node2_1" href="./BlockCleanMutationRule.html" title="com.github.mkolisnyk.muto.generator.rules.BlockCleanMutationRule" alt="" coords="331,11,600,121"/>
+<area shape="rect" id="node2" href="./BlockCleanMutationRule.html" title="&lt;TABLE&gt;" alt="" coords="320,5,611,127"/>
+</map>

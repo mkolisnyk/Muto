@@ -1,0 +1,16 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./MutoResultSet.html" title="com.github.mkolisnyk.muto.reporter.MutoResultSet" alt="" coords="16,158,289,269"/>
+<area shape="rect" id="node1" href="./MutoResultSet.html" title="&lt;TABLE&gt;" alt="" coords="5,153,300,274"/>
+<area shape="rect" id="node2_1" href="./MutoResult.html" title="com.github.mkolisnyk.muto.reporter.MutoResult" alt="" coords="335,11,645,416"/>
+<area shape="rect" id="node2" href="./MutoResult.html" title="&lt;TABLE&gt;" alt="" coords="325,5,655,421"/>
+<area shape="rect" id="node3_2" href="./MutoListener.html" title="com.github.mkolisnyk.muto.reporter.MutoListener" alt="" coords="690,89,1010,338"/>
+<area shape="rect" id="node3" href="./MutoListener.html" title="&lt;TABLE&gt;" alt="" coords="679,83,1021,343"/>
+<area shape="rect" id="node4_3" href="./MavenMutoReporterHelper.html" title="com.github.mkolisnyk.muto.reporter.MavenMutoReporterHelper" alt="" coords="1056,123,1511,303"/>
+<area shape="rect" id="node4" href="./MavenMutoReporterHelper.html" title="&lt;TABLE&gt;" alt="" coords="1045,118,1521,309"/>
+<area shape="rect" id="node5_4" href="./MavenMutoReporterDrawer.html" title="com.github.mkolisnyk.muto.reporter.MavenMutoReporterDrawer" alt="" coords="1557,149,2007,277"/>
+<area shape="rect" id="node5" href="./MavenMutoReporterDrawer.html" title="&lt;TABLE&gt;" alt="" coords="1546,144,2018,283"/>
+<area shape="rect" id="node6_5" href="./MavenMutoReporter.html" title="com.github.mkolisnyk.muto.reporter.MavenMutoReporter" alt="" coords="2053,71,2369,355"/>
+<area shape="rect" id="node6" href="./MavenMutoReporter.html" title="&lt;TABLE&gt;" alt="" coords="2043,66,2380,361"/>
+<area shape="rect" id="node7_6" href="./HelpMojo.html" title="com.github.mkolisnyk.muto.reporter.HelpMojo" alt="" coords="2415,167,2509,260"/>
+<area shape="rect" id="node7" href="./HelpMojo.html" title="&lt;TABLE&gt;" alt="" coords="2405,161,2519,265"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./MutoResultTest.html" title="com.github.mkolisnyk.muto.reporter.MutoResultTest" alt="" coords="16,11,293,208"/>
+<area shape="rect" id="node1" href="./MutoResultTest.html" title="&lt;TABLE&gt;" alt="" coords="5,5,304,213"/>
+<area shape="rect" id="node2_1" href="./MutoListenerTest.html" title="com.github.mkolisnyk.muto.reporter.MutoListenerTest" alt="" coords="339,37,467,182"/>
+<area shape="rect" id="node2" href="./MutoListenerTest.html" title="&lt;TABLE&gt;" alt="" coords="328,31,477,187"/>
+<area shape="rect" id="node3_2" href="./MavenMutoReporterMojoTest.html" title="com.github.mkolisnyk.muto.reporter.MavenMutoReporterMojoTest" alt="" coords="512,19,720,199"/>
+<area shape="rect" id="node3" href="./MavenMutoReporterMojoTest.html" title="&lt;TABLE&gt;" alt="" coords="501,14,731,205"/>
+</map>

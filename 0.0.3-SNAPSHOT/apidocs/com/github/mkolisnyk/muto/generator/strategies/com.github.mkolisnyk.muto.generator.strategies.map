@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./SingleSetMutationStrategy.html" title="com.github.mkolisnyk.muto.generator.strategies.SingleSetMutationStrategy" alt="" coords="16,11,235,139"/>
+<area shape="rect" id="node1" href="./SingleSetMutationStrategy.html" title="&lt;TABLE&gt;" alt="" coords="5,5,245,144"/>
+<area shape="rect" id="node2_1" href="./OneByOneMutationStrategy.html" title="com.github.mkolisnyk.muto.generator.strategies.OneByOneMutationStrategy" alt="" coords="288,197,491,291"/>
+<area shape="rect" id="node2" href="./OneByOneMutationStrategy.html" title="&lt;TABLE&gt;" alt="" coords="277,192,501,296"/>
+<area shape="rect" id="node3_2" href="./IterativeMutationStrategy.html" title="com.github.mkolisnyk.muto.generator.strategies.IterativeMutationStrategy" alt="" coords="280,19,499,130"/>
+<area shape="rect" id="node3" href="./IterativeMutationStrategy.html" title="&lt;TABLE&gt;" alt="" coords="269,14,509,135"/>
+</map>

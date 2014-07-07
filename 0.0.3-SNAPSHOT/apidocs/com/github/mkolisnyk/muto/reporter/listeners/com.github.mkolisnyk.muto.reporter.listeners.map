@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./XmlListener.html" title="com.github.mkolisnyk.muto.reporter.listeners.XmlListener" alt="" coords="16,11,336,260"/>
+<area shape="rect" id="node1" href="./XmlListener.html" title="&lt;TABLE&gt;" alt="" coords="5,5,347,265"/>
+<area shape="rect" id="node2_1" href="./DummyListener.html" title="com.github.mkolisnyk.muto.reporter.listeners.DummyListener" alt="" coords="381,11,701,260"/>
+<area shape="rect" id="node2" href="./DummyListener.html" title="&lt;TABLE&gt;" alt="" coords="371,5,712,265"/>
+<area shape="rect" id="node3_2" href="./ConsoleListener.html" title="com.github.mkolisnyk.muto.reporter.listeners.ConsoleListener" alt="" coords="747,11,1067,260"/>
+<area shape="rect" id="node3" href="./ConsoleListener.html" title="&lt;TABLE&gt;" alt="" coords="736,5,1077,265"/>
+</map>

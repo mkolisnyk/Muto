@@ -1,0 +1,9 @@
+com.github.mkolisnyk.muto.data
+com.github.mkolisnyk.muto.generator
+com.github.mkolisnyk.muto.generator.filestrategies
+com.github.mkolisnyk.muto.generator.rules
+com.github.mkolisnyk.muto.generator.strategies
+com.github.mkolisnyk.muto.processor
+com.github.mkolisnyk.muto.reporter
+com.github.mkolisnyk.muto.reporter.listeners
+com.github.mkolisnyk.muto.reporter.result
